@@ -11,9 +11,9 @@ TagManager:
   - 
   - Water
   - UI
+  - environment
+  - 
   - Words
-  - 
-  - 
   - 
   - 
   - 
@@ -40,4 +40,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Words
+    uniqueID: 1782543391
     locked: 0
