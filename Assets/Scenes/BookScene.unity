@@ -1758,6 +1758,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textObj: {fileID: 1075209598}
   cam: {fileID: 117869742}
+  scrollBar: {fileID: 25651677}
+  scrollViewTransform: {fileID: 1956837153}
+  wordHighlight: {fileID: 1075209601}
 --- !u!114 &1075209601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1770,6 +1773,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fab0da2cbf62554eaa12f490889ac8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textObj: {fileID: 1075209598}
+  clickedWordHandler: {fileID: 1075209600}
+  Duration: 1
+  DurationBack: 0.5
+  availableColors:
+  - {r: 0.040084783, g: 1, b: 0.032075405, a: 1}
+  - {r: 0.031372547, g: 0.1387166, b: 1, a: 1}
+  - {r: 0.9452382, g: 1, b: 0.031372547, a: 1}
+  - {r: 0.55542713, g: 0.031372547, b: 1, a: 1}
+  - {r: 1, g: 0.5222889, b: 0.031372547, a: 1}
+  - {r: 1, g: 0.031372547, b: 0.5012041, a: 1}
+  - {r: 0.031372547, g: 1, b: 0.7065119, a: 1}
 --- !u!1 &1084164305
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,18 +9,26 @@ public class ClickedWordHandler : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI textObj;
     [SerializeField] private Camera cam;
-    private Scrollbar scrollBar;
-    private RectTransform scrollViewTransform;
+    [SerializeField] private Scrollbar scrollBar;
+    [SerializeField] private RectTransform scrollViewTransform;
+    [SerializeField] private WordHighlighting wordHighlight;
+
     private int wordindex;
     private string clickedWordString;
     private float ScrollPos;
-    private bool canClickonWord;
-
-    public Action OnWordClicked;
+    private bool canClickonWord => wordHighlight.getIsLerping() == false;
+    private bool isSpecialWordTemp;
+    public Action<int,bool> OnWordClicked;
     public Action OnSpecialWordClicked;
-    void Start()
+
+    private void Awake()
     {
-        
+        BookManager.OnPageChanged += resetScrollBarValue;
+    }
+
+    private void resetScrollBarValue(int arg1, PageContents arg2)
+    {
+        scrollBar.value = 1;
     }
 
     void LateUpdate()
@@ -38,7 +46,7 @@ public class ClickedWordHandler : MonoBehaviour
 
             if (wordindex != -1)
             {
-                if (RectTransformUtility.RectangleContainsScreenPoint(scrollViewTransform, Input.mousePosition, cam))
+                if (RectTransformUtility.RectangleContainsScreenPoint(scrollViewTransform, Input.mousePosition, cam)) //    not working
                 {
                     handleClickedWord(wordindex);
                 }
@@ -56,7 +64,12 @@ public class ClickedWordHandler : MonoBehaviour
     private void handleClickedWord(int wordIndex)
     {
         clickedWordString = textObj.textInfo.wordInfo[wordIndex].GetWord();
+        isSpecialWordTemp = wordHighlight.IsWordRed(wordIndex);
+        OnWordClicked?.Invoke(wordindex, isSpecialWordTemp);
+    }
 
-        OnWordClicked
+    private void OnDisable()
+    {
+        BookManager.OnPageChanged -= resetScrollBarValue;
     }
 }
