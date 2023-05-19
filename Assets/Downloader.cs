@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using UnityEngine;
 
-public class Downloader : MonoBehaviour
+public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,create asset bundle utils class
 {
     private string DataPath;
 
@@ -19,15 +19,33 @@ public class Downloader : MonoBehaviour
     private void Start()
     {
         DataPath = $"{Application.persistentDataPath}/../TaylorsTalesAssets/ChickenAndTheFox";
-        LoadPages();
-        SetUpCanvasses();
+        loadPages();
+        loadFacts();
+        setUpCanvasses();
     }
 
-   
+    private void loadFacts()
+    {
+        string factPath = $"{DataPath}/Facts/Facts.json";
+        Debug.Log(File.Exists(factPath));
 
-    
+        string facts = File.ReadAllText(factPath);
+        FactList factsList = JsonUtility.FromJson<FactList>(facts);
 
-    private void LoadPages()
+        for (int i = 0; i < factsList.Facts.Count; i++)
+        {
+            Fact curfact = factsList.Facts[i];
+            TriggerWords triggers = new TriggerWords(curfact.TriggerWords);
+            AssetBundle factImageBundle = AssetBundle.LoadFromFile($"{DataPath}/Facts/{curfact.imagesBundle}.unity3d");
+            FactContents contents = new FactContents(curfact.FactInfo, factImageBundle);
+
+            FactManager.AddToFactList(triggers, contents);
+        }
+    }
+
+
+
+    private void loadPages()
     {
         var Pagefiles = Directory.GetDirectories(DataPath).Where(T => Path.GetFileName(T).Equals("Facts") == false).ToList();
         for (int i = 0; i < Pagefiles.Count(); i++)
@@ -50,7 +68,7 @@ public class Downloader : MonoBehaviour
     {
 
         var files = Directory.GetDirectories(DataPath).Where(T => Path.GetFileName(T).Equals("Facts") == false).ToList();
-      
+
         string Environmentpath = $"{DataPath}/Page_{page.pageNumber}/Page_{page.pageNumber}_EnvironmentCanvas.unity3d";
         string Interactionpath = $"{DataPath}/Page_{page.pageNumber}/Page_{page.pageNumber}_InteractionCanvas.unity3d";
 
@@ -88,7 +106,7 @@ public class Downloader : MonoBehaviour
     }
 
 
-    private void SetUpCanvasses()
+    private void setUpCanvasses()
     {
         for (int i = 1; i <= BookManager.bookLength; i++)
         {

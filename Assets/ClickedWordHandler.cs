@@ -18,8 +18,8 @@ public class ClickedWordHandler : MonoBehaviour
     private float ScrollPos;
     private bool canClickonWord => wordHighlight.getIsLerping() == false;
     private bool isSpecialWordTemp;
-    public Action<int,bool> OnWordClicked;
-    public Action OnSpecialWordClicked;
+    public Action OnWordClicked;
+    public Action<string> OnSpecialWordClicked;
 
     private void Awake()
     {
@@ -65,7 +65,17 @@ public class ClickedWordHandler : MonoBehaviour
     {
         clickedWordString = textObj.textInfo.wordInfo[wordIndex].GetWord();
         isSpecialWordTemp = wordHighlight.IsWordRed(wordIndex);
-        OnWordClicked?.Invoke(wordindex, isSpecialWordTemp);
+
+        if (isSpecialWordTemp)
+        {
+            OnSpecialWordClicked?.Invoke(clickedWordString);
+        }
+        else
+        {
+            OnWordClicked?.Invoke();
+        }
+        wordHighlight.StartColorLerp(wordindex, isSpecialWordTemp);
+
     }
 
     private void OnDisable()

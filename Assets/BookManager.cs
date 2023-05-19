@@ -15,7 +15,7 @@ public class BookManager : MonoBehaviour
     private int currentPageNumber = 1;
 
     [SerializeField] private TextMeshProUGUI textObj;
-
+    private int currentLangIndex => (int)LanguagesManager.CurrentLanguage;
     private void Awake()
     {
         Downloader.OnPagesReady += changePage;
@@ -34,7 +34,7 @@ public class BookManager : MonoBehaviour
 
     private void setPageText(PageContents contents)
     {
-        textObj.text = contents.Texts[(int)Languages.English];
+        textObj.text = contents.Texts[currentLangIndex];
     }
 
     private void handleLanguageChange(Languages lang)

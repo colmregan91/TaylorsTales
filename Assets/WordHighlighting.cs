@@ -21,29 +21,7 @@ public class WordHighlighting : MonoBehaviour
         return isLerping;
     }
 
-    //private void Awake()
-    //{
-    //    Color yellow = new Color(247f, 255f, 0f);
-    //    Color green = new Color(255f, 0, 0);
-    //    Color orange = new Color(255f, 104f, 0);
-
-
-
-    //    //Color Purple = new Color(143, 0, 254);
-    //    //Color orange = new Color(254, 161, 0);
-
-
-    //    availableColors.Add(yellow);
-    //    availableColors.Add(green);
-    //    availableColors.Add(orange);
-    //    Debug.Log(availableColors.Count);
-    //}
-    private void OnEnable()
-    {
-        clickedWordHandler.OnWordClicked += StartColorLerp;
-    }
-
-    private void StartColorLerp(int index, bool special)
+    public void StartColorLerp(int index, bool special)
     {
         StartCoroutine(LerpWordColor(index, special));
     }
@@ -53,7 +31,7 @@ public class WordHighlighting : MonoBehaviour
         startColor = special ? Color.red : Color.black;
         DesiredColorIndex = (DesiredColorIndex + 1) % availableColors.Count;
         DesiredColor = availableColors[DesiredColorIndex];
-        Debug.Log (DesiredColorIndex);
+
         TMP_WordInfo info = textObj.textInfo.wordInfo[wordIndex];
 
 
@@ -116,8 +94,4 @@ public class WordHighlighting : MonoBehaviour
         return vertexColors[vertexIndex + 1] == Color.red;
     }
 
-    private void OnDisable()
-    {
-        clickedWordHandler.OnWordClicked -= StartColorLerp;
-    }
 }
