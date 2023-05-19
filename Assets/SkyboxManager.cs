@@ -2,17 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkyboxManager : MonoBehaviour
+public class SkyboxManager : MonoBehaviour // do not need this
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private const string ROT = "_Rotation";
 
-    // Update is called once per frame
     void Update()
     {
-        
+        RenderSettings.skybox.SetFloat(ROT, Time.time);
     }
 }

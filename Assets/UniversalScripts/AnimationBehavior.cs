@@ -9,11 +9,16 @@ public class AnimationBehavior : MonoBehaviour
 
     private void Awake()
     {
+        anim.keepAnimatorControllerStateOnDisable = false;
+   
         interaction = GetComponent<Interaction>();
     }
 
-    private void Start()
+    private void OnEnable()
     {
+        anim.Rebind();
+        anim.Update(0f);
+        Debug.Log("sub");
         interaction.SubscribeBehavior(behavior);
     }
 
@@ -24,6 +29,8 @@ public class AnimationBehavior : MonoBehaviour
 
     private void OnDisable()
     {
+
+        Debug.Log("unsub");
         interaction.UnsubscribeBehavior(behavior);
     }
 

@@ -6,12 +6,11 @@ public class FactManager : MonoBehaviour
 {
     public static FactManager Instance;
 
-    private Dictionary<Page, FactsAndImages> FactsAndImages = new Dictionary<Page, FactsAndImages>();
+    private Dictionary<string, Fact> FactsAndImages = new Dictionary<string, Fact>();
 
-    public void AddToFactList(Page page, Fact fact, Sprite[] images)
+    public void AddToFactList( Fact fact, Sprite[] images)
     {
-        FactsAndImages newFact = new FactsAndImages(page.Texts, images);
-        FactsAndImages.Add(page, newFact);
+   
     }
     // Start is called before the first frame update
     void Start()
@@ -30,17 +29,5 @@ public class FactManager : MonoBehaviour
     void Update()
     {
         
-    }
-}
-
-public class FactsAndImages
-{
-    public Sprite[] images;
-    private string[] texts;
-
-    public FactsAndImages(string[] texts, Sprite[] images)
-    {
-        this.texts = texts;
-        this.images = images;
     }
 }

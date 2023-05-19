@@ -20,6 +20,7 @@ public class Interaction : MonoBehaviour
 
     private void OnMouseDown()
     {
+        Debug.Log("inokin");
         ActionBehavior?.Invoke();
     }
 }
