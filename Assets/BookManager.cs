@@ -18,7 +18,8 @@ public class BookManager : MonoBehaviour
 
     private void Awake()
     {
-        Downloader.OnPagesReady += ChangePage;
+        Downloader.OnPagesReady += changePage;
+        LanguagesManager.OnLanguageChanged += handleLanguageChange;
     }
 
     public static void AddNewPage(int pageNumber, PageContents contents)
@@ -26,38 +27,44 @@ public class BookManager : MonoBehaviour
         Pages.Add(pageNumber, contents);
     }
 
-    private void SetupSkyBox(PageContents contents)
+    private void setupSkyBox(PageContents contents)
     {
         RenderSettings.skybox = contents.SkyboxMaterial;
     }
 
-    private void SetPageText(PageContents contents)
+    private void setPageText(PageContents contents)
     {
-        textObj.text = contents.Texts[0];
+        textObj.text = contents.Texts[(int)Languages.English];
     }
 
-    private void ChangePage(int pageNumber)
+    private void handleLanguageChange(Languages lang)
+    {
+        textObj.text = currentPage.Texts[(int)lang];
+    }
+
+    private void changePage(int pageNumber)
     {
         currentPage?.CanvasHolder.SetActive(false);
         currentPage = Pages[pageNumber];
         currentPageNumber = pageNumber;
-        SetPageText(currentPage);
-        SetupSkyBox(currentPage);
+        setPageText(currentPage);
+        setupSkyBox(currentPage);
         currentPage.CanvasHolder.SetActive(true);
         OnPageChanged?.Invoke(currentPageNumber,currentPage);
     }
     public void PrevPage()
     {
-        ChangePage(--currentPageNumber);
+        changePage(--currentPageNumber);
     }
     public void NextPage()
     {
-        ChangePage(++currentPageNumber);
+        changePage(++currentPageNumber);
     }
 
     private void OnDisable()
     {
-        Downloader.OnPagesReady -= ChangePage;
+        Downloader.OnPagesReady -= changePage;
+        LanguagesManager.OnLanguageChanged -= handleLanguageChange;
     }
 
 }
