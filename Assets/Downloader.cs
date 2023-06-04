@@ -21,7 +21,7 @@ public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,c
         DataPath = $"{Application.persistentDataPath}/../TaylorsTalesAssets/ChickenAndTheFox";
         loadPages();
         loadFacts();
-        setUpCanvasses();
+        setUpEnvironmentCanvasses();
     }
 
     private void loadFacts()
@@ -94,8 +94,9 @@ public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,c
         {
             var Intbundle = AssetBundle.LoadFromFile(Interactionpath);
             var Intprefab = Intbundle.LoadAsset<GameObject>(Intbundle.GetAllAssetNames()[0]);
-
+   
             newPageContents.InteractionCanvas = Intprefab;
+            newPageContents.InteractionCanvas.GetComponent<Canvas>().worldCamera = Camera.main;
         }
         else
         {
@@ -106,7 +107,7 @@ public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,c
     }
 
 
-    private void setUpCanvasses()
+    private void setUpEnvironmentCanvasses()
     {
         for (int i = 1; i <= BookManager.bookLength; i++)
         {
@@ -122,13 +123,7 @@ public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,c
                 CurrentPageTemp.EnvironmentCanvas = Instantiate(EnvironmentCanvasTemp, newPage.transform);
             }
 
-            InteractionCavnasTemp = CurrentPageTemp.InteractionCanvas;
-
-            if (InteractionCavnasTemp != null)
-            {
-                InteractionCavnasTemp.GetComponent<Canvas>().worldCamera = Camera.main;
-                CurrentPageTemp.InteractionCanvas = Instantiate(InteractionCavnasTemp, newPage.transform);
-            }
+            
             newPage.SetActive(false);
             BookManager.Pages[i].CanvasHolder = newPage;
         }

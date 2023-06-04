@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - StaticEnvironmentCanvas
+  - InteractionCanvas
+  - FxTemporaire
+  - Skylark
   layers:
   - Default
   - TransparentFX
@@ -12,10 +16,10 @@ TagManager:
   - Water
   - UI
   - environment
-  - 
-  - Words
-  - 
-  - 
+  - interaction
+  - page
+  - words
+  - buttons
   - 
   - 
   - 
@@ -41,9 +45,16 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Words
-    uniqueID: 1782543391
+  - name: Environment
+    uniqueID: 1386650657
     locked: 0
-  - name: UI
-    uniqueID: 809313285
+  - name: Interaction
+    uniqueID: 2073416779
     locked: 0
+  - name: Page
+    uniqueID: 2944275871
+    locked: 0
+  - name: Buttons
+    uniqueID: 2195504057
+    locked: 0
+

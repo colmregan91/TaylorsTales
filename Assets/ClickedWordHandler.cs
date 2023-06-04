@@ -63,7 +63,7 @@ public class ClickedWordHandler : MonoBehaviour
 
     private void handleClickedWord(int wordIndex)
     {
-        clickedWordString = textObj.textInfo.wordInfo[wordIndex].GetWord();
+        clickedWordString = textObj.textInfo.wordInfo[wordIndex].GetWord().ToLower();
         isSpecialWordTemp = wordHighlight.IsWordRed(wordIndex);
 
         if (isSpecialWordTemp)

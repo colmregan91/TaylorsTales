@@ -13,6 +13,8 @@ public class FactManager : MonoBehaviour
     [SerializeField] private ClickedWordHandler clickedWordHandler;
     [SerializeField] private TextMeshProUGUI textObj;
     [SerializeField] private Image imageObj;
+    [SerializeField] private GameObject factImageHolder;
+    [SerializeField] private Scrollbar scrollBar;
 
     private int triggerHashClick = Animator.StringToHash("onclick");
     private int triggerHashUnclick = Animator.StringToHash("onunclick");
@@ -20,7 +22,8 @@ public class FactManager : MonoBehaviour
     private WaitForSeconds secondWait = new WaitForSeconds(1f);
 
     private FactContents curFact;
-
+    private Sprite[] curFactImages;
+    private int curImageIndex;
     private int currentLangIndex => (int)LanguagesManager.CurrentLanguage;
 
     private void Awake()
@@ -41,14 +44,12 @@ public class FactManager : MonoBehaviour
     {
         if (!isShowingFact) return;
 
-        anim.SetTrigger(triggerHashUnclick);
-        isShowingFact = false;
-        curFact = null;
+        StartCoroutine(resetFacts());
     }
 
     private void handleLanguageChange(Languages lang)
     {
-        setText((int)lang, curFact);
+        setText((int)lang);
     }
 
     private void HandleFactClicked(string word)
@@ -59,8 +60,9 @@ public class FactManager : MonoBehaviour
             Debug.Log("same");
             return;
         }
-        curFact = FactsAndImages[triggerWords];
-        StartCoroutine(DisplayFactContent(curFact));
+       
+
+        StartCoroutine(DisplayFactContent(triggerWords));
     }
 
     public static void AddToFactList(TriggerWords factTriggers, FactContents FactContents)
@@ -68,32 +70,60 @@ public class FactManager : MonoBehaviour
         FactsAndImages.Add(factTriggers, FactContents);
     }
 
-
-
-    private IEnumerator DisplayFactContent(FactContents contents)
+    private IEnumerator resetFacts()
     {
+        anim.SetTrigger(triggerHashUnclick);
+        yield return secondWait;
+        isShowingFact = false;
+        scrollBar.value = 1;
+        curFact = null;
+        curFactImages = null;
+    }
+
+
+    private IEnumerator DisplayFactContent(TriggerWords triggerWords)
+    {
+     
         if (isShowingFact)
         {
-            anim.SetTrigger(triggerHashUnclick);
-            yield return secondWait;
+            yield return resetFacts();
+            
         }
-        setText(currentLangIndex, contents);
-        var Envassets = contents.imagesBundle.GetAllAssetNames();
+        curImageIndex = 0;
+        curFact = FactsAndImages[triggerWords];
+        setText(currentLangIndex);
+        var Envassets = curFact.imagesBundle.GetAllAssetNames();
+        curFactImages = new Sprite[Envassets.Length];
 
-        List<Sprite> imgList = new List<Sprite>();
         for (int i = 0; i < Envassets.Length; i++)
         {
-            var Envprefab = contents.imagesBundle.LoadAsset<Sprite>(Envassets[i]);
-            imgList.Add(Envprefab);
+            curFactImages[i] = curFact.imagesBundle.LoadAsset<Sprite>(Envassets[i]);
         }
-        imageObj.sprite = imgList[0];
+        SetButtonVisuals();
+        imageObj.sprite = curFactImages[curImageIndex];
         anim.SetTrigger(triggerHashClick);
         isShowingFact = true;
     }
 
-    private void setText(int langIndex, FactContents contents)
+    private void SetButtonVisuals()
     {
-        textObj.text = contents.FactInfo[langIndex];
+        factImageHolder.SetActive(curFactImages.Length > 1);
+    }
+
+    public void NextImage()
+    {
+        curImageIndex = (curImageIndex + 1) % curFactImages.Length;
+        imageObj.sprite = curFactImages[curImageIndex];
+    }
+    public void PrevImage()
+    {
+        curImageIndex = (curImageIndex - 1) % curFactImages.Length;
+        imageObj.sprite = curFactImages[curImageIndex];
+    }
+    private void setText(int langIndex)
+    {
+        if (curFact != null)
+            textObj.text = curFact.FactInfo[langIndex];
     }
 }
 

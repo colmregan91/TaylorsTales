@@ -5,22 +5,18 @@ using UnityEngine;
 
 public class Interaction : MonoBehaviour
 {
-    public Action ActionBehavior;
 
-    public void SubscribeBehavior(Action behavior)
-    {
-        ActionBehavior += behavior;
-    }
 
-    public void UnsubscribeBehavior(Action behavior)
+    private void Awake()
     {
-        ActionBehavior -= behavior;
+
     }
 
 
     private void OnMouseDown()
     {
-        Debug.Log("inokin");
-        ActionBehavior?.Invoke();
+
+
+
     }
 }
