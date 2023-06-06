@@ -205,8 +205,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 464362062}
   m_HandleRect: {fileID: 464362060}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 1
+  m_Value: 0.99999976
+  m_Size: 0.49816713
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1956,7 +1956,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 143.50002, y: 8.5}
+  m_AnchoredPosition: {x: 143.50003, y: 8.5}
   m_SizeDelta: {x: -273, y: -37}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &994208158
@@ -2087,7 +2087,21 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: "\u201CHow come chickens and foxes don't like each other?\u201D The farmer's
+    son asked his father.\n\nIt was the middle of the afternoon on a hot summer's
+    day and they were out walking through the <color=red>orchard</color=red>.  The
+    little boy was on his school holidays.  He was only six years old and he loved
+    to help his father in the fields or around the farm, especially on warm summer
+    days.  Whenever he could, he would take his father's hand and walk through the
+    fields down along the tree covered laneway beside the stream.  The farmer loved
+    to be in his son\u2019s company when he was working.  He loved to show the little
+    lad all the fantastic things on the farm and to answer all the questions the
+    little boy asked.  His son was very curious about everything and he asked many,
+    many questions.\n\n\u201CWell son,\u201D the farmer replied, \u201Cit's not really
+    true about the fox and the chicken not liking each other.  The fact is chickens
+    don't like foxes, but foxes do like chickens.\u201D\n\n\u201COh,\u201D said the
+    boy, \u201CI thought they didn't like each other at all.  That's what my teacher
+    said.  She told us at school that foxes and chickens just don't get along.\u201D\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 17cd34397a9bcd446aff3d8a49340f29, type: 2}
   m_sharedMaterial: {fileID: -6370922813164861757, guid: 17cd34397a9bcd446aff3d8a49340f29, type: 2}
@@ -2114,8 +2128,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 45
-  m_fontSizeBase: 45
+  m_fontSize: 48
+  m_fontSizeBase: 48
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2124,11 +2138,11 @@ MonoBehaviour:
   m_HorizontalAlignment: 8
   m_VerticalAlignment: 256
   m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_characterSpacing: 2.24
+  m_wordSpacing: 1.57
+  m_lineSpacing: 1.56
   m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
+  m_paragraphSpacing: -24.62
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4

@@ -28,7 +28,11 @@ public class FlowersManager : TouchBase
     }
     private void flowerBehavior()
     {
+        if (!IsPulsating) return;
         if (Time.time < clickTime + waitTime) return;
+
+
+        if (MouseDownClip) playMouseDownClip();
         var mouse = Input.mousePosition;
         mouse.z = 100; //distance of the plane from the camera
         pos = cam.ScreenToWorldPoint(mouse);

@@ -6,35 +6,80 @@ public abstract class TouchBase : MonoBehaviour
 {
 
     protected abstract Action MouseDownbehavior { get; }
-    private ParticleSystem ps;
-    public bool ShouldPulsate;
-    public bool TurnOffOnClick;
-    public bool clicked;
+    [SerializeField] protected ParticleSystem ps;
+    [SerializeField] protected AudioSource audioSource;
+    [SerializeField] protected bool ShouldPulsate;
+    [SerializeField] protected bool TurnOffOnClick;
+    [SerializeField] protected bool ShouldClickAudioLoop;
+    [SerializeField] protected bool IsPulsating = true;
+    protected Action MouseUpAsButBehavior;
     protected Action MouseUpBehavior;
-
-
+    
+    [SerializeField] protected AudioClip MouseDownClip;
+    [SerializeField] protected AudioClip MouseUpClip;
     public virtual void Awake()
     {
         if (!ShouldPulsate)
         {
-            ps = GetComponent<ParticleSystem>();
             if (ps == null) return;
-            var em = ps.emission;
-            em.enabled = false;
+            SetParticleEmission(false);
         }
+
+        if (ShouldClickAudioLoop)
+        {
+            setAudioClickLoop(true);
+        }
+        else
+        {
+            setAudioClickLoop(false);
+        }
+
+    }
+
+    private void SetParticleEmission(bool value)
+    {
+        var em = ps.emission;
+        em.enabled = value;
+        IsPulsating = value;
+    }
+
+
+
+    private void OnMouseUp()
+    {
+        MouseUpBehavior?.Invoke();
 
     }
 
     private void OnMouseUpAsButton()
     {
-        MouseUpBehavior?.Invoke();
+        MouseUpAsButBehavior?.Invoke();
     }
 
     private void OnMouseDown()
     {
         MouseDownbehavior?.Invoke();
 
-        if (TurnOffOnClick) gameObject.SetActive(false);
-        clicked = true;
+
+        if (TurnOffOnClick) SetParticleEmission(false); 
+    }
+
+    protected void playMouseDownClip()
+    {
+        audioSource.clip = MouseDownClip;
+        audioSource.Play();
+    }
+    protected void playMouseUpClip()
+    {
+        audioSource.clip = MouseUpClip;
+        audioSource.Play();
+    }
+    protected void StopAudio()
+    {
+        audioSource.Stop();
+    }
+    private void setAudioClickLoop(bool value)
+    {
+        audioSource.loop = value;
     }
 }

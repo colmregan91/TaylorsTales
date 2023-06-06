@@ -22,7 +22,7 @@ public class SwipeBehavior : TouchBase
         flyingObjRenderer.Init(cam);
         objTransform = flyingObjRenderer.transform.parent;
 
-        MouseUpBehavior += handleMouseUp;
+        MouseUpAsButBehavior += handleMouseUp;
         base.Awake();
 
 
@@ -30,14 +30,14 @@ public class SwipeBehavior : TouchBase
 
     private void OnDisable()
     {
-        MouseUpBehavior -= handleMouseUp;
+        MouseUpAsButBehavior -= handleMouseUp;
     }
 
 
     private void handleMouseDown()
     {
         if (isFlying) return;
-
+ 
         var mouse = Input.mousePosition;
         mouse.z = 100; //distance of the plane from the camera
         var screenPoint = cam.ScreenToWorldPoint(mouse);
@@ -72,6 +72,8 @@ public class SwipeBehavior : TouchBase
 
     private async void fly()
     {
+        if (!IsPulsating) return;
+        if (MouseUpClip) playMouseUpClip();
         isFlying = true;
         flyingObjRenderer.transform.position += objTransform.forward;
         while (flyingObjRenderer.IsVisibleFrom(cam))

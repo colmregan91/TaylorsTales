@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PageContents : MonoBehaviour
+public class PageContents
 {
     public GameObject CanvasHolder;
     public GameObject EnvironmentCanvas;

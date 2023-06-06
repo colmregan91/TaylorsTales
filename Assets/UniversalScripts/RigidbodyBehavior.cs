@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class RigidbodyBehavior : TouchBase
 {
+    
     public enum RigidBehaviors
     {
         appleFalling,
@@ -29,15 +30,18 @@ public class RigidbodyBehavior : TouchBase
 
     private void appleFallBehavior() // APPLE FALLING
     {
-     
-            // rb.gameObject.GetComponent<Collider2D>().enabled = true;
-            rb.bodyType = RigidbodyType2D.Dynamic;
+        if (!IsPulsating) return;
+        if (MouseDownClip) playMouseDownClip();
+        // rb.gameObject.GetComponent<Collider2D>().enabled = true;
+        rb.bodyType = RigidbodyType2D.Dynamic;
             rb.gravityScale = 5;
             rb.AddForce(new Vector2(-5f, 0f), ForceMode2D.Impulse);
     }
 
     private void flyHatBehavior()
     {
+        if (!IsPulsating) return;
+        if (MouseDownClip) playMouseDownClip();
         rb.bodyType = RigidbodyType2D.Dynamic;
         rb.gravityScale = 5f;
         rb.AddForce(new Vector2(9000f, 2500f));

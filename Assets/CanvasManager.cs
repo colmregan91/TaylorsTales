@@ -27,29 +27,17 @@ public class CanvasManager : MonoBehaviour
         canvasHolder = Instantiate(contents.InteractionCanvas, transform);
 
         interactions = canvasHolder.GetComponentsInChildren<TouchBase>();
-        Debug.Log(interactions.Length);
+        Debug.Log(interactions.Length + " interactions");
     }
 
-    private void SetInteractions(bool value)
-    {
-        foreach (TouchBase touches in interactions)
-        {
+    //private void SetInteractions(bool value)
+    //{
+    //    foreach (TouchBase touches in interactions)
+    //    {
 
-            if (touches.clicked) continue;
-            touches.gameObject.SetActive(value);
-        }
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            SetInteractions(true);
-        }
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            SetInteractions(false);
-        }
-    }
+    //        if (touches.clicked) continue;
+    //        touches.gameObject.SetActive(value);
+    //    }
+    //}
 }
 
