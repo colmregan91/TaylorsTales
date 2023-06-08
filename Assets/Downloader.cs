@@ -27,7 +27,6 @@ public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,c
     private void loadFacts()
     {
         string factPath = $"{DataPath}/Facts/Facts.json";
-        Debug.Log(File.Exists(factPath));
 
         string facts = File.ReadAllText(factPath);
         FactList factsList = JsonUtility.FromJson<FactList>(facts);
@@ -48,8 +47,10 @@ public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,c
     private void loadPages()
     {
         var Pagefiles = Directory.GetDirectories(DataPath).Where(T => Path.GetFileName(T).Equals("Facts") == false).ToList();
+        Debug.Log(Pagefiles.Count());
         for (int i = 0; i < Pagefiles.Count(); i++)
         {
+            
             string pagepath = $"{Pagefiles[i]}/JSONPage_{i + 1}.json";
             string text = File.ReadAllText(pagepath);
             Page newPage = JsonUtility.FromJson<Page>(text);
@@ -93,6 +94,11 @@ public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,c
         if (File.Exists(Interactionpath))
         {
             var Intbundle = AssetBundle.LoadFromFile(Interactionpath);
+            for (int i = 0; i < Intbundle.GetAllAssetNames().Length; i++)
+            {
+                Debug.Log(Intbundle.GetAllAssetNames()[i]);
+            }
+           
             var Intprefab = Intbundle.LoadAsset<GameObject>(Intbundle.GetAllAssetNames()[0]);
    
             newPageContents.InteractionCanvas = Intprefab;

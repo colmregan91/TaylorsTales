@@ -15,22 +15,26 @@ public class RigidbodyBehavior : TouchBase
     [SerializeField] private Rigidbody2D rb;
     public RigidBehaviors rigidBehavior;
 
-    private Dictionary<RigidBehaviors, Action> behaviors = new Dictionary<RigidBehaviors, Action>();
 
-    protected override Action MouseDownbehavior { get => behaviors[rigidBehavior]; }
 
-    public override void Awake()
+    protected override Action MouseDownbehavior { get => HandleMouseClick; }
+
+    private void HandleMouseClick()
     {
-        behaviors.Add(RigidBehaviors.appleFalling, appleFallBehavior);
-        behaviors.Add(RigidBehaviors.hatFlying, flyHatBehavior);
+        switch (rigidBehavior)
+        {
+            case RigidBehaviors.appleFalling:
+                appleFallBehavior();
+                break;
+            case RigidBehaviors.hatFlying:
+                flyHatBehavior();
+                break;
 
-
-        base.Awake();
+        }
     }
 
     private void appleFallBehavior() // APPLE FALLING
     {
-        if (!IsPulsating) return;
         if (MouseDownClip) playMouseDownClip();
         // rb.gameObject.GetComponent<Collider2D>().enabled = true;
         rb.bodyType = RigidbodyType2D.Dynamic;
@@ -40,7 +44,6 @@ public class RigidbodyBehavior : TouchBase
 
     private void flyHatBehavior()
     {
-        if (!IsPulsating) return;
         if (MouseDownClip) playMouseDownClip();
         rb.bodyType = RigidbodyType2D.Dynamic;
         rb.gravityScale = 5f;

@@ -5,20 +5,43 @@ using UnityEngine;
 
 public class ParticlesBehavior : TouchBase
 {
-  [SerializeField]  private ParticleSystem[] particleSystems;
+    public ParticleBehaviors particleBehavior;
+    [SerializeField] private ParticleSystem[] particleSystems;
+ 
+    public enum ParticleBehaviors
+    {
+        handleEmission,
+        play
+    }
 
-    protected override Action MouseDownbehavior => HandleMouseDown;
+
+
+    protected override Action MouseDownbehavior => HandleMouseClick;
+
+    private void HandleMouseClick()
+    {
+        switch (particleBehavior)
+        {
+            case ParticleBehaviors.handleEmission:
+                HandleParticleEmission();
+                break;
+            case ParticleBehaviors.play:
+                Playparticle();
+                break;
+
+        }
+    }
 
     public override void Awake()
     {
-        MouseUpBehavior += HandleMouseUp;
+        if (detectRelease)
+            MouseUpBehavior += HandleMouseUp;
 
         base.Awake();
     }
 
-    private void HandleMouseDown()
+    private void HandleParticleEmission()
     {
-        if (!IsPulsating) return;
         if (MouseDownClip) playMouseDownClip();
         foreach (ParticleSystem obj in particleSystems)
         {
@@ -26,10 +49,20 @@ public class ParticlesBehavior : TouchBase
             em.enabled = true;
         }
     }
+    private void Playparticle()
+    {
+        if (MouseDownClip) playMouseDownClip();
+        foreach (ParticleSystem obj in particleSystems)
+        {
+            obj.Play();
+        }
+    }
 
- 
+
     private void HandleMouseUp()
     {
+        if (!detectRelease) return;
+
         foreach (ParticleSystem obj in particleSystems)
         {
             var em = obj.emission;
@@ -39,7 +72,8 @@ public class ParticlesBehavior : TouchBase
     }
     private void OnDisable()
     {
-        MouseUpBehavior -= HandleMouseUp;
+        if (detectRelease)
+            MouseUpBehavior -= HandleMouseUp;
     }
 
 }
