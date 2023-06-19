@@ -1,0 +1,19 @@
+ManifestFileVersion: 0
+CRC: 3483123272
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 5cca97aadf7e9c84419ff6daf1a1c798
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c21d61fe394c58399df3c6fb5c7c99b3
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/FactImages/orchard/5499528_f6726eef.jpg
+Dependencies: []

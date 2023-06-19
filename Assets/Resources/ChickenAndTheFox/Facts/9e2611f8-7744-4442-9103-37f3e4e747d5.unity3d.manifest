@@ -1,0 +1,19 @@
+ManifestFileVersion: 0
+CRC: 2029270962
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: fcdc94b4d096856c16b53fbf516378d7
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c21d61fe394c58399df3c6fb5c7c99b3
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/FactImages/swallows/swallows 1.jpg
+Dependencies: []

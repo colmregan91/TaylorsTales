@@ -1,0 +1,559 @@
+{
+    "Facts": [
+        {
+            "TriggerWords": [
+                "orchard",
+                "úlloirde",
+                "",
+                ""
+            ],
+            "FactInfo": [
+                "• An orchard is an area of land set aside for growing fruit or nut trees.\n\n• Orchards are man-made.\n\n• There are many kinds of orchards with various fruit trees, including apple, cherry, pear, plum, olives, dates and figs.\n\n• There are orchards of citrus fruits like lemon, lime, orange, tangerines and some orchards specialise in all kinds of nuts like hazel, pecans, cashews, walnuts and almonds.\n\n• Some orchards specialise in growing exotic fruits like cocoa, coconuts and some with pine trees which produce edible pine nuts.\n\n• Christmas tree farms and farms producing holly for the Christmas holidays are an alternate type of orchard.\n\n• Some orchards specialise in growing maple trees to harvest maple sugar and maple syrup.\n\n• Orchard trees are nearly always laid out in symmetrical patterns in rows with avenues or wide roads between the trees.\n\n• This pattern provides easy access to the fruit during harvest time for fruit and nut pickers and tractors and other vehicles.\n\n• Some orchards have wildflowers planted between the trees to attract more bees to the orchard to help pollination.",
+                "• Is éard is úllord ann ná limistéar talún atá curtha ar leataobh chun crainn torthaí nó cnó a fhás.\n\n• Tá úlloird de dhéantús an duine.\n\n• Tá go leor cineál úllord ann le crainn torthaí éagsúla, lena n -áirítear úll, silíní, piorra, pluma, ológa, dátaí agus fige.\n\n• Tá úlloird de thorthaí citris cosúil le líomóid, líoma, oráiste, tanséirin agus déanann roinnt úllord speisialtóireacht i gcineálacha cnónna éagsúla mar Collchnól, Peacáin, Caisiú, Gallchnónna agus Almóinní.\n\n• Déanann roinnt úllord speisialtóireacht ar thorthaí coimhthíocha a fhás mar chócó, cnó cócó agus roinnt le crainn ghiúise a tháirgeann cnónna péine inite.\n\n• Is cineál úlloird difriúla iad feirmeacha agus feirmeacha crann Nollag a tháirgeann cuileann do laethanta saoire na Nollag.\n\n• Déanann roinnt úllord speisialtóireacht ar chrainn mhailpe a fhás chun an mahilip shiúcra agus síoróip mhailpe a fhómhar.\n\n• Tá crainn na n-úllord beagnach i gcónaí leagtha amach i bpatrúin siméadracha i sraitheanna le bealaí nó bóithre leathana idir na crainn.\n\n• Soláthraíonn an patrún seo rochtain éasca ar na torthaí le linn am an fhómhair le haghaidh bainteoirí torthaí agus cnónna agus tarracóirí agus feithiclí eile.\n\n• Tá bláthanna fiáine curtha ag roinnt úllord idir na crainn chun níos mó beacha a mhealladh chuig an úllord chun cabhrú le pailniú.",
+                "",
+                ""
+            ],
+            "imagesBundle": "46cad25b-cab1-426c-b9e3-6c9e4b3e6f01"
+        },
+        {
+            "TriggerWords": [
+                "dairy-cows",
+                "bá-déiríochta",
+                "",
+                ""
+            ],
+            "FactInfo": [
+                "• The collective name for cows is Cattle.\n\n• The adult female is called a cow.  Adult males are called bulls and baby cattle are called calves.\n\n• Wild cattle were domesticated by man around 10,000 years ago, mainly in the Middle East and Western Asia.\n\n• There are over 1000 breeds of cattle worldwide.\n\n• Cattle provide milk and dairy products like cheese and butter (all made from milk).\n\n• Cattle provide meat and their skin which is called hide.  Hide is used to make shoes, clothes, handbags and many other types of leather goods. \n\n• Cattle are raised on farms or ranches in large fields or pastures.\n\n• Bulls often have large horns on their heads which can be straight or curved.\n\n• Cows have udders which are used to feed the calves and for milking. This milking provides man with milk and other dairy products.\n\n• Dairy cows are milked in specially constructed dairy farms and sheds.\n\n• Cattle have extraordinary stomachs.  It is one stomach divided into four separate compartments.  This special stomach helps the cattle to eat, store and digest their food.  Their special stomach allows cattle to eat various tough plants and grasses.\n\n• Cattle swallow their food without chewing it.  They hold it in one of their stomachs four compartments. When all four compartments are full, or the food supply runs out, cattle find a quiet spot where they bring the grass and plants they have eaten back up into their mouths to chew it into tiny pieces slowly.  By doing this, it makes it easier to digest the plants.\n\n• Bringing food back up, like cattle, is known as regurgitating.\n\n• Cattle are enormous hooved animals weighing anything up to 4,000 pounds. That is the same weight as two family cars.\n\n• Cattle live in many countries worldwide and are even worshipped in the Hindu religion.",
+                "• Is é an t -ainm comhchoiteann ar bhó ná eallach.\n\n• Tugtar bó ar an ainmhí baineannatá  fásta. Tugtar tairbh ar na cinn fireann aosacha agus tugtar laonna ar eallaigh óga.\n\n• Thart ar 10,000 bliain ó shin a cheansú eallach fiáin, go príomhiúl sa Mheánoirthear agus san Áis.\n\n• Tá os cionn 1000 pór eallach ar fud an domhain.\n\n• Soláthraíonn eallach táirgí bainne agus déiríochta cosúil le cáis agus im (déanta as bainne ar fad).\n\n• Soláthraíonn eallach feoil agus a gcraiceann ar a dtugtar seithe. Baintear úsáid as an seithechun bróga, éadaí, málaí láimhe agus go leor cineálacha eile earraí leathair a dhéanamh.\n\n• Tógtar eallach ar fheirmeacha nó ar ranna i bpáirceanna móra nó i bhféarach.\n\n• Is minic a bhíonn adharca móra ag tairbh ar a gceann  agus is féidir leo a bheith díreach nó cuartha.\n\n• Tá úthanna ag bá a úsáidtear chun na laonna a bheathú agus le haghaidh bleáin. Soláthraíonn an bleán seo bainne agus táirgí déiríochta eile do dhaoine.\n\n• Déantar na bá a chrú i bhfeirmeacha agus i seideanna déiríochta atá tógtha go speisialta.\n\n• Tá boilg neamhghnácha ag eallach, is bolg amháin é atá roinnte i gceithre urrann ar leith. Cuidíonn an bolg speisialta seo leis an eallach a gcuid bia a ithe, a stóráil agus a dhíleá. Ligeann a mbolg speisialta d’eallach plandaí agus féara diana éagsúla a ithe.\n\n• Slogtar eallach a gcuid bia gan é a chogaint. Coinníonn siad é i gceann dá mbolg ceithre urrann. Nuair a bhíonn na ceithre urrann lán, nó nuair a ritheann an soláthar bia amach, faigheann eallach láthair chiúin ina dtugann siad an féar agus na plandaí a d'ith siad ar ais ina mbéal chun é a chogaint i bpíosaí beaga bídeacha. Tríd seo a dhéanamh, bíonn sé níos éasca na plandaí a dhíleá.\n\n• Tugtar frithshruthú ar bhia a thabhairt ar ais suas, cosúil le heallach.\n\n• Is ainmhithe ollmhóra iad eallach a bhfuil meáchan ar bith acu suas le 4,000 punt. Is é sin an meáchan céanna le dhá charr teaghlaigh.\n\n• Tá cónaí ar eallach I dtíortha ar fud an domhain agus déantar adhradh orthu fiú sa reiligiún Hiondúchas.",
+                "",
+                ""
+            ],
+            "imagesBundle": "033233eb-148f-418d-ab84-367975b53f0f"
+        },
+        {
+            "TriggerWords": [
+                "hay",
+                "bhurla-féir",
+                "",
+                ""
+            ],
+            "FactInfo": [
+                "• Hay is a mixture of many different plants, including grass, herbaceous plants and legumes.\n\n• Legumes are plants like alfalfa, clover, beans and peas, chickpeas and lentils.\n\n• Herbaceous plants include daisies, catnip, ferns, basil, dill, spinach, lettuce, sage, parsley, parsnips, ragwort and onions, which farmers cut to make food for animals.\n\n• Hay is used to feed animals kept indoors in barns or stables or pens.\n\n• Hay is good food for large grazing animals such as cattle, horses, goats, and sheep.  It is also used to feed smaller domestic pets and animals like rabbits and guinea pigs.\n\n• Farmers make hay in the summertime and store it in bales, large storage barns or sheds and sometimes outside.\n\n• They keep the hay for the wintertime so that when the animals cannot get out to feed in the fields, they have a food supply to get them through the winter months.",
+                "• Is meascán é féar tirim de go leor plandaí éagsúla, lena n -áirítear féar, plandaí luibheacha agus pischineálaigh.\n\n• Is pischineálaigh iad plandaí cosúil le halfalfa, seamair, pónairí agus piseanna, sicphiseánaigh agus lintilí.\n\n• I measc na bplandaí luibheacha tá nóiníní, miontas cait, raithneach, basal, lus mín, spionáiste, leitís, saoi, peirsil, peirsí, buachalán agus oinniúin, a ghearrann feirmeoirí chun bia a dhéanamh d'ainmhithe.\n\n• Úsáidtear féar chun ainmhithe a choimeád taobh istigh i sciobóil nó i stáblaí nó i bpionnaí.\n\n• Is bia maith é féar le haghaidh ainmhithe féaraigh móra ar nós eallach, capaill, gabhair, agus caoirigh. Úsáidtear é freisin chun peataí agus ainmhithe níos lú a bheathú mar choiníní agus muca ghuine.\n\n• Déanann feirmeoirí féar sa samhradh agus déanann siad é a stóráil i mburlaí i sciobóil stórála mhóra nó i seideanna, uaireanta taobh amuigh.\n\n• Coinníonn siad an féar don am geimhridh ionas go mbeidh soláthar bia acu nuair nach féidir leis na hainmhithe dul amach chun ithe a dhéanamh sna páirceanna chun iad a fháil i míonna an gheimhridh.",
+                "",
+                ""
+            ],
+            "imagesBundle": "162d28b7-deee-4ea2-be29-89aa4118e4eb"
+        },
+        {
+            "TriggerWords": [
+                "swallows",
+                "fáinleoga",
+                "",
+                ""
+            ],
+            "FactInfo": [
+                "• Swallows are small birds.\n\n• Swallows have glossy dark-blue backs, red throats, pale underbellies and tail feathers shaped like a 'V', which are called streamers.\n\n• The male and female adults look very similar but you can recognise young swallows easily.  They have pale orange throats and long tail streamers and are much shorter than the adults.\n\n• Swallows are magnificent agile fliers spending most of their time in the air, on the wing.  Swallows can be found in most countries in the Northern Hemisphere during the spring and summer months.\n\n• Every autumn, swallows fly south to warmer climates of African countries like Botswana and South Africa, where they spend their winters.\n\n• This journey is known as migration.\n\n• During migration, swallows sometimes fly continuously for 200 miles a day.  During their migration, Swallows flock together in large numbers at really high altitudes and their migration routes take them over the Mediterranean Sea and the Sahara Desert.\n\n• Many swallows become exhausted and hungry and unable to finish their journey. Others perish in stormy weather.\n\n• The Swallows diet is almost entirely made up of flying insects that they catch on the move.  You can see Swallows skimming close to the ground or over the surface of rivers, streams and lakes at great speed with their beaks wide open when feeding.  They catch large numbers of insects, including flies, aphids and beetles.\n\n• Swallows also eat mosquitoes and other pests, which are dangerous to humans.\n\n• Swallows drink by flying low over the water and scooping up water with their open beaks.\n\n• Swallows like to nest in barns, stables and cowsheds, which tend to be open all the time so they can fly in and out without obstructions.\n\n• They make a cup-shaped nest with their beaks, using mud from river banks or pond edges.  The mud base is bound together using dried grasses then lined with feathers.\n\n• Swallows can make up to 1500 journeys between their nest and the source of the mud to complete the nest.\n\n• Only the female lines the nest, then she will lay three to five white or speckled eggs.  Swallows usually lay two or three broods each year.",
+                "• Is éin bheaga iad fáinleoga.\n\n• Tá bacainní snasta dorcha gorm, scornach dearga, le boilg mílítheacha agus cleití eireabaill múnlaithe cosúil le 'V', ar a dtugtar sraoilleán ar fháinleoga.\n\n• Breathnaíonn na héin fhásta fireann agus baineann a -chosúil ach is féidir leat fáinleoga óga a aithint go héasca. Tá scornach oráiste éadrom agus sraoilleán eireabaill fhada acu agus tá siad i bhfad níos giorra ná na hainmhí fásta.\n\n• Is eitleoirí iontacha iad na fáinleoga ag caitheamh an chuid is mó dá gcuid ama san aer, ar an sciathán. Is féidir fáinleoga a fháil i bhformhór na dtíortha sa Leathsféar Thuaidh le linn míonna an earraigh agus an tsamhraidh.\n\n• Gach fómhar,bíonn fáinleoga ag eitilt ó dheas goh aeráidí níos teo i dtíortha na hAfraice mar an Bhotsuáin agus an Afraic Theas, áit a chaitheann siad a ngeimhreadh.\n\n• Tugtar imirce ar an turas seo.\n\n• Le linn imirce, bíonn fáinleoga ag eitilt go leanúnach ar feadh 200 míle sa lá. Le linn a n -imirce, tagann fáinleoga le chéile i líon mór ag airde arda agus tógann a mbealaí imirce iad thar an Mheánmhuir agus an Gaineamhlacht Sahára.\n\n• Éiríonn go leor fáinleoga traochta agus ocrasach agus ní féidir leo a dturas a chríochnú. Faigheann cuid eile dóibh bas san aimsir stóirmiúil.\n\n• Tá  aiste bia na bhfáinleoga beagnach déanta suas go hiomlán de fheithidí atá ag eitilt a fhaigheann siad agus iad ag bogadh. Is féidir leat fáinleoga a fheiceáil ag scamhadh gar don talamh nó thar dromchla na n -aibhneacha, na sruthanna agus na lochanna ag luas mór lena ngoib oscailte go forleathan agus iad ag beathú. Gabhann siad líon mór feithidí, lena n -áirítear cuileoga, aifidí agus ciaróga.\n\n• Itheann fáinleoga muiscítí agus lotnaidí eile freisin, atá contúirteach do dhaoine.\n\n• Ólann fáinleoga trí eitilt go  híseal thar an uisce agus scaobadh suas uisce lenangoib ar oscailt.\n\n• Is maith le fáinleoga nead a dhéanamh i sciobóil, stáblaí agus i gcró na mbó a bhíonn ar oscailt an t -am ar fad ionas gur féidir leo eitilt isteach agus amach gan bhac.\n\n• Déanann siad nead múnlaithe cupáin lena ngoib, ag baint úsáide as láib ó bhruach abhann nó ó imill locháin. Tá an bonn láibe ceangailte le chéile ag baint úsáide as féara triomaithe agus  líonaithe ansin le cleití.\n\n• Is féidir le fáinleoga suas le 1500 turas a dhéanamh idir a nead agus foinse an láibe chun an nead a chríochnú.\n\n• Níl dhéanann ach na héin bhaineann líneáil an nead agus ansin leagfaidh sí trí nó cúig uibheacha bána nó speicis. De ghnáth leagann fáinleoga dhá nó trí ál gach bliain.",
+                "",
+                ""
+            ],
+            "imagesBundle": "9e2611f8-7744-4442-9103-37f3e4e747d5"
+        },
+        {
+            "TriggerWords": [
+                "skylarks",
+                "fuinseoga",
+                "",
+                ""
+            ],
+            "FactInfo": [
+                "• Skylarks make their nests, and have their chicks, on the ground.  They live on farmland, grassland, marshlands and hilly moorlands.  They like to live in big open spaces.\n\n• Skylarks are the most common of the birds in the lark family.\n\n• Skylarks have yellowish-brown to white underbellies and underparts, they have black streaks on their breasts and their outer tail feathers are white.  Skylarks have yellowish-brown legs and their beaks are a sandy colour.\n\n• Males and females look very similar and have a crest on their heads.\n\n• When they are disturbed or afraid, they run along the ground and then launch themselves up into the air straight up into the sky. \n\n• Skylarks will sing their wonderful song loudly while they hover above the ground, sometimes for an hour or more.\n\n• Skylarks eat worms, insects, spiders and slugs.  They also eat seeds, the leaves of root crops and some wildflowers.",
+                "• Déanann Fuiseoga a neadacha, agus bíonn a gcuid sicíní acu, ar an talamh.  Tá cónaí orthu ar thalamh feirme, ar fhéarthalamh, ar riashlandaí agus ar mhóinteach cnocach.  Is maith leo a bheith ina  gcónaí i spásanna móra oscailte.\n\n• Is iad fuinseoga an t-éan is coitianta i dteaghlach na bhfuiseoga.\n\n• Tá boilg buí agusdonn ag na fuinsoega le bán agus íochtarach tá stríoca dubh acu ar a gcuid brollacha agus tá a gcuid cleití eireabaill seachtrach bán.  Tá cosa buí-donn ag fuiseoga agus is dath gainimh iad a gcuid gob.\n\n• Breathnaíonn fireannaigh agus baineannaigh an-chosúil agus tá cirín acu ar a gcinn.\n\n• Nuair a chuirtear isteach nó nuair a bhíonn eagla orthu, ritheann siad feadh na talún agus ansin seolann siad iad féin suas san aer díreach suas sa spéir.\n\n• Canfaidh Fuinseoga a n-amhrán iontach os ard agus iad ag dul os cionn na talún, uaireanta ar feadh uair an chloig nó níos mó.\n\n• Itheann fuinseoga péisteanna, feithidí, damháin alla agus slugaí.  Itheann siad síolta freisin, duilleoga na mbarr fréimhe agus roinnt bláthanna fiáine.",
+                "",
+                ""
+            ],
+            "imagesBundle": "70327146-950a-4cfb-a068-b274f59c324a"
+        },
+        {
+            "TriggerWords": [
+                "tea",
+                "dtae",
+                "",
+                ""
+            ],
+            "FactInfo": [
+                "• Tea was discovered in China in 2737 BC.  It was used as an antidote for poisonous herbs and was often chewed rather than being drank.\n\n• There are 1500 different varieties of tea.\n\n• All varieties of tea including Black, Green, Oolong, White and Pu-erh come from the same plant, Camellia Sinensis, a sub-tropical evergreen plant originally native to Asia but now grown all over the world.\n\n• Black tea is the most widely consumed tea worldwide.\n\n•  Green tea is considered as a super food believed to be able to help soothe a sore throat, regulate blood sugar levels, and reduce the risk of heart disease.\n\n• Tea varieties are treated differently but all tea leaves are withered, rolled, and heated.  Different varieties are created depending on the additional steps, or in the timing of the steps, that are taken before the leaves are packaged.\n\n• Tea is grown in 52 countries.  The oldest tree in the world is in the Yunnan province of China and is 3,000 years old.\n\n• It is said that he best tea in the world is from India, not China. It is a black tea called Darjeeling.  To gather Darjeeling leaves, pickers must battle the cold, the steep terrain, mists, and heavy rains.\n\n• Other “teas” made using fresh or dried herbs like mint and lavender echinacea nuts, seeds, berries, flowers, leaves, or roots are not true tea. They are infusions or herbal tea.\n\n• China, Sri Lanka, and Kenya are the biggest exporters of tea worldwide.  About 1 million metric tons is shipped annually between the three countries.\n\n• China is the largest consumer of tea worldwide due primarily to its huge population.  However, Turkey, Ireland and the United Kingdom take the top three places on a per capita basis.  Over 3 billion cups of tea are consumed worldwide each year and it is the second most consumed drink in the world after water.\n\n• In 1908, American businessman Thomas Sullivan shipped samples of tea in fine silk pouches.  The teabag was invented in the United States in the early 20th century by Roberta C. Lawson and Mary Molaren from Milwaukee.\n\n• Tea can be used as a mosquito repellent by rubbing slightly damp leaves on uncovered areas of skin, this keeps mosquitoes away.",
+                "• Thángthas ar tae sa tSín i 2737 RC. Baineadh úsáid as mar fhrithghníomhaíocht le haghaidh luibheanna nimhiúla agus is minic a bhí sé coganta seachas a bheith ólta.\n\n• Tá 1500 cineál éagsúla tae ann.\n\n• Tagann na cineálacha tae go léir dubh, glas, oolong, bán agus pu-erh ón bplanda céanna, caméilia sinensis planda síorghlas fo-thrópaiceach a bhí dúchasach san Áise ar dtús ach a fhásann anois ar fud an domhain.\n\n• Is é tae dubh an tae is mó a úsáidtear ar fud an domhain.\n\n• Meastar tae glas a bheith ina sárbhia a chreidtear atá in ann a bheith in ann cabhrú le scornach tinn, leibhéil siúcra fola a rialú, agus an baol go dtarlódh galar croí a laghdú.\n\n• Caitear go difriúil le cineálacha tae ach déantar gach duilleog tae a ghéarú, a rolladh, agus a théamh. Cruthaítear cineálacha éagsúla ag brath ar na céimeanna breise, nó ar am na gcéimeanna, a thógtar sula ndéantar na duilleoga a phacáistiú.\n\n• Fástar tae i 52 tír. Tá an crann is sine ar domhan i gCúige Yunnan na Síne agus tá sé os cionn 3,000 bliain d'aois.\n\n• Deirtear go bhfuil an tae is fearr ar domhan ón India, ní ón tSín. Is tae dubh é ar a dtugtar Darjeeling. Chun duilleoga Darjeeling a bhailiú, ní mór do na bainteoirí cath a chur ar an bhfuacht, an tír -raon géar, an ceo, agus an bháisteach throm.\n\n• Is “taenna” eile a dhéantar ag baint úsáide as luibheanna úra nó triomaithe cosúil le miontas agus labhandar cnónna eiceanáise, síolta, caora, bláthanna, duilleoga nó fréamhacha agus ní fíor tae iad is deoch tae iad nó tae luibhe.\n\n• Is iad an tSín, Srí Lanca, agus an Chéinia na heaspórtálaithe tae is mó ar fud an domhain. Seoltar thart ar 1 mhilliún tonna méadrach go bliantúil idir na trí thír.\n\n• Is í an tSín an tomhaltóir tae is mó ar fud an domhain mar gheall ar a daonra ollmhór go príomha. Mar sin, glacann an Tuirc, Éire agus an Ríocht Aontaithe na trí áit is fearr ar bhonn per capita. Caitear os cionn 3 bhilliún cupán tae ar fud an domhain gach bliain agus is é tae an dara deoch is mó a chaitear ar domhan tar éis uisce.\n\n• I 1908, sheol an fear gnó Meiriceánach Thomas Sullivan samplaí tae i bpúitsí síoda míne. Cruthaíodh an mála tae sna Stáit Aontaithe go luath sa 20ú haois ag Roberta C. Lawson agus Mary Molaren ó Milwaukee.\n\n• Is féidir tae a úsáid mar éarthach muiscíte trí chuimilt duilleoga atá beagán tais ar cheantair chraicinn neamhtháite, coinníonn sé seo muiscítí ar shiúl.",
+                "",
+                ""
+            ],
+            "imagesBundle": "4f3158a5-bfeb-4573-82ec-5eafb358b910"
+        },
+        {
+            "TriggerWords": [
+                "chickens",
+                "sicíní",
+                "",
+                ""
+            ],
+            "FactInfo": [
+                "• Chickens are descended from wild birds called jungle-fowl.\n\n• There are two main kinds of jungle-fowl, the grey jungle-fowl and the red jungle-fowl, mainly found in the jungles of India and Asia.\n\n• There are two less common jungle fowl, the green jungle-fowl is found in Java, Bali and other Indonesian Islands and the Sri Lankan jungle fowl found in Sri Lanka.\n\n• Male birds are the most colourful, while females are plainer and darker.",
+                "• Síolraítear sicíní ó éin fhiáine ar a dtugtar éan na dufaire.\n\n• Tá dhá phríomhchineál éan na dufaire , éan na dufare liath agus éan na dufaire dearg, le fáil go príomha i ndufairí na hIndia agus san Áise.\n\n• Tá dhá éan na dufaire nach bhfuil chomh coitianta, tá éan na dufaire glas le fáil i Java, Bali agus Oileáin Indinéisis eile agus éan na dufaire Srí Lanca le fáil i Srí Lanca.\n\n• Is iad na héin fhireanna is ildaite, agus tá na baineannaigh níos nádúrtha agus níos dorcha.",
+                "",
+                ""
+            ],
+            "imagesBundle": "4ab5c1a7-5ae3-448a-9aa2-a33596b6062a"
+        },
+        {
+            "TriggerWords": [
+                "farms",
+                "fheirmeacha",
+                "",
+                ""
+            ],
+            "FactInfo": [
+                "• Domestic chickens can be found in nearly every country where man lives.\n\n• Wild red jungle fowl live all across the Asian continent including, China, Malaysia, Indonesia, Sumatra, Java, Bali, and the Philippines.  They are found in India and the Hawaiian Islands, the Marianas and the Christmas Islands in the Pacific Ocean.\n\n• Red jungle fowl live where there is a mixture of dense vegetation and open ground.\n\n• Grey jungle fowl live where there is a mixture of dense vegetation and where the bamboo is at its thickest.  They prefer to stay in dense undergrowth.\n\n• Grey jungle fowl and Red jungle fowl territories overlap in places but they try to keep apart.\n\n• Red and Grey jungle fowl wander and live around villages or on the outskirts of towns and cities, especially near refuse tips where they find readily available sources of food, leftovers and waste.",
+                "• Is féidir sicíní baile a fháil i mbeagnach gach tír ina gcónaíonn daoine.\n\n• Tá éanlaithe dufaire dearg fiáin ina gcónaí ar fud mhór-roinn na hÁise lena n-áirítear, an tSín, an Mhalaeisia, an Indinéis, Sumatra, Java, Bali, agus na hOileáin Fhilipíneacha.  Tá siad le fáil san India agus sna hOileáin Haváís, sna Marianas agus in Oileáin na Nollag san Aigéan Ciúin.\n\n• Tá éanlaithe dufaire dearga ina gcónaí áit a bhfuil meascán d'fhásra dlúth agus talamh oscailte. \n\n• Tá éanlaithe dufaire liath ina gcónaí áit a bhfuil meascán d'fhásra dlúth agus áit a bhfuil an bambú ag an gceann is tibhe. Is fearr leo fanacht i bhfáschoill atá dlúth.\n\n• Forluíonn éanlaithe dufaire liath agus éanlaithe dufaire daearga in áiteanna ach déanann siad iarracht coinneáil óna chéile.\n\n• Bíonn éanlaithe dufaire dearga agus liath ag spaisteoireacht  agus bíonn cónaí orthu timpeall sráidbhailte nó ar imeall na mbailte agus cathracha, go háirithe in aice le bruscair nuair a fhaigheann siad foinsí bia, fuílleach agus dramhaíola atá ar fáil go héasca.",
+                "",
+                ""
+            ],
+            "imagesBundle": "caba2092-6dc2-4c7b-9ee8-ee97be94ce66"
+        },
+        {
+            "TriggerWords": [
+                "jungle",
+                "dufair",
+                "",
+                ""
+            ],
+            "FactInfo": [
+                "• A jungle is an overgrown forest, a tangle of thick, close, spiky wild vegetation and densely packed trees.\n\n• A jungle has dense growths of tall trees and many different plants and vines growing between the trees.  There are so many plants that they get overgrown and tangled together, making walking through them almost impossible.\n\n• Jungles need to have a moist tropical hot and humid climate to grow and are found in South and Central America and around the equator.\n\n• Jungles are a perfect home for many animals, birds and insects.  Most common animals include jaguars, tigers, elephants and water buffalo and all kinds of monkeys.\n\n• Birds of all types and colour and sizes live in the jungle including, black eagles, flycatchers, parrots, birds of paradise, toucans, hornbills and jungle fowl.\n\n• There are many reptiles and amphibians, including snakes, frogs, toads, and many of them are poisonous.\n\n• Millions and millions of insects and spiders live in warm tropical jungles.  Over half of the worlds insect, animal and plant species live in jungles.\n\n• The word jungle comes from Sanskrit and Hindi which are ancient Indian languages.  In Sanskrit the word for sparsely grown and arid is “Jangalas” and in Hindi, the name for uncultivated land is “Jangal”.",
+                "• Is foraois fhásta í dfair, greasán d’fhásra fiáin tiubh, gar, spíceach agus crainn atá pacáilte go dlúth.\n\n• Tá fás dlúth ar chrainn arda ag dufair agus tá go leor plandaí agus fíniúnacha éagsúla ag fás idir na crainn. Tá an oiread sin plandaí ann go bhfaigheann siad ró -fhásta agus go dtitfidh siad le chéile, rud a fhágann é i mbealach go bhfuil sé dodhéanta ag siúl tríothu.\n\n• Ní mór go mbeadh aeráid tais thrópaiceach agus te ag duafir le fás agus bíonn siad le fáil i ndeisceart agus i Meiriceá Láir agus timpeall an mheánchiorcail.\n\n• Is teach foirfe iad na dufairí do go leor ainmhithe, éan agus feithidí. I measc na n -ainmhithe is coitianta tá iaguarí,tíogairí eilifintí agus bíosún uisce agus go leor cineál moncaithe.\n\n• Tá éin de gach cineál agus datha agus méid ina gcónaí sa dhufair, le hiolair dhubha, cuilirí, pearóidí, éin pharthaise, túcáin, cornóga talúin agus éan liath na dufaire san áireamh.\n\n• Tá go leor reiptílí agus amfaibiaigh ann, lena n -áirítear nathracha, froganna, buafa, agus tá go leor acu nimhiúil.\n\n• Tá na milliúin agus na milliúin feithidí agus damháin alla ina gcónaí i ndufairí trópaiceacha te. Tá níos mó ná leath de na speicis feithidí, ainmhithe agus plandaí ar domhan ina gcónaí i ndufairí.\n\n• Tagann an focal dufair ó theangacha Sanscrait agus Hiondúis ársa Indiach. I Sanscrait is é “Jangala-s” an focal ar fhás tearc agus arid, agus sa Hiondúis, is é “Jangal” an t-ainm ar thalamh neamhshaothraithe.",
+                "",
+                ""
+            ],
+            "imagesBundle": "12522899-672d-402d-bb3d-84d0c06100b4"
+        },
+        {
+            "TriggerWords": [
+                "navy",
+                "chabhlach",
+                "",
+                ""
+            ],
+            "FactInfo": [
+                "• The word Navy comes from an ancient Latin word “Navigum”, which means a vessel, ship, or boat.\n\n• The French first used this word to describe their ships' fleet and altered it slightly to “Navie”.  Soon every other country with a fleet of ships used the word Navy.\n\n• There are two types of Navy, The Merchant Navy and The Military Navy.\n\n• The Merchant Navy is used to carry or transport passengers or goods.  This Navy includes ship types like tankers, ferries, cruise ships, and container ships.\n\n• The Military Navy is made up of ship types like aircraft carriers, destroyers, submarines, minesweepers and frigates.\n\n• The Royal Navy, established in 1546, is the Navy of the United Kingdom or Great Britain.\n\n• Countries with a Navy have a coastline on the sea.  Landlocked countries without a coastline generally don't have a sea-going Navy.  These countries may have a Navy to patrol and protect rivers and lakes.",
+                "• Tagann an focal Cabhlach sa Bhéarla ó fhocal ársa Laidine “Navigum”, rud a chiallaíonn soitheach, long nó bád.\n\n• D'úsáid na Francaigh an focal seo den chéad uair chun cur síos a dhéanamh ar loingeasagus d'athraigh siad beagán é go “Navie”.  Go gairid d'úsáid gach tír eile le loingeas an focal Navy.\n\n• Tá dhá chineál Cabhlach ann, Cabhlach na gCeannaithe agus an Cabhlach Míleata.\n\n• Úsáidtear an Cabhlach Ceannaíochta chun paisinéirí nó earraí a iompar.  Cuimsíonn an Cabhlach seo cineálacha longa cosúil le tancaeir, báid farantóireachta, longa cúrsála, agus longa coimeádáin.\n\n• Tá an Cabhlach Míleata comhdhéanta de chineálacha long cosúil le hiompróirí aerárthaí, scriosóirí, fomhuireáin, mianaigh agus frigéid.\n\n• Is é an Cabhlach Ríoga, a bhunaíodh i 1546, Cabhlach na Ríochta Aontaithe nó na Breataine Móire.\n\n• Tá cósta ar an bhfarraige ag tíortha a bhfuil Cabhlach acu.  De ghnáth ní bhíonn Cabhlach farraige ag tíortha talamhiata gan chósta.  D'fhéadfadh Cabhlach a bheith ag na tíortha seo chun patról a dhéanamh ar aibhneacha agus ar lochanna agus iad a chosaint.",
+                "",
+                ""
+            ],
+            "imagesBundle": "01d62022-5626-4a12-a6f4-94cfe9439c7b"
+        },
+        {
+            "TriggerWords": [
+                "india",
+                "india",
+                "",
+                ""
+            ],
+            "FactInfo": [
+                "• India is officially called the Republic of India.\n\n• The name India comes from the Greek word,Indus.\n\n• The National emblem of India shows four lions standing back-to-back.  The lions symbolise power, pride, confidence, and courage (bravery).\n\n• India is the second largest country by population and the seventh largest country by area.\n\n• India is a peninsula surrounded on three sides by the Indian Ocean, The Bay of Bengal and The Arabian sea.\n\n• India has seven neighbouring countries, Pakistan, China, Bangladesh, Bhutan, Nepal, Myanmar and Sri Lanka, which is an island to the south.\n\n• There are many different religions in India the main five religions being Hinduism, Buddhism, Sikhism, Islam and Christianity.\n\n• India has 27 official languages.  Assamese, Bengali, Bodo, Digri, Gujarati, Hindi and Urdu to name a few.\n\n• Hindi is the official language of India and has the largest number of speakers.\n\n• The most famous mountain range in India is the Himalayas, which have some of the tallest mountains in the world.\n\n• There are many rivers in India.  The main rivers are the Ganges, The Brahmaputra, The Yamuna, The Godavari, The Kaveri, The Narmada, and the Krishna.\n\n• India has different climates.  In the south, the climate is mainly tropical, which means it can get very hot in summer and cool in winter. The northern part, though, has a cooler climate, called sub-tropical, and even alpine in mountainous regions can get extremely cold.  The Himalayas, in the alpine climate region, can get extremely cold.\n\n• The traditional garment worn by women in India is called a Sari which is a single long piece of cloth draped over shoulders and around the body tied around the waist.\n\n• The traditional garment worn by men in India is called a Dhoti.\n\n• Indian cuisine is diverse comprising a wide variety of regional and traditional foods due to the vast diversity in soil type, climate, culture, ethnic groups, and occupations, these cuisines vary substantially from each other, using locally available spices, herbs, vegetables, and fruit.\n\n• The foundation of a typical Indian meal is a cereal cooked in plain fashion, and complemented with flavourful savoury dishes.\n\n• India was the third country in the world and the only Asian country to send a spacecraft to Mars in 2014.\n\n• India is the only country to be successful in its very first attempt to orbit Mars.  It was called the Mars Orbiter Mission.\n\n• India has the largest movie industry in the world.  It is based in Mumbai and is known as Bollywood.\n\n• India’s film industry makes 1,000 movies a year, twice as many as Hollywood, and produces new movies almost everyday.",
+                "• Tugtar Poblacht na hIndia ar an India go hoifigiúil.\n\n• Tagann an t -ainm India ón bhfocal Gréige, Indus.\n\n• Taispeánann Feathal Náisiúnta na hIndia ceithre leon ina seasamh droim ar dhroim. Léiríonn na Leoin cumhacht, bród, muinín agus misneach (crógacht).\n\n• Is í an India an dara tír is mó de réir daonra agus an seachtú tír is mó de réir ceantair.\n\n• Is leithinis í an India atá timpeallaithe ar thrí thaobh ag an Aigéan Indiach, Bá na Beangáile agus muir na hAraibe.\n\n• Tá seacht dtír chomharsanachta ag an India, an Phacastáin, an tSín, an Bhanglaidéis, an Bhútáin, Neipeal, Maenmar agus Srí Lanca, is oileán ó dheas é.\n\n• Tá go leor reiligiúin éagsúla san India na cúig reiligiún is mó a bheithann ná Hiondúchas, Búdachas, Suíceachas, Ioslamachas agus an Chríostaíocht.\n\n• Tá 27 teanga oifigiúil ag an India.  Assamach, Beangáilis, Bodo, Digri, Gujarati, Hiondúis agus Urdais chun cúpla ceann a ainmniú.\n\n• Is í hiondúis teanga oifigiúil na hIndia agus tá an líon is mó cainteoirí aici.\n\n• Is é an sliabhraon is cáiliúla san India ná na Himiléithe, a bhfuil cuid de na sléibhte is airde ar domhan.\n\n• Tá go leor aibhneacha san India.  Is iad na príomhaibhneacha an Ghainséis An Brahmaputra, An Yamuna, An Godavari, An Kaveri, An Narmada, agus an Krishna.\n\n• Tá aeráidí éagsúla ag an India.  Sa deisceart, tá an aeráid trópaiceach den chuid is mó, rud a chiallaíonn gur féidir léi a bheith an-te sa samhradh agus fionnuar sa gheimhreadh.  Tá aeráid níos fuaire ag an gcuid thuaidh, áfach, ar a dtugtar fo-thrópaiceach, agus fiú alpach i réigiúin shléibhtiúla is  féidir leis na Himalayas, sa réigiún aeráide alpach, a bheith an-fhuar.\n\n• Tugtar Sari ar an mball éadaigh traidisiúnta a chaitheann mná san India ar phíosa fada éadach amháin é atá crochta thar ghuaillí agus timpeall an choirp atá ceangailte timpeall an choim.\n\n• Tugtar Dhoti ar an mball éadaigh traidisiúnta a chaitheann fir san India.\n\n• Tá bia Indiach éagsúil ann ina bhfuil réimse leathan bianna réigiúnacha agus traidisiúnta mar gheall ar an éagsúlacht mhór i gcineál ithreach, aeráid, cultúr, grúpaí eitneacha, agus gairmeacha, tá éagsúlacht mhór idir na bianna seo agus a chéile, ag baint úsáide as spíosraí, luibheanna, glasraí agus torthaí atá ar fáil go háitiúil.\n\n• Is é bunús béile tipiciúil Indiach ná gránach cócaráilte ar bhealach simplí, agus a chomhlánaítear le miasa blasta leasaithe.\n\n• Ba í an India an tríú tír ar domhan agus an t-aon tír san Áise a sheol spásárthaí chuig Mars in 2014.\n\n• Is í an India an t-aon tír a d'éirigh léi ina chéad iarracht Mars a fhithisiú.  Tugadh Misean Fithiseoir Mars air.\n\n• Tá an tionscal scannán is mó ar domhan ag an India.  Tá sé lonnaithe i Mumbai agus tugtar Bollywood air.\n\n• Déanann tionscal scannán na hIndia 1,000 scannán in aghaidh na bliana, dhá oiread le Hollywood, agus táirgeann sé scannáin nua beagnach gach lá.",
+                "",
+                ""
+            ],
+            "imagesBundle": "d0eddf49-785a-4ae4-a12f-b3f176a28b82"
+        },
+        {
+            "TriggerWords": [
+                "sailing-ship",
+                "longseoil",
+                "",
+                ""
+            ],
+            "FactInfo": [
+                "• Sailing ships used the power of the wind to move across the seas and oceans for hundreds of years especially between the 15th and 17th centuries.\n\n•  This was when men travelled far and wide exploring the world discovering faraway places like India, China and America.\n\n• They were very important means of transport and were used as merchant ships for carrying trade across the world.\n\n• Sailing ships were used to transport troops and to fight sea battles in times of war.\n\n• Three masted sailing ships are known as Barques or Full Rigged Ships.\n\n• The masts are the long poles or spars rising above the deck and these are for carrying the sails.\n\n• Masts were normally made of wood often from one single tree.\n\n• The masts have their own names.  The one at the front of the ship is the foremast, the one in the middle is the main mast and the one at the rear of the ship is called the mizzen mast.\n\n• Small boats with sails are called Yachts or Sailboats,  which are normally  used for leisure activities.",
+                "• D'úsáid longa seoil cumhacht na gaoithe chun bogadh trasna na bhfarraigí agus na n-aigéan ar feadh na gcéadta bliain go háirithe idir an 15ú agus an 17ú haois.\n\n• Bhí sé seo nuair a thaistil daoine i bhfad agus i gcóngar ag iniúchadh an domhain ag fáil amach áiteannai bhfad uathu mar an India, an tSín agus Meiriceá.\n\n• Ba mhodhanna iompair an-tábhachtach iad agus úsáideadh iad mar longa ceannaíochta chun trádáil a iompar ar fud an domhain.\n\n• Baineadh úsáid as longa seoltóireachta chun trúpaí a iompar agus chun cathanna farraige a throid in aimsir chogaidh.\n\n• Tugtar Barques nó Longa Lánrige ar thrí long seoltóireachta le crann seoil.\n\n• Is iad na crainn na cuaillí fada nó na sparraí ag ardú os cionn na deic agus tá siad seo chun na seolta a iompar.\n\n• De ghnáth rinneadh crainn as adhmad go minic as aon chrann amháin.\n\n• Tá a n-ainmneacha féin ar na crainn.  Is é an ceann ag tosach na loinge an príomhchrann, is é an ceann i lár an crann is mó agus tá an ceann ar chúl na loinge ar a dtugtar an crann mizzen.\n\n• Tugtar Luaimh nó Báid Seoil ar bháid bheaga le seolta, a úsáidtear de ghnáth le haghaidh gníomhaíochtaí fóillíochta.",
+                "",
+                ""
+            ],
+            "imagesBundle": "713a1242-8dae-456a-98d2-643fb0a7364d"
+        },
+        {
+            "TriggerWords": [
+                "rainforest",
+                "foraois-bháistí",
+                "",
+                ""
+            ],
+            "FactInfo": [
+                "• A Rainforest is like a jungle but it has a very thick canopy of trees high up above the ground.\n\n• In a rainforest, there are three canopies or layers.\n\n• Most of the animals in a rainforest live in the top canopy high above the ground.\n\n• There are two types of rainforest.\n\n• There are temperate rainforests and there are tropical rainforests.\n\n• Rainforests experience very high rainfall levels, so are very wet and damp places.\n\n• Due to Mans activities, cutting down trees for use in building and firewood and clearing areas for agriculture, many jungles and rain forests are disappearing. This activity creates a big problem for all humankind because rain forests act as the world's lungs.\n\n• Rainforests use up many of the carbon emissions that Man generates from using industrial machinery, car exhaust fumes, factories, burning coal, and aircraft. This carbon waste is responsible for global warming.\n\n• The largest tropical rainforest in the world is the Amazon.\n\n• It is believed that over 80% of the worlds insect species live in jungles and rainforests and over 25% of natural medicines globally originated in rainforests.",
+                "• Tá foraois bháistí cosúil le dufaire ach tá ceannbhrat an-tiubh de chrainn ard os cionn na talún.\n\n• I bhforaois bháistí, tá trí cheannbhrat nó sraith.\n\n• Tá cónaí ar an gcuid is mó de na hainmhithe sa cheannbhrat is airde os cionn na talún.\n\n• Tá dhá chineál foraoisí báistí ann.\n\n• Tá foraoisí báistí measartha ann agus tá foraoisí báistí trópaiceacha ann.\n\n• Bíonn leibhéil báistí an-ard ag foraoisí báistí, mar sin tá áiteanna an-fhliuch agus tais.\n\n• Mar gheall ar ghníomhaíochtaí daonna, crainn a ghearradh síos le húsáid i bhfoirgneamh agus i dtinte agus imréitigh don talmhaíocht, tá go leordufair agus foraoisí báistí ag imeacht. Cruthaíonn an ghníomhaíocht seo fadhb mhór do gach cine daonna toisc go ngníomhaíonn foraoisí báistí mar scamhóga an domhain.\n\n• Úsáideann foraoisí báistí go leor de na hastaíochtaí carbóin a ghineann daoine ó innealra tionsclaíoch, múch sceite gluaisteán, monarchana, gual a dhó, agus aerárthaí a úsáid. Tá an dramhaíl charbóin seo freagrach as téamh domhanda.\n\n• Is é an fhoraois bháistí trópaiceach is mó ar domhan an Amazon.\n\n• Creidtear go bhfuil níos mó ná 80% de na speicis feithidí ar fud an domhain ina gcónaí i ndufairí agus foraoisí báistí agus os cionn 25% de na cógais nádúrtha a tháinig ar fud an domhain i bhforaoisí báistí.",
+                "",
+                ""
+            ],
+            "imagesBundle": "a275551a-923b-49a6-8397-5cfa7b06ad0b"
+        },
+        {
+            "TriggerWords": [
+                "two-birds",
+                "dhá-éan",
+                "",
+                ""
+            ],
+            "FactInfo": [
+                "• Jungle fowl belong to the pheasant family and are the direct ancestors of domestic chickens. \n\n• Male jungle fowl are multicoloured with large red fleshy wattles on their heads.  Their backs have long, bright gold and bronze feathers covering them from their neck down to the lower back.  Their tails have long, curved feathers that look black but are a shiny mixture of blue, purple and green.\n\n• Female jungle fowls plumage is drab and plain for an important reason, it acts as camouflage.\n\n• The female sits on the nest to look after the eggs and chicks, so she needs to stay hidden.",
+                "• Baineann éanna dufaire leis an teaghlach piasún agus is sinsir dhíreacha sicíní baile iad.\n\n• Tá éan na dufaire fireann ildaite le sprochaillí móra dearga feola ar a gcinn.  Tá cleití fada geala óir agus cré-umha ag a ndroim a chlúdaíonn iad óna muineál síos go dtí an cúl íochtarach.  Tá cleití fada cuartha ag a n-eireabaill a bhfuil cuma dhubh orthu ach ar mheascán lonrach de ghorm, corcra agus glas iad.\n\n• Tá cluimhreach éan na dufaire baineann leamh agus neamhsciamhach ar chúis thábhachtach, feidhmíonn sé mar duaithníocht.\n\n• Suíonn an ceann baineann ar an nead chun aire a thabhairt do na huibheacha agus na sicíní, mar sin ní mór di fanacht i bhfolach.",
+                "",
+                ""
+            ],
+            "imagesBundle": "9c0acba3-c521-4aac-b6eb-b21803e21cf4"
+        },
+        {
+            "TriggerWords": [
+                "female",
+                "scríobadh",
+                "",
+                ""
+            ],
+            "FactInfo": [
+                "• Male chickens and male jungle-fowl are called roosters, cocks or cockerels.\n\n• Female chickens and female jungle-fowl are called hens.\n\n• Young or baby chickens and young or baby jungle-fowl are called chicks, cockerels or pullets.\n\n• Chickens have a language of their own which they begin to learn when they are still inside the egg and have many different sounds and calls.  They cluck when they are happy.  They cry for help when they are afraid.  They call out to the rest of the flock when they are feeding and when they find food to share.  They cluck when they lay their eggs.\n\n• Roosters crow whenever they feel like it at any time of the day not just in the morning.  Roosters crow to show who is the boss in the flock and to scare away predators like foxes and rats.  When roosters find food they will cluck to let the other chickens know.",
+                "• Tugtar coiligh, nó sicín coiligh ar shicíní fireanna agus éin na dufaire fireann.\n\n• Tugtar cearca ar sicíní baineanna agus éin na dufaire baineann.\n\n• Tugtar sicíní, sicín coiligh nó sicín circe ar shicíní óga agus éan na duafire óga.\n\n• Tá teanga dá gcuid féin ag sicíní a thosaíonn siad ag foghlaim nuair a bhíonn siad fós taobh istigh den ubh agus tá go leor fuaimeanna agus glaonna éagsúla acu.  Déanann siad gocarsach nuair a bhíonn siad sásta.  Bíonn siad ag caoineadh chun cabhair a fháil nuair a bhíonn eagla orthu.  Glaonn siad amach chuig an gcuid eile den tréad nuair a bhíonn siad ag ithe agus nuair a aimsíonn siad bia le roinnt.  Déanann siad gocarsach nuair a leagann siad a n-uibheacha.\n\n• Déanann an coileach glao aon uair a theastaíonn uathu ag am ar bith den lá, ní hamháin ar maidin.  Déanann siad an glao seo chun taispeáint cé atá i gceannas sa tréad agus eagla a chur ar chreachadóirí cosúil le sionnaigh agus francaigh.  Nuair a aimsíonn coiligh bia déanfaidh siad gocarsach chun na sicíní eile a chur ar an eolas.",
+                "",
+                ""
+            ],
+            "imagesBundle": "216766e9-d8ee-4b2f-8016-c071b18fc977"
+        },
+        {
+            "TriggerWords": [
+                "scratching",
+                "éan",
+                "",
+                ""
+            ],
+            "FactInfo": [
+                "• Jungle fowl scrape and rake the ground with their strong, sharp claws to disturb dead leaves and undergrowth.  They do this in order to expose insects, grubs, worms and any seeds, berries or fruits that may have fallen from bushes or trees.  They also dig up and eat plant shoots.\n\n• Jungle fowl prefer to forage for food in large numbers or groups called flocks.  They eat insects, meat, all sorts of vegetables, seeds, nuts and fruits, ants, termites, and almost any other type of flying or crawling insect they can catch.  They will eat worms, caterpillars and all kinds of bugs.\n\n• This type of mixed diet is called omnivorous, which means they will eat almost anything.",
+                "• Bíonn éan na dufaire ag scríobhadh agus ag sracadh an talamh lena crúba láidir, géar chun cur isteach air duilleoga marbh agus casarach.  Déanann siad é seo d'fhonn feithidí, rúisc, péisteanna agus aon síolta, caora nó torthaí a d'fhéadfadh a bheith tar éis titim ó thoim nó crainn a nochtadh.  Déanann siad tochailt suas freisin agus itheann siad buinneoga plandaí.\n\n• Is fearr le héan na dufaire foráiste a dhéanamh le haghaidh bia i líon mór nó i ngrúpaí ar a dtugtar ealtaí.  Itheann siad feithidí, feoil, gach cineál glasraí, síolta, cnónna agus torthaí, seangáin, termítí, agus beagnach aon chineál eile feithidí eitilte nó lámhacán is féidir leo a ghabháil.  Íosfaidh siad péisteanna, boilb agus gach cineál feithidí.",
+                "",
+                ""
+            ],
+            "imagesBundle": "ba014fb4-59ba-4cc5-a0e7-e9d8952a1ac1"
+        },
+        {
+            "TriggerWords": [
+                "bird",
+                "uibheacha",
+                "",
+                ""
+            ],
+            "FactInfo": [
+                "• Wild jungle-fowl and domestic chickens can only fly for very short distances so are easily caught by swift-moving predators.  \n\n• Birds of prey including eagles and hawks will prey on wild jungle-fowl whenever possible.\n\n• Jungle-fowl are preyed on by many wild animals including foxes, snakes, rats, mongoose and feral cats.  Domestic animals like cats, dogs and pigs will hunt, kill and eat jungle-fowl.\n\n• Man also hunts wild jungle fowl to eat.\n\n• Man causes the most harm to the wildfowl population by clearing forests and habitats and preventing the wildfowl from breeding.\n\n• Domesticated chickens and their eggs are taken by foxes, mink, stoats, rats and birds of prey even when they are on farms\n\n• Man is the chickens greatest predator, where chickens are kept in confinement in buildings or farms.  Man is in total control of the chicken's way of life.",
+                "Ní féidir le héan na dufaire agus sicíní baile eitilt ach ar feadh achair an-ghearr agus mar sin is furasta do chreachadóirí atá ag gluaiseacht go tapa iad a ghabháil.\n\n• Beidh éin chreiche lena n-áirítear iolair agus seabhaic ag creach ar éan na dufaire fiáine nuair is féidir.\n\n• Tá go leor ainmhithe fiáine ag creach ar éan na dufaire lena n-áirítear sionnaigh, nathracha, francaigh, mongús agus cait fiáine.  Déanfaidh ainmhithe clóis cosúil le cait, madraí agus muca seilg, marú agus ithe ar éan na dufaire.\n\n• Bíonn daoine ag seilg éan na dufaire fiáinechun iad  a ithe chomh maith.\n\n• Is iad daoine is mó a dhéanann dochar do phobal na n-éanlaithe fiáine trí fhoraoisí agus gnáthóga a ghlanadh agus na héanlaithe fiáine a chosc ó phórú.\n\n• Tógann sionnaigh, minceanna, coirce, francaigh agus éin chreiche sicíní ceansaithe agus a n-uibheacha fiú nuair a bhíonn siad ar fheirmeacha.\n\n• Is daoine iad an creachadóir is mó  do shicíní, áit a choinnítear sicíní i ngaibhniú i bhfoirgnimh nó i bhfeirmeacha, tá smacht iomlán ag daoine ar shlí bheatha an tsicín.",
+                "",
+                ""
+            ],
+            "imagesBundle": "b365adf4-ee07-4dcc-9f0c-249095cb808d"
+        },
+        {
+            "TriggerWords": [
+                "eggs",
+                "céad-caoga-éan",
+                "",
+                ""
+            ],
+            "FactInfo": [
+                "• Chickens lay two kinds of eggs.\n\n• They lay fertilised eggs that grow into chickens and they lay unfertilised eggs, which are collected, washed and packaged up in egg cartons for sale in the shops.\n\n• Chickens lay up to 12 eggs.\n\n• A nest of eggs is known as a clutch.  The mother hen sits on the eggs to provide the best temperature for the eggs to hatch.  It takes around 21 days for the chick to grow inside the egg.\n\n• The baby chicks use their “egg tooth”, a tiny horn on their beaks, to break out from the egg.  They peck a hole in the eggshell to escape.\n\n• Baby chicks take around six months to develop into a young hen.  Young hens are called pullets.\n\n• Pullets can breed and have their chicks at about 18 weeks old.\n\n• Domestic chickens living free-range or as pets can live for up to 15 years.  On average domestic chickens live between 3 and 5 years.",
+                "• Beireann sicíní dhá chineál uibhe.\n\n• Beireann siad uibheacha toirchithe a fhásann ina sicíní agus beireann siad uibheacha neamhthorthúil, a bhailítear, a nitear agus a bhíonn pacáistiú déanta irhtu agus cuirtear i gcartáin uibhe le díol sna siopaí.\n\n• Beireann sicíní suas le 12 ubh.\n\n• Tugtar baisc uibheacha ar nead uibheacha.  Suíonn an mháthair-chearc ar na huibheacha chun an teocht is fearr a sholáthar do na huibheacha goir.  Tógann sé timpeall 21 lá ar an sicín fás taobh istigh den ubh.\n\n• Úsáideann na sicíní leanbh a “bhfiacail uibhe”, adharc bheag bhídeach ar a gcuid gob, chun briseadh amach as an ubh.  Piocann siad poll sa bhlaosc uibhe chun éalú.\n\n• Tógann sé timpeall sé mhí ar shicín óg chun forbairt ina gcearc óg.  Tugtar sicíní circe ar chearca óga.\n\n• Is féidir le sicíní circe pórú agus a gcuid sicíní féin a bheith acu ag thart ar 18 seachtaine d'aois.\n\n• Is féidir le sicíní baile a chónaíonn saor-raon nó mar pheataí maireachtáil ar feadh suas le 15 bliana.  Ar an meán maireann sicíní baile idir 3 agus 5 bliana.",
+                "",
+                ""
+            ],
+            "imagesBundle": "cfec2d2c-e799-403b-b5ae-4c96f3d08cb6"
+        },
+        {
+            "TriggerWords": [
+                "birds",
+                "cúb-na-gcearc",
+                "",
+                ""
+            ],
+            "FactInfo": [
+                "• Domestic chickens are one of the most common, widespread creatures on Earth.\n\n• They are the most commonly used birds in animal farming and they are the birds used most widely as food for humans.\n\n• There are believed to be more chickens in the world than any other species of wild or domesticated bird.\n\n• The estimated number of chickens reared each year worldwide, either for their meat or their eggs, is 50 billion.\n\n• There are around 8 billion jungle fowl and chickens living wild throughout the world at any one time.",
+                "• Tá sicíní baile ar cheann de na créatúir is coitianta, forleathan ar an Domhan.\n\n• Is iad na héin is coitianta a úsáidtear i bhfeirmeoireacht ainmhithe agus is iad na héin is mó a úsáidtear mar bhia do dhaoine.\n\n• Creidtear go bhfuil níos mó sicíní ar domhan ná aon speiceas eile d'éan fiáin nó ceansaithe.\n\n• Is é 50 billiún líon measta na sicíní a thógtar gach bliain ar fud an domhain, dá gcuid feola nó dá n-uibheacha.\n\n• Tá timpeall 8 mbilliún éanlaithe dufaire agus sicíní ina gcónaí fiáin ar fud an domhain ag aon am amháin.",
+                "",
+                ""
+            ],
+            "imagesBundle": "04b8152e-651e-4df5-a27d-15840a6295bc"
+        },
+        {
+            "TriggerWords": [
+                "chicken-coop",
+                "mogalra-sreinge",
+                "",
+                ""
+            ],
+            "FactInfo": [
+                "• Chickens live in everything from small domestic chicken coops, with maybe only two or three birds, to huge barns or sheds on farms.\n\n• Some of these large barns or sheds have thousands of birds.\n\n• Some live on free-range farms where they wander around, living off the land, experiencing a more natural way of life.\n\n• Free-range farms are vast open spaces but they are still fenced in to protect against predators.\n\n• Some people who live in towns and cities keep small flocks of chickens in their back gardens and some people who live in apartment blocks even keep chickens on their balconies and roofs.",
+                "• Tá sicíní ina gcónaí i ngach rud ó chúba sicín beag tí, gan ach dhá nó trí éan b'fhéidir, go sciobóil nó seid ollmhóra ar fheirmeacha.\n\n• Tá na mílte éan ag cuid de na sciobóil nó na botháin mhóra seo.\n\n• Tá cuid acu ina gcónaí ar fheirmeacha saor-raoin ina dtéann siad timpeall, ag maireachtáil ón talamh, ag maireachtáil i mbealach maireachtála níos nádúrtha.\n\n• Is spásanna oscailte ollmhóra iad feirmeacha saor-raoin ach tá siad fós fálaithe isteach chun cosaint a dhéanamh ar chreachadóirí.\n\n• Coinníonn roinnt daoine a bhfuil cónaí orthu i mbailte agus i gcathracha ealtaí beaga sicíní ina ngairdíní cúil agus coimeádann roinnt daoine a chónaíonn i mbloic árasán sicíní ar a mbalcóiní agus a ndíonta fiú.",
+                "",
+                ""
+            ],
+            "imagesBundle": "860cef08-cc0e-44ec-8cdb-8da750106700"
+        },
+        {
+            "TriggerWords": [
+                "chicken-wire",
+                "bhia",
+                "",
+                ""
+            ],
+            "FactInfo": [
+                "• Chicken wire is also called poultry netting.\n\n• It is a mesh of wire with hexagonal patterned gaps made from a thin, flexible, galvanised steel wire.\n\n• Farmers use chicken wire to create fences for chickens or chicken runs.  It is also used for fencing in other farm animals and birds.",
+                "• Tugtar mogalra sreinge ar shreang sicíní freisin.\n\n• Is mogalra sreinge é le bearnaí le patrún heicseagánach déanta as sreang cruach tanaí, solúbtha, ghalbhánuithe.\n\n• Úsáideann feirmeoirí mogalra reinge chun claíocha a chruthú do shicíní nó do rith sicíní.  Úsáidtear é freisin le haghaidh claíocha d’ainmhithe feirme agus éin eile.",
+                "",
+                ""
+            ],
+            "imagesBundle": "7203603f-22ad-48b6-a00b-1dc4fb5ab09b"
+        },
+        {
+            "TriggerWords": [
+                "food",
+                "gealbháin",
+                "",
+                ""
+            ],
+            "FactInfo": [
+                "Chickens were first domesticated around 8000 years BC, in China.  Since then, man has bred chickens to suit where he lives.\n\n• Chickens are farmed for meat or eggs or both.\n\n• Some chickens are bred just for their feathers, for decorations, display and showing purposes.",
+                "Rinneadh sicíní a cheansú den chéad uair timpeall 8000 bliain RC, sa tSín.  Ó shin i leith, tá sicíní tógtha ag daoine a oireann don áit a bhfuil siad ina gcónaí.\n\n• Déantar sicíní a fheirmiú le haghaidh feola nó uibheacha nó iad araon.\n\n• Déantar roinnt sicíní a phórú díreach dá gcleití, le haghaidh maisiúcháin, taispeántais agus chun gaisce a dhéanamh.",
+                "",
+                ""
+            ],
+            "imagesBundle": "de760d75-eae9-46bf-8ff9-75b5cf0580c9"
+        },
+        {
+            "TriggerWords": [
+                "sparrows",
+                "piasúin",
+                "",
+                ""
+            ],
+            "FactInfo": [
+                "• The House Sparrow is related to finches.\n\n• Sparrows are cheeky little birds but very sturdy with large heads and bills, dark brown upperparts with heavy dark streaks and grey underbellies.\n\n• Males have chocolate brown napes with a grey crown and a large black bib.  Females are plainer and have a buff stripe extending back from the eye.\n\n• Sparrows are very energetic and noisy.  They inhabit farms, urban areas, parks and gardens.\n\n• Sparrows used to gather and live in large flocks but recently, their numbers have declined.  The main reason for this decline is the change in land use.\n\n• Sparrow's diets consist of seeds, split-grain, buds and some insects.  Sparrows will visit seed and peanut feeders and take bread and other scraps from bird tables.\n\n• Sparrows like to nest in buildings, cavities and holes, especially under eaves or gaps where bricks or stones are missing.  Sparrows will also use nesting boxes.\n\n• Nests are very untidy and usually made with grass and straw lined with moss and feathers.  Both the male and female sit on the eggs and take turns going out to feed. \n\n• The house sparrow has many predators, including domestic cats, weasels, rats, stoats, hawks, owls, and most other predatory birds.\n\n• The house sparrow is native in most of Europe, throughout the Mediterranean Basin and large parts of Asia, parts of Australasia, Africa, and the Americas, making it the most widely distributed wild bird. \n\n• Two other sparrow types are the Tree Sparrow and the Dunnock.  These are quite common and very similar to the house sparrow.\n\n• The house sparrows name in Latin is “Passer domesticus.”",
+                "• Tá an Gealbhan Binne gaolta le glasáin.\n\n• Is éin bheaga dána iad gealbhain ach an-láidir le cinn agus billí móra, píosaí uachtaracha donn dorcha le stríocáin dorcha trom agus boilg liath.\n\n• Tá baic seacláid-dhonn le mullach liath agus brollach mór dubh ag na cinn fhireanna.\n\n• Tá gealbhain an-fhuinniúil agus torannach.  Tá siad ina gcónaí ar fheirmeacha, i gceantair uirbeacha, i bpáirceanna agus i ngairdíní.\n\n• Bhíodh gealbhain ag bailiú le chéile  in ealtaí móra agus a bheith ina gcónaí le chéile ach le déanaí, tá laghdú tagtha ar a líon.  Is é an chúis is mó leis an meath seo ná an t-athrú ar úsáid talún.\n\n• Is éard atá in aistí bia ag na gealbhain ná síolta, gráin scoilte, bachlóga agus roinnt feithidí.  Tabharfaidh gealbhain cuairt ar bheathaithe síolta agus ar phiseanna talún agus tógfaidh siad arán agus fuíoll eile ó tháblaí éan.\n\n• Is maith le gealbhain nead a dhéanamh i gcuasa agus i bpoill foirgnimh, go háirithe faoi sceimhleacha nó bearnaí ina bhfuil brící nó clocha ar iarraidh.  Úsáidfidh gealbhain boscaí neadaithe freisin.\n\n• Tá neadacha an-mhíshlachtmhar agus de ghnáth déantar iad le féar agus tuí líneáilte le caonach agus cleití.  Suíonn an fear agus an bhean araon ar na huibheacha agus glacann siad sealanna ag dul amach chun beatha.\n\n• Tá go leor creachadóirí ag an ngealbhain binne lena n-áirítear cait tí, fiailí, francaigh, coirce, seabhaic, ulchabháin, agus an chuid is mó d'éin chreiche eile.\n\n• Tá an gealbhan binne dúchasach sa chuid is mó den Eoraip, ar fud Abhantrach na Meánmhara agus codanna móra den Áise, codanna den Astraláise, den Afraic, agus de Mheiriceá, rud a fhágann gurb é an t-éan fiáin is mó a dháiltear.\n\n• Dhá chineál gealbhan eile is ea Gealbhan na gCrann agus an Donnóg.  Tá siad seo coitianta go leor agus an-chosúil leis an ngealbhan. \n\n• Is é an t-ainm ar ghealbhan binne i Laidin ná “Passer domesticus.”",
+                "",
+                ""
+            ],
+            "imagesBundle": "f9f6a2c3-29f9-4bba-99d8-3d42daeeb3df"
+        },
+        {
+            "TriggerWords": [
+                "pheasants",
+                "gránaigh",
+                "",
+                ""
+            ],
+            "FactInfo": [
+                "• The pheasant we see in the fields, at the edges of woodland in the countryside or flying across the road as we pass is the common pheasant.\n\n• Males and females are very different.\n\n• Male birds are awe-inspiring with their distinctive bottle-green head and red fleshy side patches on the face with fiery copper reddish-brown bodies, finely marked underparts, long legs and long barred tail.\n\n• Females, on the other hand, are very plain by comparison.  Females are buff-brown with black speckles and a long pointed tail.\n\n• Female pheasants or hens make their nests in fields or a thicket at the edge of a wood.  The nest is a scrape in the ground lined with feathers and vegetation.  The female lays a dozen or more olive-brown eggs, which they incubate independently.  The male does not share in this task.\n\n• Young pheasants are called chicks.  They must grow up quickly as they start life on the ground.  Chicks can run as soon as they have dried out from hatching and can fly within two weeks.\n\n• Chicks will remain with their mother for six or seven weeks.\n\n• Man is the the pheasants main predator.\n\n• The main natural predators of pheasants are the fox and wildcats but stoats, weasels and pine martens also take adult birds, chicks and eggs.  Birds of prey will hunt pheasants as well.\n\n• Pheasants eat various foods, including grain, seeds, green shoots and occasionally, small animals.  When disturbed they can fly but usually for very short distances as they launch airborne with an abrupt, noisy take-off.\n\n• Typically pheasants prefer to run away from trouble, dodging their predators in the undergrowth.\n\n• The Latin name for pheasant is “Phasianus colchicus.”",
+                "• Is é an piasún a fheicimid sna páirceanna, ar imeall na coillearnaí faoin tuath nó ag eitilt trasna an bhóthair agus muid ag dul thar.\n\n• Tá fireannaigh agus baineannaigh an-difriúil.\n\n• Tá na  héin fireann an-spreagúil lena ceann sainiúil glas agus paistí taobh feolmhar dearg ar an duine le copar lasta dearg-donn comhlachtaí, marcáilte go cruinn sa chuid íochtarach, cosa fada agus eireaball barr fada.\n\n• Os a choinne sin, tá na héin bhaineann an-soiléir i gcomparáid.  Tá baineannaigh donnbhuí le spotaí dubha agus eireaball fada pointeáilte.\n\n• Déanann piasúin nó cearca baineanna a neadacha i bpáirceanna nó i dtiúchan ar imeall coille.  Is scríob sa talamh é an nead atá líneáilte le cleití agus fásra.  Beireann an baineannach dosaen nó níos mó uibheacha olóige-donn, a ghorann siad go neamhspleách.  Ní roinneann an firinneach sa tasc seo.\n\n• Tugtar éan óg ar phiasúin óga.  Caithfidh siad fás aníos go tapa agus iad ag tosú ar an saol ar an talamh.  Is féidir le héin óga rith chomh luaith is a thriomaíonn siad amach ó ghoir agus is féidir leo eitilt laistigh de choicís.\n\n• Fanfaidh éin óga lena máthair ar feadh sé nó seacht seachtaine.\n\n• Is é an duine daonna an príomh creachadóir atá ag piasúin.\n\n• Is iad na príomh-chreachadóirí nádúrtha ag na pisúin ná an sionnach agus na tóirfhiontair ach tógann coirce, easóga agus cat crainn éin fhásta, sicíní agus uibheacha freisin.  Beidh éin chreiche  ag seilg phiasúin chomh maith.\n\n• Itheann piasúin bianna éagsúla, lena n-áirítear gráin, síolta, buineoga glasa agus ó am go chéile, ainmhithe beaga.  Nuair a chuirtear isteach orthu is féidir leo eitilt ach de ghnáth ar feadh achair an-ghearr agus iad ag seoladh aerbheirthe le héirí ón talamh go tobann, torannach.\n\n• De ghnáth is fearr le piasúin rith ó thrioblóid, ag seachaint a gcreachadóirí sa chasarnach.\n\n• Is é an t-ainm Laidine ar phiasún ná Phasianus colchicus.",
+                "",
+                ""
+            ],
+            "imagesBundle": "a1f85b42-2714-4786-8d00-1580d15f9aa9"
+        },
+        {
+            "TriggerWords": [
+                "grain",
+                "lon-dubha",
+                "",
+                ""
+            ],
+            "FactInfo": [
+                "• Chicken farming foodstuff is a combination of corn, green plants like grass, weeds and protein supplements.\n\n• Protein supplements include shrimp and lobster meat and shells, dried mealworms and grubs, cooked eggs and even cooked chicken as well as nuts and seeds.\n\n• Chickens are provided with a hard stony grit to help them digest their food.  If the chickens are being kept out in the open or on free-range farmyards, farmers may still provide foodstuffs for them.",
+                "• Is meascán d'arbhar, plandaí glasa cosúil le féar, fiailí agus forlíontaí próitéine é bia feirmeoireachta sicín.\n\n• I measc na bhforlíonta próitéine tá ribí róibéis agus sliogán gliomaigh agus a gcuid feola, péisteanna béile triomaithe agus cruimhe, uibheacha cócaráilte agus fiú sicín cócaráilte chomh maith le cnónna agus síolta.\n\n• Cuirtear grean crua breaclach ar fáil do shicíní chun cabhrú leo a gcuid bia a dhíleá.  Má tá na sicíní fágtha taobh amuigh nó ar chlóis feirme saor-raoin, féadfaidh feirmeoirí earraí bia a sholáthar dóibh fós.",
+                "",
+                ""
+            ],
+            "imagesBundle": "8f0fe2ad-6e64-4495-8fa1-9f574c9d0496"
+        },
+        {
+            "TriggerWords": [
+                "blackbirds",
+                "spideoige",
+                "",
+                ""
+            ],
+            "FactInfo": [
+                "• Male Blackbirds are black but the females are brown, often with spots and streaks on their breasts.  The bright orange-yellow beak and eye-ring make adult male blackbirds one of the most striking garden birds.\n\n• Blackbirds are one of the most common birds found in European Gardens but are found as far away as Iceland and the Faroe Islands down to North Africa.\n\n• The Blackbird is known for its melodious song, which can be heard at dawn and dusk.\n\n• The Blackbirds diet is omnivorous and consists of various bugs, insects, worms, berries and fruit when in season.\n\n• Blackbirds are found everywhere in gardens and countryside and from coasts to hills, although not in mountainous areas with high peaks.\n\n• Blackbirds generally stay solitary or in pairs occasionally.  Where there is a good food supply, they will often congregate.\n\n• Male blackbirds will claim territory in their first year, which they will hold throughout their lives.  The territory is essential to attract and keep a mate and for nesting.\n\n• Territories are established and defended against all other blackbirds in the late Autumn and from Spring until July.  The weather determines when the breeding season starts and how long it lasts.  Warm weather creates the right environment.\n\n• Blackbirds nests are built by the female and usually low down in any suitable cover.  Shrubs and climbers are the Blackbirds favourite locations but nests can be found inside buildings and occasionally on the ground.\n\n• The Blackbirds nest is formed into a substantial cup made up of grass, straw, small twigs and other plant material, plastered inside with mud, then lined with fine grass.  It can take two weeks to complete.\n\n• The female incubates the eggs by herself and the chicks hatch 13-14 days later.  Only the female broods the chicks, but both parents feed them.\n\n• The chicks are ready to fledge at 13-14 days, but if the nest is disturbed, they can leave and survive as early as nine days old.  This ability to fledge early is an essential anti-predator adaptation.\n\n• The young birds creep and flutter from the nest and remain in nearby cover for the following few days.  Within one week of fledging, the chicks will be able to fly.\n\n• The chicks become independent three weeks after leaving the nest and leave the parents territory shortly after.\n\n• Young blackbirds can be confused with thrushes or even robins due to their speckly brown feathers.  They're often a rich, reddish-brown colour, especially on their breasts.\n\n• Baby blackbirds usually leave the nest before they can fly. They hop and scramble their way around trees and bushes and are vulnerable to predators at this time.\n\n• As young blackbirds grow, they change their feathers and their colour.  This process is known as moulting, where new feathers replace old feathers.\n\n• Blackbird populations have been dropping due to changing farming practices and the removal of hedgerows.  In rural and urban gardens, blackbird populations have remained stable.\n\n• Farmers and gardeners help blackbirds by avoiding the use of garden chemicals and by planting shrubs that provide blackbirds with caterpillars, berries, or both.",
+                "• Tá loin dubha fireann dubh ach tá na cinn baineann donn, go minic le spotaí agus stríocáin ar a bhrollaigh.  Déanann an gob geal oráiste-buí agus an fáinne súl éin dhubha  na bhfireann fásta ar cheann de na héin ghairdín is suntasaí.\n\n• Tá na loin dhubha ar cheann de na héin is coitianta a fhaightear i nGairdíní na hEorpa ach tá siad le fáil chomh fada i gcéin leis an Íoslainn agus Oileáin Fharó síos go dtí an Afraic Thuaidh.\n\n• Tá cáil ar an lon dubh mar gheall ar a amhrán séimh, atá le cloisteáil ag breacadh an lae agus ag luí na gréine.\n\n• Tá aiste bia an lon dubha uiliteoirach agus is éard atá ann ná feithidí, péisteanna, caora agus torthaí éagsúla agus iad i séasúr.\n\n• Tá lon dubha le fáil i ngach áit i ngairdíní agus faoin tuath agus ó chóstaí go cnoic, cé nach bhfuil siad i gceantair shléibhtiúla le beanna arda.\n\n• De ghnáth fanann lon dubha aonarach nó i mbeirteanna ó am go chéile.  Sa chás go bhfuil soláthar maith bia ann, is minic a thiocfaidh siad le chéile.\n\n• Gheobhaidh lon dubha fireanna dúiche ina gcéad bhliain, a choinneoidh siad ar feadh a saoil.  Tá an dúiche riachtanach chun céile a mhealladh agus a choinneáil agus chun neadú.\n\n• Bunaítear agus cosnaítear dúiche i gcoinne gach lon dubha eile ag deireadh an Fhómhair agus ón Earrach go dtí mí Iúil.  Cinneann an aimsir cathain a thosaíonn an séasúr pórúcháin agus cá fhad a mhaireann sé.  Cruthaíonn aimsir the an timpeallacht cheart.\n\n• Tá neadacha na lon dubha tógtha ag an mbaineann agus de ghnáth go híseal síos in aon chlúdach oiriúnach.  Is iad crainn, toir agus dreapadóirí na háiteanna is fearr le lon dubha ach is féidir neadacha a fháil taobh istigh d'fhoirgnimh agus ó am go chéile ar an talamh.\n\n• Cruthaítear nead na lon dubha i gcruth cupán substaintiúil atá comhdhéanta d'fhéar, tuí, craobhóga beaga agus ábhar plandaí eile, plástráilte taobh istigh le láib, ansin líneáilte le féar fíneálta.  Féadfaidh sé coicís a thógáil le cur i gcrích.\n\n• Goireann an baineann na huibheacha léi féin agus tagann na sicíní amach 13-14 lá ina dhiaidh sin.  Ní dhéanann ach na mná na sicíní a bhródú, ach beathaíonn an bheirt tuismitheoirí iad.\n\n• Tá na sicíní réidh le teitheadh ag 13-14 lá, ach má chuirtear isteach ar an nead, is féidir leo imeacht agus maireachtáil chomh luath le naoi lá d'aois.  Is oiriúnú riachtanach frith-chreachadóir é an cumas seo  chun teitheadh go luath.\n\n• Éalaíonn na héin óga agus bíonn siad ag foluain as an nead agus fanann siad i gclúdach in aice láimhe ar feadh na laethanta ina dhiaidh sin.  Laistigh de sheachtain amháin ó chleitiú, beidh na héin óga in ann eitilt.\n\n• Éiríonn na héin óga neamhspleách trí seachtaine tar éis dóibh an nead a fhágáil agus dúiche na dtuismitheoirí a fhágáil go gairid ina dhiaidh sin.\n\n• Is féidir le lon dubha óga a mheascadh le smólaigh nó fiú spideoga mar gheall ar a gcleití donn le spotaí.  Is minic gur dath saibhir, dearg-donn iad, go háirithe ar a gcuid bhrollaigh.\n\n• De ghnáth fágann lon dubha óga an nead sular féidir leo eitilt. Léimeann  siad agus bogann siad go hamscaí ar a mbealach timpeall crainn agus toir agus tá siad i mbaol creachadóirí ag an am seo.\n\n• De réir mar a fhásann lon dubha óga, athraíonn siad a gcleití agus a ndath.  Tugtar cleiteach ar an bpróiseas seo, áit a dtagann cleití nua in áit sean-chleití.\n\n• Tá daonraí na Lon Dubha ag titim mar gheall ar chleachtais feirmeoireachta atá ag athrú agus fálta sceach a bhaint.  I ngairdíní tuaithe agus uirbeacha, d'fhan daonraí lon dubha seasmhach.\n\n• Cuidíonn feirmeoirí agus garraíodóirí le lon dubha trí úsáid ceimiceán gairdín a sheachaint agus trí toir a phlandáil a sholáthraíonn boilb, caora, nó an dá rud do lon dubha.",
+                "",
+                ""
+            ],
+            "imagesBundle": "d73b06b9-5610-43ef-96e3-c759fa3e7596"
+        },
+        {
+            "TriggerWords": [
+                "robins",
+                "heasóga",
+                "",
+                ""
+            ],
+            "FactInfo": [
+                "• The European Robin is found throughout the year in gardens and woodlands.  Males and females look almost the same but young birds have no red breast.  They are spotted with golden brown plumage.\n\n• Young Robins get their redbreasts in the first year of their lives.  The sole purpose of a robin's red breast is to defend territory.  It is not used in courtship.\n\n• European Robins sing nearly all year round except for a very short period in late summer when they are moulting.  Both sexes sing.  European Robins sing from hidden perches.  The European Robins Autumn and Spring songs are different.\n\n• The Autumn song is mournful, quiet and sad sounding, whilst the Spring song is loud, vigorous and upbeat in its tone.\n\n• European Robins sing in the springtime to defend territory and attract a mate and usually, the male European Robins song is the most powerful in Spring.\n\n• European Robins are often active in the dusk in half-light when few other birds are active.  They are also one of the earliest birds to start singing in the dawn chorus and one of the last to stop in the evening.\n\n• European Robins often sing in the middle of the night around street lights and floodlights.\n\n• European Robins are aggressive defenders of territory and will attack and drive away intruders.  In Summer, a mated pair will defend their territory together.  In the Winter, individuals hold their own territory but boundaries are not fixed and will change frequently depending on circumstances such as food availability, disturbances and predators.\n\n• European Robins like to build their nests on or near the ground, usually in hollows, nooks and crannies, or in climbing plants, hedgerows and tree roots.\n\n• They build nests in piles of logs and use nest boxes that are open-fronted inside a climbing plant or other dense vegetation.\n\n• European Robins often nest in the most unlikely places such as sheds, kettles, boots, hanging baskets, coat pockets, underneath car bonnets, in farm machinery and even on boats in daily use.\n\n• The nest is built by the female shaped like a cup.  It is usually made from dead leaves and moss lined with feathers and hair.  During nest-building and egg-laying periods, the male European Robin will supply a large amount of food to his mate.\n\n• European Robins will quickly desert their nest if they think it has been discovered.\n\n• The female European Robin sits on the eggs alone, hatching taking around 13 days.  When the chicks hatch, they are completely naked.  They depend totally on the parents for food and warmth. Both parents look after the nestlings.\n\n• Their parents tend the young for up to three weeks after fledging.  Frequently the care of the fledged young is left to the male.\n\n• The European Robin is an omnivore and likes to eat worms, seeds, fruits, insects and other invertebrates.\n\n• Robins are often seen closeby when people dig their gardens, waiting to swoop in and pick up worms and bugs exposed by the gardener.\n\n• European Robins take food from birdtables.  Their favourite treats include mealworms, meaty kitchen scraps, fat, cheese, cake and biscuit crumbs, dried fruit, and shredded or crushed peanuts.\n\n• The European Robin, or Robin Redbreast, is found throughout Western Asia and North Africa and Scandinavia as well as Europe.",
+                "• Tá spideog na hEorpa le fáil i rith na bliana i ngairdíní agus i gcoillearnach. Breathnaíonn fireannaigh agus baineannaigh beagnach mar an gcéanna ach níl aon bhrollach dearg ag éin óga.  Feictear iad le cluimhreach donn órga.\n\n• Faigheann Spideoga Óga a gcuid bronndearg sa chéad bhliain dá saol.  Is é an t-aon chuspóir atá le spideog broinndearg ná dúiche a chosaint.  Ní úsáidtear é i gcúirtéireacht.\n\n• Canann Spideoga Eorpacha beagnach ó cheann na bliana ach amháin ar feadh tréimhse an-ghearr ag deireadh an tsamhraidh nuair a bhíonn siad ag cleiteach.  Canann an dá ghnéas. Bíonn Spideoga na hEorpa ag canadh ó phéirsí i bhfolach.  Tá amhráin An Fhómhair agus an Earraigh Spideoga Eorpacha difriúil.\n\n• Tá amhrán an Fhómhair dubhach, ciúin agus brónach, agus tá amhrán an Earraigh ard, bríomhar agus dóchasach ina glór.\n\n• Canann Spideoga Eorpacha san earrach chun dúiche a chosaint agus céile a mhealladh agus de ghnáth, is é an t-amhrán fireann spideoga na hEorpa an ceann is cumhachtaí san Earrach.\n\n• Is minic a bhíonn Spideoga Eorpacha gníomhach i dtitim na hoíche i leathsholas nuair nach mbíonn mórán éan eile gníomhach.  Tá siad ar cheann de na héin is luaithe a thosaíonn ag canadh sa churfá breacadh an lae agus ceann de na cinn dheireanacha le stopadh tráthnóna.\n\n• Is minic a chanann Spideoga Eorpacha i lár na hoíche timpeall soilse sráide agus tuilsoilse.\n\n• Is cosantóirí ionsaitheacha dúiche iad Spideoga Na hEorpa agus déanfaidh siad ionsaí agus tiomáinfidh siad ionróirí.  Sa Samhradh, cosnóidh péire le chéile a ndúiche le chéile.  Sa Gheimhreadh, tá a ndúiche féin ag éin aonarach ach níl teorainneacha socraithe agus athróidh siad go minic ag brath ar chúinsí cosúil le hinfhaighteacht bia, suaitheadh agus creachadóirí.\n\n• Is maith le Spideoga Eorpacha a neadacha a thógáil ar an talamh nó in aice leis, de ghnáth i logáin, i gcúinní agus i gpoill, nó i bplandaí dreapadóireachta, fálta sceach agus fréamhacha crainn.\n\n• Tógann siad neadacha i gcairn lomáin agus úsáideann siad boscaí nead atá oscailte taobh istigh de phlanda dreapadóireachta nó fásra dlúth eile.\n\n• Is minic a neadaíonn Spideoga Eorpacha sna háiteanna is neamhdhóchúla mar sheideanna, citeal, buataisí, ciseáin chrochta, pócaí cóta, boinéid ghluaisteáin thíos, in innealra feirme agus fiú ar bháid atá in úsáid go laethúil.\n\n• Tá an nead tógtha ag an mbaineann i gcruth cosúil le cupán.  Tá sé déanta de ghnáth as duilleoga marbh agus caonach línithe le cleití agus gruaige.  Le linn tréimhsí tógála neide agus beiriú na n-uibheacha, soláthróidh an Spideog Eorpach fireann cuid mhór bia dá chéile.\n\n• Fágfaidh Spideoga Na hEorpa a nead go tapa má cheapann siad gur aimsíodh é.\n\n• Suíonn Spideoga baineanneach Eorpach ar na huibheacha leo féin, ag gor thart ar 13 lá. Nuair a thagann na sicíní amach, bíonn siad go hiomlán nocht. Braitheann siad go hiomlán ar na tuismitheoirí le haghaidh bia agus teas. Tugann an bheirt tuismitheoir aire do na neadacha.\n\n• Bíonn na tuismitheoirí ag tabhairt aire do na héin óga suas le trí seachtaine tar éis dóibh teitheadh.  Is minic a fhágtar cúram na n-éin óga ag an bhfireann.\n\n• Is uiliteoir é spideog na hEorpa agus is maith leis péisteanna, síolta, torthaí, feithidí agus inveirteabraigh eile a ithe.\n\n• Is minic a fheictear spideoga gar nuair a thochlaíonn daoine a ngairdíní, ag fanacht le péisteanna agus feithidí a nochtann an garraíodóir a phiocadh suas.\n\n• Tógann Spideog eorpaca bia ó dtablaí éin,na pléisiúir is fearr leo cosúil le minphéisteanna, fuíoll cistine feolmhara, saill, cáis, císte agus blúiríní brioscaí, torthaí triomaithe, agus piseanna talún stiallta nó brúite.\n\n• Tá an Spideog Eorpach, nó Spideog Broinndearg, le fáil ar fud Iarthar na hÁise agus na hAfraice Thuaidh agus Chríoch Lochlann chomh maith leis an Eoraip.",
+                "",
+                ""
+            ],
+            "imagesBundle": "3a7f1531-81c9-469e-ad75-aacd387faac4"
+        },
+        {
+            "TriggerWords": [
+                "weasels",
+                "beainíní-uasail",
+                "",
+                ""
+            ],
+            "FactInfo": [
+                "• The proper name for a Weasel is the “Least Weasel”.\n\n• The Least Weasel belongs to the animal family with the Latin name “Mustelid”.\n\n• Weasels are the smallest carnivore in the world, having a body length of up to 200 millimetres.  Generally, weasels have a brown coat with a white underside.\n\n• Weasels who live in northern and eastern countries turn white during the winter.\n\n• Weasels have a long slim body with a small flattened head rarely wider than the neck, allowing them to enter the burrows and homes of much smaller animals.\n\n• Least Weasels range across North America, Europe, North Africa and Asia.  They are solitary animals active during the day and night, hunting continuously.\n\n• Weasels need to eat one-third of their body weight each day to survive.  They will also attack prey bigger than themselves.\n\n• Weasels make nests in crevices, tree roots or abandoned burrows.  Around April or May, four to six baby weasels are born.\n\n• Male weasels are called dogs or jacks.  Female weasels are called jills.  Baby weasels are called kits.\n\n• Kits are weaned when they are four weeks old and start to hunt at eight weeks old.\n\n• Weasels have a territory ranging between 1-25 hectares and they will feed on small rodents like shrews, mice, voles, birds and birds eggs.\n\n• Least Weasels are preyed upon by large owls and other various types of birds of prey.  The youngsters are also taken by snakes.\n\n• Stoats and Least Weasels look very similar but you can tell one from the other by the black tip on the end of a stoat's tail.\n\n• A group of weasels is called a gang, a pack or a colony.",
+                "• Is é an t-ainm ceart ar Chailín Uasal an “Bláthnaid Ghallada”.\n\n• Baineann an Bláthnaid Ghallada le teaghlach na n-ainmhithe leis an ainm Laidine “Mustailid”.\n\n• Is iad cailíní uasail an carnabhóir is lú ar domhan, a bhfuil fad choirp suas le 200 milliméadar aige.  Go ginearálta, tá cóta donn ag cailín uasal le taobh thíos bán.\n\n• Casann cailíní uasail a bhfuil cónaí orthu i dtíortha thuaidh agus thoir bán i rith an gheimhridh.\n\n• Tá corp caol fada ag cailíní uasail le ceann beag leacaithe go hannamh níos leithne ná an muineál, rud a ligeann dóibh dul isteach i dtochail agus i dtithe ainmhithe i bhfad níos lú.\n\n• Tá Bláthnaid Ghallada ar fud Mheiriceá Thuaidh, san Eoraip, san Afraic Thuaidh agus san Áise.  Is ainmhithe aonaracha iad atá gníomhach i rith an lae agus na hoíche, ag fiach go leanúnach.\n\n• Ní mór do chailíní uasail a ithe aon trian dá meáchan coirp gach lá chun maireachtáil.  Déanfaidh siad ionsaí freisin ar chreiche níos mó ná iad féin.\n\n• Déanann cailíní uasail a neadacha i gcréacháin, i bhfréamhacha crainn nó i dtochail tréigthe.  Timpeall Aibreán nó Bealtaine, beirtear ceithre nó sé chailín uasal óg.\n\n• Tugtar madraí nó seacain ar cailíní uasail fireann.  Tugtar jills ar chailíní uasail baineann.  Tugtar piscíní ar chailíní uasail óga.\n\n• Déantar puiscíní a scoith nuair a bhíonn siad ceithre seachtaine d'aois agus tosaíonn siad ag fiach ag ocht seachtaine d'aois.\n\n• Tá dúiche ag cailíní uasail idir 1-25 heicteár agus íosfaidh siad creimirí beaga cosúil le stiallacha, lucha, vóil, éin agus uibheacha éan.\n\n• Bíonn Bláthnaid Ghallada creiche ag ulchabháin mhóra agus cineálacha éagsúla eile na n-éan chreiche.  Is iad nathracha a thógann na hógánaigh freisin.\n\n• Tá cuma an-chosúil ar easóga agus blathnáid ghallada ach is féidir leat ceann ón gceann eile a aithint leis an rinn dhubh ag deireadh eireaball a bhíonn ag an easóg.\n\n• Tugtar meitheal, paca nó coilíneacht ar ghrúpa cailíní uasail.",
+                "",
+                ""
+            ],
+            "imagesBundle": "e409321a-6f67-4ebb-a99b-51717a14dfc9"
+        },
+        {
+            "TriggerWords": [
+                "stoats",
+                "francaigh",
+                "",
+                ""
+            ],
+            "FactInfo": [
+                "• Stoats come from the same family as the Weasel, the family with the Latin name “Mustelid”.\n\n• Stoats are one of the most commonly widespread mustelids.\n\n• Stoats have a body length of up to 250 millimetres.\n\n• Stoats have a russet brown coat with a creamy white underside and their tail has a black tip.\n\n• During the winter months, stoats coats turn entirely white, apart from the tip of their tail, which remains black.  During this period, stoats are called Ermine.\n\n• Stoats range across North America, Europe, New Zealand and Asia.\n\n• Stoats diets include rodents, rabbits and birds.\n\n• Stoats breed during April and May and produce 5-12 kits or baby stoats.\n\n• Male stoats are called dogs, bucks or jacks.  Males are larger than the female.\n\n• Female stoats are called bitches or jills.\n\n• Kits are weaned at five weeks old and are independent at twelve weeks old.\n\n• Stoats are preyed upon by birds of prey and larger carnivores such as foxes, martens, badgers, cats and wolves.\n\n• A group of stoats is called a caravan.",
+                "• Tagann easóga ón teaghlach céanna leis an gcailín uasal, an teaghlach leis an ainm Laidine “Mustelid”.\n\n• Tá ceasóga ar cheann de na mustailidí is coitianta go forleathan.\n\n• Tá fad choirp suas le 250 milliméadar ag easgóga.\n\n• Tá cóta donnrua ag easóga le taobh bán uachtar agus tá barr dubh ag a n-eireaball.\n\n• I rith mhíonna an gheimhridh, casann cótaí easóga go hiomlán bán, seachas barr a n-eireaball, a fhanann dubh.  Le linn na tréimhse seo, tugtar Eirmín ar easóga.\n\n• Tá raon easóga ar fud Mheiriceá Thuaidh, san Eoraip, sa Nua-Shéalainn agus san Áise.\n\n• I measc na n-aistí bia easóga tá creimirí, coiníní agus éin.\n\n• Póraíonn easóga le linn mhí Aibreáin agus mhí na Bealtaine agus táirgeann siad 5-12 easóga óga.\n\n• Tugtar madraí, buicéid nó seacanna ar easóga fireann.  Tá fireannaigh níos mó ná an baineann.\n\n• Tugtar bitsech ar easóga baineann.\n\n• Tá easóga óga scoite ag cúig seachtaine d'aois agus tá siad neamhspleách ag dhá sheachtain déag d'aois.\n\n• Creachtar easóga ag éin chreiche agus feoiliteoirí níos mó ar nós sionnaigh, cat craonn, broic, cait agus mic tíre.\n\n• Tugtar carbhán ar ghrúpa easóga.",
+                "",
+                ""
+            ],
+            "imagesBundle": "56dec634-f5b2-4a56-95d8-4c01ef379fa5"
+        },
+        {
+            "TriggerWords": [
+                "rats",
+                "sionnach",
+                "",
+                ""
+            ],
+            "FactInfo": [
+                "• There are two well-known rat species, the black rat, whose Latin name is “Rattus rattus” and the brown rat, whose Latin name is “Rattus norvegicus”.\n\n• These two rat species are known as the Old World rats or true rats.  They originally came from Asia and the Indian subcontinent.\n\n• Brown rats now live on every continent, except Antarctica.\n\n• Rats are omnivorous and find their food by scavenging.  They have an excellent sense of taste and incredible memories.  They can recognise various substances after tasting only a tiny amount.\n\n• Adult rats can squeeze through the tiniest of holes to get into properties.\n\n• Some rats can live for 18 months, but most die before they reach one year old.\n\n• Rats can chew through many types of hard materials, including glass, masonry, wiring, wood, aluminium, plastic and lead.\n\n• Rats carry diseases and it is thought that rats were responsible for spreading the bubonic plague during the Middle Ages, which was called the Black Death.  Fleas were primarily accountable for humans getting infected with the plague but the fleas spread the plague to humans because they caught the disease by feeding on rats blood.\n\n• Male rats are called bucks.\n\n• Unmated female rats are called Does.\n\n• Pregnant or parent females rats are called Dams.\n\n• Young rats or infants are called kittens or pups.\n\n• A group of rats is known as a pack or mischief.",
+                "• Tá dhá speiceas francach aitheanta ann, an francach dubh, a bhfuil a ainm Laidine “Rattus rattus” agus an francach donn, a bhfuil a ainm Laidine “Rattus norvegicus”.\n\n• Tugtar francaigh an tSean-Domhain nó fíor-francaigh ar an dá speiceas francach seo.  Tháinig siad ar dtús ón Áise agus ó fho-réigiún na hIndia.\n\n• Tá francaigh dhonn ina gcónaí anois ar gach mór-roinn, seachas Antartaice.\n\n• Bíonn francaigh uiliteoireach agus faigheann siad a gcuid bia trí scrobála a dhéanamh. Tá blas den scoth acu agus cuimhní dochreidte. Is féidir leo substaintí éagsúla a aithint tar éis blaiseadh ach méid beag bídeach.\n\n• Is féidir le francaigh fhásta fáscadh tríd poill an- bheag chun dul isteach i réadmhaoine.\n\n• Is féidir le roinnt francaigh maireachtáil ar feadh 18 mí, ach faigheann an chuid is mó bás sula sroicheann siad bliain d'aois.\n\n• Is féidir le francaigh cogaint trí go leor cineálacha ábhar crua, lena n-áirítear gloine, saoirseacht, sreangú, adhmad, alúmanam, plaisteach agus luaidhe.\n\n• Iompraíonn francaigh galair agus ceaptar go raibh francaigh freagrach as an bPlá Mór a scaipeadh le linn na Meánaoiseanna, ar a dtugtar an Bás Dubh.  Bhí dreancaidí freagrach go príomha as daoine a bhí ionfhabhtaithe leis an bplá ach scaip na dreancaidí an phlá do dhaoine toisc gur ghabh siad an galar trí bheathú ar fhuil francaigh.\n\n• Tugtar buicéid ar fhrancaigh fhireann.\n\n• Tugtar eilit ar fhrancaigh baineanna neamh-chomhoiriúnú.\n\n• Tugtar Dambaí ar fhrancaigh baineanna torracha nó tuismitheortha.\n\n• Tugtarpiscíní nó coileáin ar fhrancaigh óga.\n\n• Tugtar pacáiste nó diabhlaíocht ar ghrúpa francaigh.",
+                "",
+                ""
+            ],
+            "imagesBundle": "23342e6f-bebb-4693-a4d8-43b0d5a247d6"
+        },
+        {
+            "TriggerWords": [
+                "fox",
+                "nead",
+                "",
+                ""
+            ],
+            "FactInfo": [
+                "• A red fox looks like a small to medium-sized dog.  It gets its name from the colour of its fur.\n\n• Foxes have a long pointed snout with triangular-shaped ears, which stick up and a long bushy tail.\n\n• The red fox is the most commonly found and widespread fox in the world.\n\n• The red foxes fur colour can vary from red to a dull red to a deep brownish-red, sometimes with yellow tints.  The coat under the red foxes chin, around its lower lips and throat and down the front of its chest is almost always white.\n\n• The red foxes tail is long and bushy and it is nearly always as long or longer than half the length of the fox's body.\n\n• The tail usually has a pale grey underside which ends in a pointed white tip.  The red fox will often wrap its tail around its body and curl up into a ball to keep warm in cold weather.\n\n• The fox uses its tail to keep its balance when running or jumping.\n\n• Male foxes are called Dogs, Reynard or Tod.\n\n• Female foxes are called Vixens.  Young foxes are called Kits, Cubs or Pups.\n\n• Groups of foxes are known as a Skulk or a Leash.",
+                "• Breathnaíonn sionnach dearg cosúil le madra beag go meánmhéide.  Faigheann sé a n-ainm ó dhath a bhfionnadh.\n\n• Tá smut fada pointeáilte ag sionnaigh le cluasa triantánacha-chruthach, a chloíonn suas agus eireaball fada dosach.\n\n• Is é an sionnach dearg an sionnach is coitianta a fhaightear agus is forleithne ar domhan.\n\n• Is féidir le dath fionnaidh na sionnach dearg a bheith éagsúil ó dhearg go dearg dorcha go donn-dearg, uaireanta le himir buí.  Tá an cóta faoi smig na sionnach dearg, timpeall a liopaí agus a scornach agus síos os comhair a bhrollach bíonn sé beagnach bán i gcónaí.\n\n• Tá eireaball na sionnach dearg fada agus dosach agus tá sé beagnach i gcónaí chomh fada nó níos faide ná leath fad choirp an tsionnaigh.\n\n• De ghnáth bíonn taobh liathéadrom ag an eireaball a chríochnaíonn i rinn bhán pointeáilte.  Is minic a fhillfidh an sionnach dearg a eireaball timpeall a choirp agus cuirfidh sé suas i liathróid é chun teas a choinneáil in aimsir fhuar.\n\n• Úsáideann an sionnach a eireaball chun a chothromaíocht a choinneáil agus é ag rith nó ag léim.\n\n• Tugtar Madraí, Reynard nó Tod ar sionnaigh fireanna.\n\n• Tugtar Vixens ar sionnaigh baineanna.  Tugtar Kits, Cubs nó Pups ar sionnaigh óga.\n\n• Tugtar Skulk nó Leash ar ghrúpaí sionnach.",
+                "",
+                ""
+            ],
+            "imagesBundle": "bded559a-1057-452b-a45f-690908dd16d5"
+        },
+        {
+            "TriggerWords": [
+                "den",
+                "choileán",
+                "",
+                ""
+            ],
+            "FactInfo": [
+                "• Red foxes homes are called dens.\n\n• Foxes make their dens by digging burrows into the ground.  This provides the fox and its family with a safe place to stay, rest and sleep and to look after their cubs.\n\n• Burrows can be very deep.  Dens have several rooms and nearly always more than one entrance and exit so, if predators come into the den, the fox and his family can escape.\n\n• Sometimes a fox will share a badger's home with the badger.  Badgers homes are called Setts.",
+                "• Tugtar pluais ar thithe sionnaigh dhearga.\n\n• Déanann sionnaigh a gcuid pluais trí pholl a thochailt isteach sa talamh.  Soláthraíonn sé seo áit shábháilte don sionnach agus dá theaghlach chun fanacht, scíth agus codladh agus aire a thabhairt dá gcoileáin.\n\n• Is féidir le poill a bheith an-domhain.  Tá roinnt seomraí ag pluaiseanna agus bíonn  beagnach i gcónaí níos mó ná bealach isteach agus bealach amach amháin mar sin, má thagann creachadóirí isteach sa nead, is féidir leis an sionnach agus a theaghlach éalú.\n\n• Uaireanta roinnfidh sionnach brocais leis an mbroc.  Tugtar Brocach ar bhrocais.",
+                "",
+                ""
+            ],
+            "imagesBundle": "33712070-4ead-4171-aa49-91bed3b4ded1"
+        },
+        {
+            "TriggerWords": [
+                "cubs",
+                "plean",
+                "",
+                ""
+            ],
+            "FactInfo": [
+                "• Red foxes live in family groups.\n\n• The groups tend to be small and are almost always led by a pair of senior foxes.\n\n• Fox cubs are tiny when they are born and they are also blind and deaf and have no teeth.  They are completely defenceless.  The female fox or Vixen looks after and protects them until they are ready to leave.\n\n• The male fox, or the dog, stays near the family home to watch over the cubs and the Vixen and brings the Vixen food when she is looking after their cubs.\n\n• The main enemy of the fox is Man.  Wolves, coyotes, hyenas, grey foxes, jackals, medium and large cats such as cougars, lynxes, bobcats and wildcat will attack foxes.",
+                "• Tá sionnaigh dhearga ina gcónaí i ngrúpaí teaghlaigh.\n\n• Is gnách go mbíonn na grúpaí beag agus bíonn péire sionnach sinsearach i gcónaí i gceannas orthu.\n\n• Tá coileáin an tsionnaigh beag bídeach nuair a bheirtear iad agus tá siad dall agus bodhar agus níl aon fhiacla acu.  Tá siad go hiomlán gan chosaint.  Tugann an sionnach baineann aire dóibh agus cosnaíonn sí iad go dtí go mbeidh siad réidh le himeacht.\n\n• Fanann an sionnach fireann, nó an madra, in aice le teach an teaghlaigh chun féachaint ar na coileáin agus an sionnach baineann agus tugann sé bia don shionnach baineann nuair a bhíonn sí ag tabhairt aire dá gcoileáin.\n\n• Is é an duine daonna príomh-namhaid an tsionnaigh.  Déanfaidh mic tíre, cadhóití, hiéanaí, sionnaigh liatha, seacainí, cait mheánacha agus mhóra mar cúgarí, lincsí, bobchait agus cait fháin ionsaí ar sionnaigh.",
+                "",
+                ""
+            ],
+            "imagesBundle": "473ad5bb-2be4-44ec-9871-1adebafa979d"
+        },
+        {
+            "TriggerWords": [
+                "plan",
+                "cliste",
+                "",
+                ""
+            ],
+            "FactInfo": [
+                "• The Red Fox inhabits almost everywhere that man has settled and can nearly always be found living not too far away from those settlements.\n\n• Red foxes are found all over the world. They inhabit the entire northern hemisphere from the Arctic Circle down through North America and into North Africa and Central America.  Red foxes dwell throughout Asia and Australia.\n\n• The Red Fox is the most widespread wild dog throughout the world and is also the largest of all the true foxes.",
+                "• Tá an Sionnach Dearg ina chónaí beagnach i ngach áit a bhfuil daoine socraithe agus is féidir é a fháil beagnach i gcónaí ag maireachtáil  in áit nach bhfuil ró-fhada ó na lonnaíochtaí sin.\n\n• Tá sionnaigh dhearga le fáil ar fud an domhain. Áitríonn siad an leathsféar thuaidh ar fad ón gCiorcal Artach síos trí Mheiriceá Thuaidh agus isteach san Afraic Thuaidh agus i Meiriceá Láir.  Tá sionnaigh dhearga ina gcónaí ar fud na hÁise agus na hAstráile.\n\n• Is é an Sionnach Dearg an madra fiáin is forleithne ar fud an domhain agus is é an ceann is mó de na sionnaigh fíor go léir é freisin.",
+                "",
+                ""
+            ],
+            "imagesBundle": "fe7a0578-623f-4594-92d2-edd8ebfe06f0"
+        },
+        {
+            "TriggerWords": [
+                "clever",
+                "príomh-shicín",
+                "",
+                ""
+            ],
+            "FactInfo": [
+                "• The fox is a member of the dog family.\n\n• Strangely, many of its habits and how the fox moves and acts are cat-like.\n\n• Foxes are very stealthy like cats and they hunt their prey in the same way, carefully sneaking up then pouncing on it.\n\n• Red foxes are excellent swimmers and have excellent hearing and a fantastic sense of smell.",
+                "• Is ball de theaghlach an mhadra é an sionnach.\n\n• Go haisteach, tá go leor dá nósanna agus an chaoi a bhogann agus a ghníonn an sionnach cosúil le cat.\n\n• Tá sionnaigh an-fháilí cosúil le cait agus bíonn siad ag seilg a gcreiche ar an mbealach céanna, éalú go cúramach suas ansin pag léim air.\n\n• Is snámhaithe den scoth iad sionnaigh dhearga agus tá éisteacht den scoth acu agus boladh iontach.",
+                "",
+                ""
+            ],
+            "imagesBundle": "d35c2675-77de-4e7b-82d5-87146cc8ae08"
+        },
+        {
+            "TriggerWords": [
+                "head-chicken",
+                "d’ith",
+                "",
+                ""
+            ],
+            "FactInfo": [
+                "• Roosters (or cockerels) can usually be differentiated from hens by their striking plumage of long flowing tails and shiny, pointed feathers on their necks and backs.\n\n• Roosters plumage or feathers are nearly always a brighter and bolder colour than the females of the same breed.\n\n• Roosters crowing is a loud and sometimes shrill call and is a territorial signal to other roosters.\n\n• Roosters also crow in response to sudden disturbances within their surroundings.\n\n• Roosters crow at any time of the day not just in the morning.",
+                "• De ghnáth is féidir le coiliogh (nó sicín coiligh) a dhifreáil ó chearca trína cluimhreach suntasach d'eireabaill fhada atá ag sileadh agus cleití lonracha, pointeáilte ar a muineál agus a gcúl.\n\n• Tá cluimhreach nó cleití coiligh beagnach i gcónaí mar dath níos gile agus níos láidre ná an baineann den phór céanna.\n\n• Is glaoch ard agus uaireanta géar é glaoch na gcoileach agus is comhartha dúiche do choiligh eile é.\n\n• Bíonn glaoch na gcoileach ann freisin mar fhreagra ar suaitheadh tobann laistigh dá dtimpeallacht.\n\n• Bíonn na coiligh ag glao ag am ar bith den lá, ní hamháin ar maidin.",
+                "",
+                ""
+            ],
+            "imagesBundle": "61cd92b7-1163-41fb-8877-1db27d3f69bb"
+        },
+        {
+            "TriggerWords": [
+                "ate",
+                "",
+                "",
+                ""
+            ],
+            "FactInfo": [
+                "• Red foxes have a varied diet.  They will eat almost anything, including insects, worms, rabbits, young hares, rats and small birds, mice, frogs and even fruit.\n\n• Foxes who live by the coast eat crabs and fish, and foxes who live in or visit towns and cities eat leftover food thrown away by Man, which they find in dustbins, waste tips and refuse centres.\n\n• Foxes have a bad reputation because they raid hen houses and farmyards, stealing chickens and eggs.\n\n• Foxed are omnivorous, just like chickens.  This means that they will eat both plants and other animals.",
+                "",
+                "",
+                ""
+            ],
+            "imagesBundle": "34dfb991-fa76-48a3-8316-9d3552a52163"
+        }
+    ]
+}

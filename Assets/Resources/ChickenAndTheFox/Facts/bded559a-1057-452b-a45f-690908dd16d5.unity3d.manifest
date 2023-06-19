@@ -1,0 +1,21 @@
+ManifestFileVersion: 0
+CRC: 4098490549
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 50d321adf98204fea34df081e4dfd83a
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c21d61fe394c58399df3c6fb5c7c99b3
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/FactImages/fox/autumn-animals-fox-2 (1).jpg
+- Assets/FactImages/fox/fox.PNG
+- Assets/FactImages/fox/fox_1200x675.jpg
+Dependencies: []

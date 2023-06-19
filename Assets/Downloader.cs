@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,create asset bundle utils class
 {
@@ -18,24 +20,59 @@ public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,c
     [SerializeField] private Transform canvasHolder;
     private void Start()
     {
-        DataPath = $"{Application.persistentDataPath}/../TaylorsTalesAssets/ChickenAndTheFox";
-        loadPages();
-        loadFacts();
-        setUpEnvironmentCanvasses();
+        DataPath = $"Assets/StreamingAssets 1/ChickenAndTheFox";
+        loadFactsAndroid();
+      //  StartCoroutine(loadFactsAndroid());
+       // loadPages();
+
+        //      setUpEnvironmentCanvasses();
     }
 
-    private void loadFacts()
-    {
-        string factPath = $"{DataPath}/Facts/Facts.json";
+    //private void loadFacts()
+    //{
+    //    string factPath = $"{DataPath}/Facts/Facts.json";
 
-        string facts = File.ReadAllText(factPath);
-        FactList factsList = JsonUtility.FromJson<FactList>(facts);
+    //    string facts = File.ReadAllText(factPath);
+    //    FactList factsList = JsonUtility.FromJson<FactList>(facts);
+    //    FindObjectOfType<WordHighlighting>().gameObject.GetComponent<TextMeshProUGUI>().text = facts;
+    //    for (int i = 0; i < factsList.Facts.Count; i++)
+    //    {
+    //        Fact curfact = factsList.Facts[i];
+    //        TriggerWords triggers = new TriggerWords(curfact.TriggerWords);
+    //        AssetBundle factImageBundle = AssetBundle.LoadFromFile($"{DataPath}/Facts/{curfact.imagesBundle}.unity3d");
+    //        FactContents contents = new FactContents(curfact.FactInfo, factImageBundle);
+
+    //        FactManager.AddToFactList(triggers, contents);
+    //    }
+    //}
+
+
+
+    private void loadFactsAndroid()
+    {
+      //  string factPath = Path.Combine(Application.streamingAssetsPath, ""); 
+        var dataAsJson = Resources.Load<TextAsset>("ChickenAndTheFox/Facts/Facts");
+        string jsonContents = dataAsJson.text;
+
+        //UnityEngine.Networking.UnityWebRequest www = UnityEngine.Networking.UnityWebRequest.Get(factPath);
+        //yield return www.SendWebRequest();
+
+        //if (www.result == UnityEngine.Networking.UnityWebRequest.Result.Success)
+        //{
+        //    dataAsJson = www.downloadHandler.text;
+        //}
+        //else
+        //{
+        //    FindObjectOfType<WordHighlighting>().gameObject.GetComponent<TextMeshProUGUI>().text = www.error;
+        //    yield break; // Exit the coroutine if file loading fails
+        //}
+        FactList factsList = JsonUtility.FromJson<FactList>(jsonContents);
 
         for (int i = 0; i < factsList.Facts.Count; i++)
         {
             Fact curfact = factsList.Facts[i];
             TriggerWords triggers = new TriggerWords(curfact.TriggerWords);
-            AssetBundle factImageBundle = AssetBundle.LoadFromFile($"{DataPath}/Facts/{curfact.imagesBundle}.unity3d");
+            AssetBundle factImageBundle = AssetBundle.LoadFromFile(Path.Combine(Application.streamingAssetsPath, "ChickenAndTheFox", "Facts", curfact.imagesBundle + ".unity3d"));
             FactContents contents = new FactContents(curfact.FactInfo, factImageBundle);
 
             FactManager.AddToFactList(triggers, contents);
@@ -44,13 +81,36 @@ public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,c
 
 
 
-    private void loadPages()
+
+    private IEnumerator loadPages()
     {
-        var Pagefiles = Directory.GetDirectories(DataPath).Where(T => Path.GetFileName(T).Equals("Facts") == false).ToList();
-        Debug.Log(Pagefiles.Count());
+        string factPath = Path.Combine(Application.streamingAssetsPath, "ChickenAndTheFox/Facts/Facts.json");
+        string dataAsJson;
+
+
+        UnityEngine.Networking.UnityWebRequest www = UnityEngine.Networking.UnityWebRequest.Get(factPath);
+        yield return www.SendWebRequest();
+
+        if (www.result == UnityEngine.Networking.UnityWebRequest.Result.Success)
+        {
+            dataAsJson = www.downloadHandler.text;
+        }
+        else
+        {
+            FindObjectOfType<WordHighlighting>().gameObject.GetComponent<TextMeshProUGUI>().text = www.error;
+            yield break; // Exit the coroutine if file loading fails
+        }
+
+        string path = Path.Combine(Application.streamingAssetsPath, "ChickenAndTheFox");
+        var Pagefiles = Directory.GetDirectories(path).Where(T => Path.GetFileName(T).Equals("Facts") == false).ToList();
+      //  UnityEngine.Networking.UnityWebRequest www = UnityEngine.Networking.UnityWebRequest.Get(factPath);
+
+
+
+
         for (int i = 0; i < Pagefiles.Count(); i++)
         {
-            
+
             string pagepath = $"{Pagefiles[i]}/JSONPage_{i + 1}.json";
             string text = File.ReadAllText(pagepath);
             Page newPage = JsonUtility.FromJson<Page>(text);
@@ -61,7 +121,7 @@ public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,c
             BookManager.AddNewPage(newPage.pageNumber, newContents);
         }
 
-        OnFilesDownloaded?.Invoke();
+        //     OnFilesDownloaded?.Invoke();
     }
     // JSONPage_1
 
@@ -76,6 +136,17 @@ public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,c
         if (File.Exists(Environmentpath))
         {
             var Envbundle = AssetBundle.LoadFromFile(Environmentpath);
+
+
+            //if (page.pageNumber == 1)
+            //{
+            //    BundleJson json = new BundleJson();
+            //    json.bundle = Envbundle;
+
+            //    var f = JsonUtility.ToJson(json);
+            //    test.setbun(f);
+            //}
+
             var Envassets = Envbundle.GetAllAssetNames();
             var Envprefab = Envbundle.LoadAsset<GameObject>(Envassets[1]);
             var pageSkybox = Envbundle.LoadAsset<Material>(Envbundle.GetAllAssetNames()[0]);
@@ -98,9 +169,9 @@ public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,c
             {
                 Debug.Log(Intbundle.GetAllAssetNames()[i]);
             }
-           
+
             var Intprefab = Intbundle.LoadAsset<GameObject>(Intbundle.GetAllAssetNames()[0]);
-   
+
             newPageContents.InteractionCanvas = Intprefab;
             newPageContents.InteractionCanvas.GetComponent<Canvas>().worldCamera = Camera.main;
         }
@@ -129,13 +200,13 @@ public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,c
                 CurrentPageTemp.EnvironmentCanvas = Instantiate(EnvironmentCanvasTemp, newPage.transform);
             }
 
-            
+
             newPage.SetActive(false);
             BookManager.Pages[i].CanvasHolder = newPage;
         }
         Debug.Log("[pages instantiated");
 
-        OnPagesReady?.Invoke(1); // soon to be player prefs last pages number
+        //       OnPagesReady?.Invoke(1); // soon to be player prefs last pages number
 
     }
 

@@ -1,0 +1,20 @@
+ManifestFileVersion: 0
+CRC: 1425666832
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 94e7d56d7f05c3434c37b7c36aa1cd7b
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c21d61fe394c58399df3c6fb5c7c99b3
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/FactImages/robins/300px-Flame_Robin_male_1_-_Jenolan_Caves.jpg
+- Assets/FactImages/robins/6684816_114a9106.jpg
+Dependencies: []

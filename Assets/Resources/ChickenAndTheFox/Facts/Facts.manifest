@@ -1,0 +1,115 @@
+ManifestFileVersion: 0
+CRC: 492395111
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: 46cad25b-cab1-426c-b9e3-6c9e4b3e6f01.unity3d
+      Dependencies: {}
+    Info_1:
+      Name: 033233eb-148f-418d-ab84-367975b53f0f.unity3d
+      Dependencies: {}
+    Info_2:
+      Name: 162d28b7-deee-4ea2-be29-89aa4118e4eb.unity3d
+      Dependencies: {}
+    Info_3:
+      Name: 9e2611f8-7744-4442-9103-37f3e4e747d5.unity3d
+      Dependencies: {}
+    Info_4:
+      Name: 70327146-950a-4cfb-a068-b274f59c324a.unity3d
+      Dependencies: {}
+    Info_5:
+      Name: 4f3158a5-bfeb-4573-82ec-5eafb358b910.unity3d
+      Dependencies: {}
+    Info_6:
+      Name: 4ab5c1a7-5ae3-448a-9aa2-a33596b6062a.unity3d
+      Dependencies: {}
+    Info_7:
+      Name: caba2092-6dc2-4c7b-9ee8-ee97be94ce66.unity3d
+      Dependencies: {}
+    Info_8:
+      Name: 12522899-672d-402d-bb3d-84d0c06100b4.unity3d
+      Dependencies: {}
+    Info_9:
+      Name: 01d62022-5626-4a12-a6f4-94cfe9439c7b.unity3d
+      Dependencies: {}
+    Info_10:
+      Name: d0eddf49-785a-4ae4-a12f-b3f176a28b82.unity3d
+      Dependencies: {}
+    Info_11:
+      Name: 713a1242-8dae-456a-98d2-643fb0a7364d.unity3d
+      Dependencies: {}
+    Info_12:
+      Name: a275551a-923b-49a6-8397-5cfa7b06ad0b.unity3d
+      Dependencies: {}
+    Info_13:
+      Name: 9c0acba3-c521-4aac-b6eb-b21803e21cf4.unity3d
+      Dependencies: {}
+    Info_14:
+      Name: 216766e9-d8ee-4b2f-8016-c071b18fc977.unity3d
+      Dependencies: {}
+    Info_15:
+      Name: ba014fb4-59ba-4cc5-a0e7-e9d8952a1ac1.unity3d
+      Dependencies: {}
+    Info_16:
+      Name: b365adf4-ee07-4dcc-9f0c-249095cb808d.unity3d
+      Dependencies: {}
+    Info_17:
+      Name: cfec2d2c-e799-403b-b5ae-4c96f3d08cb6.unity3d
+      Dependencies: {}
+    Info_18:
+      Name: 04b8152e-651e-4df5-a27d-15840a6295bc.unity3d
+      Dependencies: {}
+    Info_19:
+      Name: 860cef08-cc0e-44ec-8cdb-8da750106700.unity3d
+      Dependencies: {}
+    Info_20:
+      Name: 7203603f-22ad-48b6-a00b-1dc4fb5ab09b.unity3d
+      Dependencies: {}
+    Info_21:
+      Name: de760d75-eae9-46bf-8ff9-75b5cf0580c9.unity3d
+      Dependencies: {}
+    Info_22:
+      Name: f9f6a2c3-29f9-4bba-99d8-3d42daeeb3df.unity3d
+      Dependencies: {}
+    Info_23:
+      Name: a1f85b42-2714-4786-8d00-1580d15f9aa9.unity3d
+      Dependencies: {}
+    Info_24:
+      Name: 8f0fe2ad-6e64-4495-8fa1-9f574c9d0496.unity3d
+      Dependencies: {}
+    Info_25:
+      Name: d73b06b9-5610-43ef-96e3-c759fa3e7596.unity3d
+      Dependencies: {}
+    Info_26:
+      Name: 3a7f1531-81c9-469e-ad75-aacd387faac4.unity3d
+      Dependencies: {}
+    Info_27:
+      Name: e409321a-6f67-4ebb-a99b-51717a14dfc9.unity3d
+      Dependencies: {}
+    Info_28:
+      Name: 56dec634-f5b2-4a56-95d8-4c01ef379fa5.unity3d
+      Dependencies: {}
+    Info_29:
+      Name: 23342e6f-bebb-4693-a4d8-43b0d5a247d6.unity3d
+      Dependencies: {}
+    Info_30:
+      Name: bded559a-1057-452b-a45f-690908dd16d5.unity3d
+      Dependencies: {}
+    Info_31:
+      Name: 33712070-4ead-4171-aa49-91bed3b4ded1.unity3d
+      Dependencies: {}
+    Info_32:
+      Name: 473ad5bb-2be4-44ec-9871-1adebafa979d.unity3d
+      Dependencies: {}
+    Info_33:
+      Name: fe7a0578-623f-4594-92d2-edd8ebfe06f0.unity3d
+      Dependencies: {}
+    Info_34:
+      Name: d35c2675-77de-4e7b-82d5-87146cc8ae08.unity3d
+      Dependencies: {}
+    Info_35:
+      Name: 61cd92b7-1163-41fb-8877-1db27d3f69bb.unity3d
+      Dependencies: {}
+    Info_36:
+      Name: 34dfb991-fa76-48a3-8316-9d3552a52163.unity3d
+      Dependencies: {}
