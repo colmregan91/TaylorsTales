@@ -72,7 +72,7 @@ public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,c
         {
             Fact curfact = factsList.Facts[i];
             TriggerWords triggers = new TriggerWords(curfact.TriggerWords);
-            AssetBundle factImageBundle = AssetBundle.LoadFromFile(Path.Combine(Application.streamingAssetsPath, "ChickenAndTheFox", "Facts", curfact.imagesBundle + ".unity3d"));
+            AssetBundle factImageBundle = AssetBundle.LoadFromFile(Path.Combine("Assets/Resources", "ChickenAndTheFox", "Facts", curfact.imagesBundle + ".unity3d"));
             FactContents contents = new FactContents(curfact.FactInfo, factImageBundle);
 
             FactManager.AddToFactList(triggers, contents);
