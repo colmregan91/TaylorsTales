@@ -20,9 +20,7 @@ public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,c
     [SerializeField] private Transform canvasHolder;
     private void Start()
     {
-        DataPath = $"Assets/StreamingAssets 1/ChickenAndTheFox";
-        loadFactsAndroid();
-      //  StartCoroutine(loadFactsAndroid());
+        StartCoroutine(loadFactsAndroid());
        // loadPages();
 
         //      setUpEnvironmentCanvasses();
@@ -48,31 +46,38 @@ public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,c
 
 
 
-    private void loadFactsAndroid()
+    private IEnumerator loadFactsAndroid()
     {
-      //  string factPath = Path.Combine(Application.streamingAssetsPath, ""); 
-        var dataAsJson = Resources.Load<TextAsset>("ChickenAndTheFox/Facts/Facts");
-        string jsonContents = dataAsJson.text;
+          string factPath = Path.Combine(Application.streamingAssetsPath, "ChickenAndTheFox", "Facts","Facts.json");
+       
 
-        //UnityEngine.Networking.UnityWebRequest www = UnityEngine.Networking.UnityWebRequest.Get(factPath);
-        //yield return www.SendWebRequest();
+        UnityWebRequest www = UnityWebRequest.Get(factPath);
+        yield return www.SendWebRequest();
 
-        //if (www.result == UnityEngine.Networking.UnityWebRequest.Result.Success)
-        //{
-        //    dataAsJson = www.downloadHandler.text;
-        //}
-        //else
-        //{
-        //    FindObjectOfType<WordHighlighting>().gameObject.GetComponent<TextMeshProUGUI>().text = www.error;
-        //    yield break; // Exit the coroutine if file loading fails
-        //}
-        FactList factsList = JsonUtility.FromJson<FactList>(jsonContents);
+        if (www.result == UnityWebRequest.Result.Success)
+        {
+           string dataAsJson = www.downloadHandler.text;
+            loadFactBundles(dataAsJson);
+        }
+        else
+        {
+            FindObjectOfType<WordHighlighting>().gameObject.GetComponent<TextMeshProUGUI>().text = www.error;
+            yield break; // Exit the coroutine if file loading fails
+        }
+
+
+
+    }
+
+    private void loadFactBundles(string dataAsJson)
+    {
+        FactList factsList = JsonUtility.FromJson<FactList>(dataAsJson);
 
         for (int i = 0; i < factsList.Facts.Count; i++)
         {
             Fact curfact = factsList.Facts[i];
             TriggerWords triggers = new TriggerWords(curfact.TriggerWords);
-            AssetBundle factImageBundle = AssetBundle.LoadFromFile(Path.Combine("Assets/Resources", "ChickenAndTheFox", "Facts", curfact.imagesBundle + ".unity3d"));
+            AssetBundle factImageBundle = AssetBundle.LoadFromFile(Path.Combine(Application.streamingAssetsPath, "ChickenAndTheFox", "Facts", curfact.imagesBundle + ".unity3d"));
             FactContents contents = new FactContents(curfact.FactInfo, factImageBundle);
 
             FactManager.AddToFactList(triggers, contents);
