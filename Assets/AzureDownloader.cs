@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -8,7 +9,7 @@ public class AzureDownloader : MonoBehaviour
     private string storageAccount = "taylorstalesassets";
     private string containerName = "bookdata";
     private const string fileName = "ChickenAndTheFox";
-    public void DownloadFile()
+    private void Start()
     {
         string url = $"https://taylorstalesassets.blob.core.windows.net/bookdata/ChickenAndTheFox/Page_1/JSONPage_1.json";
 
@@ -24,9 +25,14 @@ public class AzureDownloader : MonoBehaviour
             if (webRequest.result == UnityWebRequest.Result.Success)
             {
                 // File downloaded successfully, do something with the downloaded data
-                byte[] downloadedData = webRequest.downloadHandler.data;
+                var downloadedData = webRequest.downloadHandler.data; 
                 // Example: Save the data to disk
-                System.IO.File.WriteAllBytes($"{Application.streamingAssetsPath}", downloadedData);
+                //    var text = File.ReadAllText(downloadedData);
+                var  PageData = JsonUtility.ToJson(downloadedData);
+
+                string pageRoot = Path.Combine(Application.persistentDataPath, "..", "TaylorsTalesAssets");
+                string Environmentpath = $"{pageRoot}/Page_{1}/Page_{1}_testtext.json";
+                System.IO.File.WriteAllBytes(pageRoot, webRequest.downloadHandler.data); 
             }
             else
             {

@@ -21,9 +21,8 @@ public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,c
     private void Start()
     {
         StartCoroutine(loadFactsAndroid());
-       // loadPages();
 
-        //      setUpEnvironmentCanvasses();
+        StartCoroutine(loadPages());
     }
 
     //private void loadFacts()
@@ -48,15 +47,15 @@ public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,c
 
     private IEnumerator loadFactsAndroid()
     {
-          string factPath = Path.Combine(Application.streamingAssetsPath, "ChickenAndTheFox", "Facts","Facts.json");
-       
+        string factPath = Path.Combine(Application.persistentDataPath, "..", "TaylorsTalesAssets", "ChickenAndTheFox", "Facts", "Facts.json");
+
 
         UnityWebRequest www = UnityWebRequest.Get(factPath);
         yield return www.SendWebRequest();
 
         if (www.result == UnityWebRequest.Result.Success)
         {
-           string dataAsJson = www.downloadHandler.text;
+            string dataAsJson = www.downloadHandler.text;
             loadFactBundles(dataAsJson);
         }
         else
@@ -77,7 +76,7 @@ public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,c
         {
             Fact curfact = factsList.Facts[i];
             TriggerWords triggers = new TriggerWords(curfact.TriggerWords);
-            AssetBundle factImageBundle = AssetBundle.LoadFromFile(Path.Combine(Application.streamingAssetsPath, "ChickenAndTheFox", "Facts", curfact.imagesBundle + ".unity3d"));
+            AssetBundle factImageBundle = AssetBundle.LoadFromFile(Path.Combine(Application.persistentDataPath, "..", "TaylorsTalesAssets", "ChickenAndTheFox", "Facts", curfact.imagesBundle + ".unity3d"));
             FactContents contents = new FactContents(curfact.FactInfo, factImageBundle);
 
             FactManager.AddToFactList(triggers, contents);
@@ -89,58 +88,55 @@ public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,c
 
     private IEnumerator loadPages()
     {
-        string factPath = Path.Combine(Application.streamingAssetsPath, "ChickenAndTheFox/Facts/Facts.json");
+        string pageRoot = Path.Combine(Application.persistentDataPath, "..", "TaylorsTalesAssets", "ChickenAndTheFox/Pages");
         string dataAsJson;
 
-
-        UnityEngine.Networking.UnityWebRequest www = UnityEngine.Networking.UnityWebRequest.Get(factPath);
-        yield return www.SendWebRequest();
-
-        if (www.result == UnityEngine.Networking.UnityWebRequest.Result.Success)
+        for (int i = 0; i < 30; i++)
         {
-            dataAsJson = www.downloadHandler.text;
-        }
-        else
-        {
-            FindObjectOfType<WordHighlighting>().gameObject.GetComponent<TextMeshProUGUI>().text = www.error;
-            yield break; // Exit the coroutine if file loading fails
-        }
+            string pagepath = $"{pageRoot}/Page_{i + 1}/JSONPage_{i + 1}.json";
 
-        string path = Path.Combine(Application.streamingAssetsPath, "ChickenAndTheFox");
-        var Pagefiles = Directory.GetDirectories(path).Where(T => Path.GetFileName(T).Equals("Facts") == false).ToList();
-      //  UnityEngine.Networking.UnityWebRequest www = UnityEngine.Networking.UnityWebRequest.Get(factPath);
+            UnityEngine.Networking.UnityWebRequest www = UnityEngine.Networking.UnityWebRequest.Get(pagepath);
+            yield return www.SendWebRequest();
+
+            if (www.result == UnityEngine.Networking.UnityWebRequest.Result.Success)
+            {
+                Debug.Log(pagepath);
+                dataAsJson = www.downloadHandler.text;
+                Page newPage = JsonUtility.FromJson<Page>(dataAsJson);
+                PageContents newContents = new PageContents();
+                newContents.Texts = newPage.Texts;
+
+                loadPageCanvasses(newPage, newContents);
+
+                BookManager.AddNewPage(newPage.pageNumber, newContents);
+            }
+            else
+            {
+
+                setUpEnvironmentCanvasses();
+                OnFilesDownloaded?.Invoke();
+                yield break; // Exit the coroutine if file loading fails
+            }
 
 
-
-
-        for (int i = 0; i < Pagefiles.Count(); i++)
-        {
-
-            string pagepath = $"{Pagefiles[i]}/JSONPage_{i + 1}.json";
-            string text = File.ReadAllText(pagepath);
-            Page newPage = JsonUtility.FromJson<Page>(text);
-            PageContents newContents = new PageContents();
-            newContents.Texts = newPage.Texts;
-            loadPageCanvasses(newPage, newContents);
-
-            BookManager.AddNewPage(newPage.pageNumber, newContents);
         }
 
-        //     OnFilesDownloaded?.Invoke();
+
+
     }
-    // JSONPage_1
+
 
     private void loadPageCanvasses(Page page, PageContents newPageContents)
     {
+        string pageRoot = Path.Combine(Application.persistentDataPath, "..", "TaylorsTalesAssets", "ChickenAndTheFox/Pages");
+        string Environmentpath = $"{pageRoot}/Page_{page.pageNumber}/Page_{page.pageNumber}_EnvironmentCanvas.unity3d";
+        string Interactionpath = $"{pageRoot}/Page_{page.pageNumber}/Page_{page.pageNumber}_InteractionCanvas.unity3d";
 
-        var files = Directory.GetDirectories(DataPath).Where(T => Path.GetFileName(T).Equals("Facts") == false).ToList();
+        var Envbundle = AssetBundle.LoadFromFile(Environmentpath);
 
-        string Environmentpath = $"{DataPath}/Page_{page.pageNumber}/Page_{page.pageNumber}_EnvironmentCanvas.unity3d";
-        string Interactionpath = $"{DataPath}/Page_{page.pageNumber}/Page_{page.pageNumber}_InteractionCanvas.unity3d";
-
-        if (File.Exists(Environmentpath))
+        if (Envbundle != null)
         {
-            var Envbundle = AssetBundle.LoadFromFile(Environmentpath);
+
 
 
             //if (page.pageNumber == 1)
@@ -166,10 +162,10 @@ public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,c
             newPageContents.SkyboxMaterial = null;
         }
 
-
-        if (File.Exists(Interactionpath))
+        var Intbundle = AssetBundle.LoadFromFile(Interactionpath);
+        if (Intbundle != null)
         {
-            var Intbundle = AssetBundle.LoadFromFile(Interactionpath);
+
             for (int i = 0; i < Intbundle.GetAllAssetNames().Length; i++)
             {
                 Debug.Log(Intbundle.GetAllAssetNames()[i]);
@@ -211,7 +207,7 @@ public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,c
         }
         Debug.Log("[pages instantiated");
 
-        //       OnPagesReady?.Invoke(1); // soon to be player prefs last pages number
+        OnPagesReady?.Invoke(1); // soon to be player prefs last pages number
 
     }
 
