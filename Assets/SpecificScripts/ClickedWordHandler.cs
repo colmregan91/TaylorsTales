@@ -18,8 +18,9 @@ public class ClickedWordHandler : MonoBehaviour
     private float ScrollPos;
     private bool canClickonWord => wordHighlight.getIsLerping() == false;
     private bool isSpecialWordTemp;
-    public Action OnWordClicked;
-    public Action<string> OnSpecialWordClicked;
+    public static Action OnWordClicked;
+    public static Action<string> OnSpecialWordClicked;
+
 
     private void Awake()
     {

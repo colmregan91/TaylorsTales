@@ -11,13 +11,37 @@ public class AzureDownloader : MonoBehaviour
     private const string fileName = "ChickenAndTheFox";
     private void Start()
     {
-        string url = $"https://taylorstalesassets.blob.core.windows.net/bookdata/ChickenAndTheFox/Page_1/JSONPage_1.json";
+        string url = $"https://taylorstalesassets.blob.core.windows.net/bookdata/ChickenAndTheFox/Page_1/Page_1_EnvironmentCanvas.unity3d";
 
         StartCoroutine(DownloadFileRoutine(url));
     }
 
     private IEnumerator DownloadFileRoutine(string url)
     {
+
+        UnityWebRequest Envrequest = UnityWebRequestAssetBundle.GetAssetBundle(url);
+
+        yield return Envrequest.SendWebRequest();
+        if (Envrequest.result == UnityWebRequest.Result.Success)
+        {
+            AssetBundle Envbundle = DownloadHandlerAssetBundle.GetContent(Envrequest);
+            var Envassets = Envbundle.GetAllAssetNames();
+
+            var Envprefab = Envbundle.LoadAssetAsync<GameObject>(Envassets[1]);
+       
+            yield return Envprefab;
+            Instantiate(Envprefab.asset);
+            var pageSkybox = Envbundle.LoadAssetAsync<Material>(Envbundle.GetAllAssetNames()[0]);
+            yield return pageSkybox;
+        }
+
+
+
+
+
+
+
+            yield break;
         using (UnityWebRequest webRequest = UnityWebRequest.Get(url))
         {
             yield return webRequest.SendWebRequest();

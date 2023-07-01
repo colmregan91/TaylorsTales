@@ -12,7 +12,7 @@ public class BookManager : MonoBehaviour
     public static Action<int,PageContents> OnPageChanged;
 
     private PageContents currentPage;
-    private int currentPageNumber = 1;
+    public static int currentPageNumber = 1;
 
     [SerializeField] private TextMeshProUGUI textObj;
     private int currentLangIndex => (int)LanguagesManager.CurrentLanguage;
@@ -20,6 +20,9 @@ public class BookManager : MonoBehaviour
     {
         Downloader.OnPagesReady += changePage;
         LanguagesManager.OnLanguageChanged += handleLanguageChange;
+        ButtonCanvas.OnNextPageClicked += NextPage;
+        ButtonCanvas.OnPrevPageClicked += PrevPage;
+
     }
 
     public static void AddNewPage(int pageNumber, PageContents contents)
@@ -52,6 +55,7 @@ public class BookManager : MonoBehaviour
         currentPage.CanvasHolder.SetActive(true);
         OnPageChanged?.Invoke(currentPageNumber,currentPage);
     }
+
     public void PrevPage()
     {
         changePage(--currentPageNumber);
@@ -65,7 +69,12 @@ public class BookManager : MonoBehaviour
     {
         Downloader.OnPagesReady -= changePage;
         LanguagesManager.OnLanguageChanged -= handleLanguageChange;
+        ButtonCanvas.OnNextPageClicked -= NextPage;
+        ButtonCanvas.OnPrevPageClicked -=  PrevPage;
+
     }
+
+
 
 }
 

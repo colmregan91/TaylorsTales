@@ -23,7 +23,7 @@ public class TouchToKill : MonoBehaviour
             fallAsync();
     }
 
-    private async void fallAsync() // YOU NEED TO MAKE THIS A CORO SO YOU CAN CANCEL IT, OR ELSE FIND A WAY TO CANCEL ASYNC CALLS
+    private async void fallAsync()
     {
         if (rb == null) return;
         rb.constraints = RigidbodyConstraints2D.None;

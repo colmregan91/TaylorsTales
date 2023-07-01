@@ -5,12 +5,14 @@ using UnityEngine;
 using TMPro;
 using System.Linq;
 using UnityEngine.UI;
+using UnityEngine.Networking;
+
 public class FactManager : MonoBehaviour
 {
+
     public static Dictionary<TriggerWords, FactContents> FactsAndImages = new Dictionary<TriggerWords, FactContents>();
 
     [SerializeField] private Animator anim;
-    [SerializeField] private ClickedWordHandler clickedWordHandler;
     [SerializeField] private TextMeshProUGUI textObj;
     [SerializeField] private Image imageObj;
     [SerializeField] private GameObject factImageHolder;
@@ -26,17 +28,22 @@ public class FactManager : MonoBehaviour
     private int curImageIndex;
     private int currentLangIndex => (int)LanguagesManager.CurrentLanguage;
 
+    private AssetBundle curBundle;
+
+    public static Action OnFactsShown;
+    public static Action OnFactsHidden;
+
     private void Awake()
     {
-        clickedWordHandler.OnSpecialWordClicked += HandleFactClicked;
-        clickedWordHandler.OnWordClicked += hideFact;
+        ClickedWordHandler.OnSpecialWordClicked += HandleFactClicked;
+        ClickedWordHandler.OnWordClicked += hideFact;
         LanguagesManager.OnLanguageChanged += handleLanguageChange;
     }
 
     private void OnDisable()
     {
-        clickedWordHandler.OnSpecialWordClicked -= HandleFactClicked;
-        clickedWordHandler.OnWordClicked -= hideFact;
+        ClickedWordHandler.OnSpecialWordClicked -= HandleFactClicked;
+        ClickedWordHandler.OnWordClicked -= hideFact;
         LanguagesManager.OnLanguageChanged -= handleLanguageChange;
     }
 
@@ -44,7 +51,7 @@ public class FactManager : MonoBehaviour
     {
         if (!isShowingFact) return;
 
-        StartCoroutine(resetFacts());
+        StartCoroutine(resetFacts(true));
     }
 
     private void handleLanguageChange(Languages lang)
@@ -60,8 +67,8 @@ public class FactManager : MonoBehaviour
             Debug.Log("same");
             return;
         }
-       
 
+        OnFactsShown?.Invoke();
         StartCoroutine(DisplayFactContent(triggerWords));
     }
 
@@ -70,40 +77,72 @@ public class FactManager : MonoBehaviour
         FactsAndImages.Add(factTriggers, FactContents);
     }
 
-    private IEnumerator resetFacts()
+    private IEnumerator resetFacts(bool HidingFacts)
     {
+
+        if (HidingFacts)
+        {
+            OnFactsHidden?.Invoke();
+        }
         anim.SetTrigger(triggerHashUnclick);
+
+
         yield return secondWait;
+        textObj.text = string.Empty;
+
         isShowingFact = false;
         scrollBar.value = 1;
         curFact = null;
         curFactImages = null;
+        if (curBundle != null)
+        {
+            var unload = curBundle.UnloadAsync(true);
+            yield return unload;
+            Debug.Log("unloaded");
+        }
+
     }
 
 
     private IEnumerator DisplayFactContent(TriggerWords triggerWords)
     {
-     
+   
         if (isShowingFact)
         {
-            yield return resetFacts();
-            
+            yield return resetFacts(false);
+
         }
+
         curImageIndex = 0;
         curFact = FactsAndImages[triggerWords];
         setText(currentLangIndex);
-        var Envassets = curFact.imagesBundle.GetAllAssetNames();
-        curFactImages = new Sprite[Envassets.Length];
 
-        for (int i = 0; i < Envassets.Length; i++)
+        UnityWebRequest request = UnityWebRequestAssetBundle.GetAssetBundle(curFact.bundlePath);
+
+        yield return request.SendWebRequest();
+        if (request.result == UnityWebRequest.Result.Success)
         {
-            curFactImages[i] = curFact.imagesBundle.LoadAsset<Sprite>(Envassets[i]);
+            curBundle = DownloadHandlerAssetBundle.GetContent(request);
+
+            var assets = curBundle.GetAllAssetNames();
+            curFactImages = new Sprite[assets.Length];
+
+            for (int i = 0; i < curFactImages.Length; i++)
+            {
+                curFactImages[i] = curBundle.LoadAsset<Sprite>(assets[i]);
+            }
+            SetButtonVisuals();
+            imageObj.sprite = curFactImages[curImageIndex];
+            anim.SetTrigger(triggerHashClick);
+            isShowingFact = true;
+            // Use the loaded AssetBundle
         }
-        SetButtonVisuals();
-        imageObj.sprite = curFactImages[curImageIndex];
-        anim.SetTrigger(triggerHashClick);
-        isShowingFact = true;
+        else
+        {
+            Debug.LogError("Failed downllading bundle");
+        }
     }
+
 
     private void SetButtonVisuals()
     {
@@ -142,11 +181,11 @@ public class TriggerWords
 public class FactContents
 {
     public string[] FactInfo;
-    public AssetBundle imagesBundle;
+    public string bundlePath;
 
-    public FactContents(string[] _factInfo, AssetBundle _bundle)
+    public FactContents(string[] _factInfo, string _bundlePath)
     {
         FactInfo = _factInfo;
-        imagesBundle = _bundle;
+        bundlePath = _bundlePath;
     }
 }
