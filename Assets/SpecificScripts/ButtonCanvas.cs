@@ -11,6 +11,7 @@ public class ButtonCanvas : MonoBehaviour
 
     public static Action OnNextPageClicked;
     public static Action OnPrevPageClicked;
+    private Action OnTransitionEnd;
 
     [SerializeField] private Image sliderImg;
 
@@ -19,10 +20,26 @@ public class ButtonCanvas : MonoBehaviour
     [SerializeField] private AudioSource TurnAudio;
 
     [SerializeField] private GameObject[] ObjsToToggle;
-    private void Awake()
+    private bool isTransitioning;
+
+
+    private void OnEnable()
     {
+     //   StartCoroutine(TransitionCoro(false, null));
+        Downloader.OnPagesReady += manualTransition;
+        Downloader.OnPageDownloaded += CheckDownloadedPage;
+    }
 
+    private void OnDisable()
+    {
+        Downloader.OnPageDownloaded -= CheckDownloadedPage;
+        Downloader.OnPagesReady -= manualTransition;
+    }
 
+    private void manualTransition(int y)
+    {
+        TurnAudio.Play();
+        StartCoroutine(TransitionCoro(false, null));
     }
     public void PrevPage()
     {
@@ -37,7 +54,8 @@ public class ButtonCanvas : MonoBehaviour
 
     private IEnumerator TransitionCoro(bool isNextPage, Action callback)
     {
-        foreach(GameObject but in ObjsToToggle)
+        isTransitioning = true;
+        foreach (GameObject but in ObjsToToggle)
         {
             but.SetActive(false);
         }
@@ -59,9 +77,9 @@ public class ButtonCanvas : MonoBehaviour
         }
         callback?.Invoke();
 
-          curimgcol = sliderImg.color;
+        curimgcol = sliderImg.color;
 
-         elapsedTime = 0;
+        elapsedTime = 0;
 
 
 
@@ -80,27 +98,33 @@ public class ButtonCanvas : MonoBehaviour
         }
         foreach (GameObject but in ObjsToToggle)
         {
-            but.gameObject.SetActive(true);
+            but.SetActive(true);
         }
-        CheckDownloadedPage();
-        checkButtonVisuals(BookManager.currentPageNumber);
+        isTransitioning = false;
+        checkButtonVisuals();
     }
 
-   
 
     private void CheckDownloadedPage()
     {
-        if (BookManager.Pages.ContainsKey(BookManager.currentPageNumber + 1))
+        if (!isTransitioning)
         {
-            nextPageButton.gameObject.SetActive(true);
+            checkButtonVisuals();
         }
+
     }
 
 
-    private void checkButtonVisuals(int pageNumber)
+
+    private void checkButtonVisuals()
     {
-        prevPageButton.gameObject.SetActive(pageNumber > 1);
-        nextPageButton.gameObject.SetActive(pageNumber < BookManager.bookLength);
+       
+        bool hasNextPage = BookManager.Pages.ContainsKey(BookManager.currentPageNumber + 1);
+        nextPageButton.gameObject.SetActive(hasNextPage);
+       
+        bool hasPrevPage = BookManager.Pages.ContainsKey(BookManager.currentPageNumber - 1);
+        prevPageButton.gameObject.SetActive(hasPrevPage);
+
     }
 
 }

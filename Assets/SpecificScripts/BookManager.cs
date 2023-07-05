@@ -72,6 +72,8 @@ public class BookManager : MonoBehaviour
         ButtonCanvas.OnNextPageClicked -= NextPage;
         ButtonCanvas.OnPrevPageClicked -=  PrevPage;
 
+        PlayerPrefs.SetInt("Page", currentPageNumber);
+
     }
 
 

@@ -821,21 +821,18 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Change requests to not jump out when it fails
+  m_text: '
 
 
-    fix combining paths
-    and strings
+    fix combining paths and strings
 
 
-    make text reqests in 1, combine all text in 1 json file
+    fix bird flying on tick,
+    swipe behavior
 
 
-    clean
-    up garbage
 
-
-    page transition cleans up alot of bugs
+    clean up garbage
 
 
     look at addressables
@@ -2343,7 +2340,7 @@ MonoBehaviour:
   - {r: 0.9452382, g: 1, b: 0.031372547, a: 1}
   - {r: 0.55542713, g: 0.031372547, b: 1, a: 1}
   - {r: 1, g: 0.5222889, b: 0.031372547, a: 1}
-  - {r: 1, g: 0.031372547, b: 0.5012041, a: 1}
+  - {r: 0.8814277, g: 0.031372547, b: 1, a: 1}
   - {r: 0.031372547, g: 1, b: 0.7065119, a: 1}
 --- !u!1 &1084164305
 GameObject:
@@ -3247,7 +3244,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1531504426}
   - component: {fileID: 1531504425}
-  - component: {fileID: 1531504427}
   m_Layer: 0
   m_Name: Downloader
   m_TagString: Untagged
@@ -3268,6 +3264,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasHolder: {fileID: 1138118007}
+  DownloadFromServer: 1
+  cam: {fileID: 117869742}
 --- !u!4 &1531504426
 Transform:
   m_ObjectHideFlags: 0
@@ -3283,18 +3281,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1531504427
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1531504424}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f508eff6dbdb6eb47866d327f9c47efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1561691248
 GameObject:
   m_ObjectHideFlags: 0
@@ -4494,7 +4480,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 1
   m_UseSpriteMesh: 0

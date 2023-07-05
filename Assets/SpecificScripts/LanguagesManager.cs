@@ -16,7 +16,7 @@ public class LanguagesManager : MonoBehaviour
     [SerializeField] private Button irishButton;
     [SerializeField] private Button frenchButton;
     [SerializeField] private Button spanishButton;
-    private void Awake()
+    private void OnEnable ()
     {
         languageButton.onClick.AddListener(ToggleSymbols);
 

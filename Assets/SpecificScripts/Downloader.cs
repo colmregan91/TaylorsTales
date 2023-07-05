@@ -12,7 +12,7 @@ public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,c
     private string DataPath;
 
     public static Action<int> OnPagesReady;
-
+    public static Action OnPageDownloaded;
     private GameObject EnvironmentCanvasTemp;
     private GameObject InteractionCavnasTemp;
     private PageContents CurrentPageTemp;
@@ -21,17 +21,29 @@ public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,c
     private const string BOOKNAME = "ChickenAndTheFox";
     private const string BOOKASSETFOLDER = "TaylorsTalesAssets";
 
+    private int LastSavedPage => PlayerPrefs.GetInt("Page");
+    public bool DownloadFromServer;
+
+    [SerializeField] private Camera cam;
+    private string GetInitialPath()
+    {
+        return DownloadFromServer ? "https://taylorstalesassets.blob.core.windows.net/bookdata/ChickenAndTheFox" :
+            $"{Application.persistentDataPath}/../TaylorsTalesAssets/ChickenAndTheFox";
+    }
+
     private void Start()
     {
+          // PlayerPrefs.SetInt("Page", );
+
         StartCoroutine(loadFactsAndroid());
-        
+
         StartCoroutine(loadPages());
 
     }
 
     private IEnumerator loadFactsAndroid()
     {
-        string factPath = Path.Combine(Application.persistentDataPath, "..", BOOKASSETFOLDER, BOOKNAME, "Facts", "Facts.json");
+        string factPath = Path.Combine($"{GetInitialPath()}", "Facts", "Facts.json");
 
 
         UnityWebRequest www = UnityWebRequest.Get(factPath);
@@ -62,7 +74,7 @@ public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,c
             Fact curfact = factsList.Facts[i];
             TriggerWords triggers = new TriggerWords(curfact.TriggerWords);
 
-            FactContents contents = new FactContents(curfact.FactInfo, Path.Combine(Application.persistentDataPath, "..", BOOKASSETFOLDER, BOOKNAME, "Facts", curfact.imagesBundle + ".unity3d"));
+            FactContents contents = new FactContents(curfact.FactInfo, Path.Combine($"{GetInitialPath()}", "Facts", curfact.imagesBundle + ".unity3d"));
             FactManager.AddToFactList(triggers, contents);
 
         }
@@ -72,7 +84,8 @@ public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,c
 
     private IEnumerator loadPages()
     {
-        string pageRoot = Path.Combine(Application.persistentDataPath, "..", BOOKASSETFOLDER, BOOKNAME, "Pages", "JSONPageData.json");
+
+        string pageRoot = Path.Combine($"{GetInitialPath()}", "Pages", "JSONPageData.json");
         string dataAsJson;
 
         UnityWebRequest www = UnityWebRequest.Get(pageRoot);
@@ -81,7 +94,10 @@ public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,c
         if (www.result == UnityWebRequest.Result.Success)
         {
             dataAsJson = www.downloadHandler.text;
-            StartCoroutine(LoadPageTexts(dataAsJson));
+            PageTextList newPageList = JsonUtility.FromJson<PageTextList>(dataAsJson);
+
+            StartCoroutine(LoadPageTexts(newPageList, LastSavedPage, newPageList.pageTexts.Count));
+            StartCoroutine(LoadPageTexts(newPageList, LastSavedPage-2, -1));
         }
         else
         {
@@ -94,52 +110,35 @@ public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,c
 
     }
 
-    private IEnumerator LoadPageTexts(string jsonPages)
+    private IEnumerator LoadPageTexts(PageTextList jsonPages, int fromPage, int toPage)
     {
-        PageTextList newPageList = JsonUtility.FromJson<PageTextList>(jsonPages);
-
-        for (int i = 0; i < newPageList.pageTexts.Count; i++)
+        if (toPage > fromPage)
         {
-            PageContents newContents = new PageContents();
-            Page pageTemp = newPageList.pageTexts[i];
-            newContents.Texts = pageTemp.Texts;
-            yield return loadPageCanvasses(pageTemp.pageNumber, newContents);
-        }
-    }
-    private IEnumerator loadPageCanvasses(int pageNumber, PageContents newPageContents)
-    {
-        string pageRoot = Path.Combine(Application.persistentDataPath, "..", "TaylorsTalesAssets", "ChickenAndTheFox/Pages");
-        string Environmentpath = $"{pageRoot}/Page_{pageNumber}_EnvironmentCanvas.unity3d";
-        string Interactionpath = $"{pageRoot}/Page_{pageNumber}_InteractionCanvas.unity3d";
-
-
-        UnityWebRequest Intrequest = UnityWebRequestAssetBundle.GetAssetBundle(Interactionpath);
-
-        yield return Intrequest.SendWebRequest();
-        if (Intrequest.result == UnityWebRequest.Result.Success)
-        {
-            AssetBundle Intbundle = DownloadHandlerAssetBundle.GetContent(Intrequest);
-            if (Intbundle != null)
+            for (int i = fromPage - 1; i < toPage; i++)
             {
-                var req = Intbundle.LoadAssetAsync<GameObject>(Intbundle.GetAllAssetNames()[0]);
-                yield return req;
-                newPageContents.InteractionCanvas = (GameObject)req.asset;
-                newPageContents.InteractionCanvas.GetComponent<Canvas>().worldCamera = Camera.main;
+                PageContents newContents = new PageContents();
+                Page pageTemp = jsonPages.pageTexts[i];
+                newContents.Texts = pageTemp.Texts;
+                yield return loadPageCanvasses(pageTemp.pageNumber, newContents);
             }
-            else
-            {
-                Debug.LogWarning("no interaction canvas or skyBox for page " + (pageNumber));
-                newPageContents.InteractionCanvas = null;
-            }
-
-            yield return Intbundle.UnloadAsync(false);
         }
         else
         {
-            Debug.LogError("error for int canvas " + pageNumber);
+            for (int i = fromPage; i > toPage; i--)
+            {
+                PageContents newContents = new PageContents();
+                Page pageTemp = jsonPages.pageTexts[i];
+                newContents.Texts = pageTemp.Texts;
+                yield return loadPageCanvasses(pageTemp.pageNumber, newContents);
+            }
         }
 
 
+    }
+    private IEnumerator loadPageCanvasses(int pageNumber, PageContents newPageContents)
+    {
+        string pageRoot = Path.Combine($"{GetInitialPath()}", "Pages");
+        string Environmentpath = $"{pageRoot}/Page_{pageNumber}_EnvironmentCanvas.unity3d";
 
         UnityWebRequest Envrequest = UnityWebRequestAssetBundle.GetAssetBundle(Environmentpath);
 
@@ -155,10 +154,14 @@ public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,c
 
                 var Envprefab = Envbundle.LoadAssetAsync<GameObject>(Envassets[1]);
                 yield return Envprefab;
+                var Intprefab = Envbundle.LoadAssetAsync<GameObject>(Envassets[2]);
+                yield return Intprefab;
                 var pageSkybox = Envbundle.LoadAssetAsync<Material>(Envbundle.GetAllAssetNames()[0]);
                 yield return pageSkybox;
                 newPageContents.EnvironmentCanvas = (GameObject)Envprefab.asset;
                 newPageContents.SkyboxMaterial = (Material)pageSkybox.asset;
+                newPageContents.InteractionCanvas = (GameObject)Intprefab.asset;
+                newPageContents.InteractionCanvas.GetComponent<Canvas>().worldCamera = cam;
                 setUpEnvironmentCanvasses(pageNumber, newPageContents);
 
             }
@@ -189,7 +192,7 @@ public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,c
 
         if (EnvironmentCanvasTemp != null)
         {
-            EnvironmentCanvasTemp.GetComponent<Canvas>().worldCamera = Camera.main;
+            EnvironmentCanvasTemp.GetComponent<Canvas>().worldCamera = cam;
             Instantiate(EnvironmentCanvasTemp, newPage.transform);
         }
 
@@ -198,10 +201,10 @@ public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,c
         BookManager.AddNewPage(number, contents);
         BookManager.Pages[number].CanvasHolder = newPage;
 
-        Debug.Log("downloaded " + number);
-        if (number == 1)
+        OnPageDownloaded?.Invoke();
+        if (number == LastSavedPage)
         {
-            OnPagesReady?.Invoke(1); // soon to be player prefs last pages number
+            OnPagesReady?.Invoke(LastSavedPage); // soon to be player prefs last pages number
         }
     }
 
