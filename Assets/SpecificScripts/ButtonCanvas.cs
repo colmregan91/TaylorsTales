@@ -11,7 +11,6 @@ public class ButtonCanvas : MonoBehaviour
 
     public static Action OnNextPageClicked;
     public static Action OnPrevPageClicked;
-    private Action OnTransitionEnd;
 
     [SerializeField] private Image sliderImg;
 
@@ -19,9 +18,8 @@ public class ButtonCanvas : MonoBehaviour
 
     [SerializeField] private AudioSource TurnAudio;
 
-    [SerializeField] private GameObject[] ObjsToToggle;
     private bool isTransitioning;
-
+    [SerializeField] private GameObject Holder;
 
     private void OnEnable()
     {
@@ -55,10 +53,7 @@ public class ButtonCanvas : MonoBehaviour
     private IEnumerator TransitionCoro(bool isNextPage, Action callback)
     {
         isTransitioning = true;
-        foreach (GameObject but in ObjsToToggle)
-        {
-            but.SetActive(false);
-        }
+        Holder.SetActive(false);
         sliderImg.fillOrigin = isNextPage ? (int)Image.OriginHorizontal.Left : (int)Image.OriginHorizontal.Right;
         Color curimgcol = sliderImg.color;
         float elapsedTime = 0;
@@ -96,10 +91,7 @@ public class ButtonCanvas : MonoBehaviour
             //   LoadingText.color = loadingColor;
             yield return null;
         }
-        foreach (GameObject but in ObjsToToggle)
-        {
-            but.SetActive(true);
-        }
+        Holder.SetActive(true);
         isTransitioning = false;
         checkButtonVisuals();
     }
