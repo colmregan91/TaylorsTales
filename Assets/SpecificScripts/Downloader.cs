@@ -162,6 +162,7 @@ public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,c
                 newPageContents.SkyboxMaterial = (Material)pageSkybox.asset;
                 newPageContents.InteractionCanvas = (GameObject)Intprefab.asset;
                 newPageContents.InteractionCanvas.GetComponent<Canvas>().worldCamera = cam;
+                newPageContents.interactions = newPageContents.InteractionCanvas.GetComponentsInChildren<TouchBase>();
                 setUpEnvironmentCanvasses(pageNumber, newPageContents);
 
             }

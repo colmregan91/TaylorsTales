@@ -9,4 +9,5 @@ public class PageContents
     public GameObject InteractionCanvas;
     public Material SkyboxMaterial;
     public string[] Texts;
+    public TouchBase[] interactions;
 }

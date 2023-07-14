@@ -8,7 +8,7 @@ public class CanvasManager : MonoBehaviour
     [SerializeField] private Camera cam;
 
     private GameObject canvasHolder;
-    private TouchBase[] interactions;
+    private PageContents curPageContents;
     private void Awake()
     {
         BookManager.OnPageChanged += SetInteractionCanvas;
@@ -28,14 +28,14 @@ public class CanvasManager : MonoBehaviour
             Destroy(canvasHolder);
 
         if (contents.InteractionCanvas == null) return;
-        canvasHolder = Instantiate(contents.InteractionCanvas, transform);
+        curPageContents = contents;
+        canvasHolder = Instantiate(curPageContents.InteractionCanvas, transform);
 
-        interactions = canvasHolder.GetComponentsInChildren<TouchBase>();
-        Debug.Log(interactions.Length + " interactions");
+ 
     }
     private void DisableInteractions()
     {
-        foreach (TouchBase tch in interactions)
+        foreach (TouchBase tch in curPageContents.interactions)
         {
       
             tch.SetParticleEmission(false);
@@ -46,7 +46,7 @@ public class CanvasManager : MonoBehaviour
 
     private void EnableInteractions()
     {
-        foreach(TouchBase tch in interactions)
+        foreach(TouchBase tch in curPageContents.interactions)
         {
             tch.CanClick = true;
             tch.SetParticleEmission(true);
