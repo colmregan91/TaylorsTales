@@ -25,7 +25,7 @@ public class LanguagesManager : MonoBehaviour
         frenchButton.onClick.AddListener(SetFrench);
         spanishButton.onClick.AddListener(SetSpanish);
 
-        Downloader.OnPagesReady += CheckAvailableLanguages;
+        CheckAvailableLanguages(BookManager.Pages[BookManager.currentPageNumber]);
     }
 
     private void OnDisable()
@@ -37,15 +37,10 @@ public class LanguagesManager : MonoBehaviour
         frenchButton.onClick.RemoveListener(SetFrench);
         spanishButton.onClick.RemoveListener(SetSpanish);
 
-        Downloader.OnPagesReady -= CheckAvailableLanguages;
     }
 
-    private void CheckAvailableLanguages(int number) // left this way for readability, add to this method when adding new languages
+    private void CheckAvailableLanguages(PageContents checkedPage) // left this way for readability, add to this method when adding new languages
     {
-        PageContents checkedPage = BookManager.Pages[number];
-
-
-
         if (checkedPage.Texts[(int)Languages.English] == string.Empty)
         {
             englishButton.gameObject.SetActive(false);

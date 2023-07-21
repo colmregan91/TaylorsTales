@@ -12,17 +12,32 @@ public class BookManager : MonoBehaviour
     public static Action<int,PageContents> OnPageChanged;
 
     private PageContents currentPage;
-    public static int currentPageNumber = 1;
-
+    public static int currentPageNumber = 0;
+    public static int NextPage => currentPageNumber + 1;
+    public static int PrevPage => currentPageNumber - 1;
+    public static bool isTitlePage => currentPageNumber==0;
     [SerializeField] private TextMeshProUGUI textObj;
+
     private int currentLangIndex => (int)LanguagesManager.CurrentLanguage;
+
+    public static int LastSavedPage => PlayerPrefs.GetInt("Page");
     private void Awake()
     {
-        Downloader.OnPagesReady += changePage;
-        LanguagesManager.OnLanguageChanged += handleLanguageChange;
-        ButtonCanvas.OnNextPageClicked += NextPage;
-        ButtonCanvas.OnPrevPageClicked += PrevPage;
 
+        LanguagesManager.OnLanguageChanged += handleLanguageChange;
+        ButtonCanvas.OnNextPageClicked += SetNextPage;
+        ButtonCanvas.OnPrevPageClicked += SetPrevPage;
+
+        if (isTitlePage)
+        {
+            MainMenuCanvas.OnContinueClicked += LoadLastSavedPAge;
+        }
+
+    }
+
+    public static bool CheckDownloadedPage(int number)
+    {
+        return Pages.ContainsKey(number);
     }
 
     public static void AddNewPage(int pageNumber, PageContents contents)
@@ -54,26 +69,35 @@ public class BookManager : MonoBehaviour
         setupSkyBox(currentPage);
         currentPage.CanvasHolder.SetActive(true);
         OnPageChanged?.Invoke(currentPageNumber,currentPage);
+
     }
 
-    public void PrevPage()
+    public void LoadLastSavedPAge()
     {
-        changePage(--currentPageNumber);
+        changePage(LastSavedPage);
+        MainMenuCanvas.OnContinueClicked -= LoadLastSavedPAge;
     }
-    public void NextPage()
+
+    public void SetPrevPage()
     {
-        changePage(++currentPageNumber);
+        changePage(PrevPage);
+    }
+    public void SetNextPage()
+    {
+        changePage(NextPage);
     }
 
     private void OnDisable()
     {
-        Downloader.OnPagesReady -= changePage;
+        Pages.Clear();
         LanguagesManager.OnLanguageChanged -= handleLanguageChange;
-        ButtonCanvas.OnNextPageClicked -= NextPage;
-        ButtonCanvas.OnPrevPageClicked -=  PrevPage;
-
-        PlayerPrefs.SetInt("Page", currentPageNumber);
-
+        ButtonCanvas.OnNextPageClicked -= SetNextPage;
+        ButtonCanvas.OnPrevPageClicked -=  SetPrevPage;
+        MainMenuCanvas.OnContinueClicked += LoadLastSavedPAge;
+        if (!isTitlePage)
+        {
+            PlayerPrefs.SetInt("Page", currentPageNumber);
+        }
     }
 
 

@@ -10,9 +10,7 @@ using UnityEngine.Networking;
 public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,create asset bundle utils class
 {
     private string DataPath;
-
-    public static Action<int> OnPagesReady;
-    public static Action OnPageDownloaded;
+    public static Action<int> OnPageDownloaded;
     private GameObject EnvironmentCanvasTemp;
     private GameObject InteractionCavnasTemp;
     private PageContents CurrentPageTemp;
@@ -21,7 +19,6 @@ public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,c
     private const string BOOKNAME = "ChickenAndTheFox";
     private const string BOOKASSETFOLDER = "TaylorsTalesAssets";
 
-    private int LastSavedPage => PlayerPrefs.GetInt("Page");
     public bool DownloadFromServer;
 
     [SerializeField] private Camera cam;
@@ -33,7 +30,7 @@ public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,c
 
     private void Start()
     {
-          // PlayerPrefs.SetInt("Page", );
+        AssetBundle.UnloadAllAssetBundles(true);
 
         StartCoroutine(loadFactsAndroid());
 
@@ -96,8 +93,8 @@ public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,c
             dataAsJson = www.downloadHandler.text;
             PageTextList newPageList = JsonUtility.FromJson<PageTextList>(dataAsJson);
 
-            StartCoroutine(LoadPageTexts(newPageList, LastSavedPage, newPageList.pageTexts.Count));
-            StartCoroutine(LoadPageTexts(newPageList, LastSavedPage-2, -1));
+            StartCoroutine(LoadPageTexts(newPageList, BookManager.LastSavedPage, newPageList.pageTexts.Count));
+            StartCoroutine(LoadPageTexts(newPageList, BookManager.LastSavedPage - 2, -1));
         }
         else
         {
@@ -173,7 +170,7 @@ public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,c
                 newPageContents.SkyboxMaterial = null;
             }
 
-            yield return Envbundle.UnloadAsync(false);
+             Envbundle.UnloadAsync(false);
         }
         else
         {
@@ -197,22 +194,18 @@ public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,c
             Instantiate(EnvironmentCanvasTemp, newPage.transform);
         }
 
-
         newPage.SetActive(false);
         BookManager.AddNewPage(number, contents);
         BookManager.Pages[number].CanvasHolder = newPage;
 
-        OnPageDownloaded?.Invoke();
-        if (number == LastSavedPage)
-        {
-            OnPagesReady?.Invoke(LastSavedPage); // soon to be player prefs last pages number
-        }
+        OnPageDownloaded?.Invoke(number);
+
     }
 
     private void OnDisable()
     {
         StopAllCoroutines();
-        AssetBundle.UnloadAllAssetBundles(true);
+
     }
 
 

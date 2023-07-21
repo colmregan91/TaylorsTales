@@ -67,7 +67,7 @@ public class FactManager : MonoBehaviour
             Debug.Log("same");
             return;
         }
-
+        Debug.Log("show");
         OnFactsShown?.Invoke();
         StartCoroutine(DisplayFactContent(triggerWords));
     }
@@ -96,9 +96,7 @@ public class FactManager : MonoBehaviour
         curFactImages = null;
         if (curBundle != null)
         {
-            var unload = curBundle.UnloadAsync(true);
-            yield return unload;
-            Debug.Log("unloaded");
+            yield return curBundle.UnloadAsync(true);
         }
 
     }

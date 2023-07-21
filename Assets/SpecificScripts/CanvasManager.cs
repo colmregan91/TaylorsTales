@@ -8,15 +8,15 @@ public class CanvasManager : MonoBehaviour
     [SerializeField] private Camera cam;
 
     private GameObject canvasHolder;
-    private PageContents curPageContents;
-    private void Awake()
+    private TouchBase[] interactions;
+    private void OnEnable()
     {
         BookManager.OnPageChanged += SetInteractionCanvas;
         FactManager.OnFactsShown += DisableInteractions;
         FactManager.OnFactsHidden += EnableInteractions;
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         BookManager.OnPageChanged -= SetInteractionCanvas;
         FactManager.OnFactsShown -= DisableInteractions;
@@ -24,29 +24,28 @@ public class CanvasManager : MonoBehaviour
     }
     private void SetInteractionCanvas(int page, PageContents contents)
     {
+
         if (canvasHolder != null)
             Destroy(canvasHolder);
 
         if (contents.InteractionCanvas == null) return;
-        curPageContents = contents;
-        canvasHolder = Instantiate(curPageContents.InteractionCanvas, transform);
 
- 
+        canvasHolder = Instantiate(contents.InteractionCanvas, transform);
+        interactions = canvasHolder.GetComponentsInChildren<TouchBase>();
     }
     private void DisableInteractions()
     {
-        foreach (TouchBase tch in curPageContents.interactions)
+        foreach (TouchBase tch in interactions)
         {
-      
+
             tch.SetParticleEmission(false);
             tch.CanClick = false;
-
         }
     }
 
     private void EnableInteractions()
     {
-        foreach(TouchBase tch in curPageContents.interactions)
+        foreach(TouchBase tch in interactions)
         {
             tch.CanClick = true;
             tch.SetParticleEmission(true);
@@ -54,14 +53,5 @@ public class CanvasManager : MonoBehaviour
         }
     }
 
-    //private void SetInteractions(bool value)
-    //{
-    //    foreach (TouchBase touches in interactions)
-    //    {
-
-    //        if (touches.clicked) continue;
-    //        touches.gameObject.SetActive(value);
-    //    }
-    //}
 }
 
