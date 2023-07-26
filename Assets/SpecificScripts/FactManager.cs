@@ -17,6 +17,7 @@ public class FactManager : MonoBehaviour
     [SerializeField] private Image imageObj;
     [SerializeField] private GameObject factImageHolder;
     [SerializeField] private Scrollbar scrollBar;
+    [SerializeField] private CanvasGroup canvasGroup;
 
     private int triggerHashClick = Animator.StringToHash("onclick");
     private int triggerHashUnclick = Animator.StringToHash("onunclick");
@@ -38,6 +39,7 @@ public class FactManager : MonoBehaviour
         ClickedWordHandler.OnSpecialWordClicked += HandleFactClicked;
         ClickedWordHandler.OnWordClicked += hideFact;
         LanguagesManager.OnLanguageChanged += handleLanguageChange;
+        BookManager.OnPageChanged += hideFactOnPageTurn;
     }
 
     private void OnDisable()
@@ -45,6 +47,13 @@ public class FactManager : MonoBehaviour
         ClickedWordHandler.OnSpecialWordClicked -= HandleFactClicked;
         ClickedWordHandler.OnWordClicked -= hideFact;
         LanguagesManager.OnLanguageChanged -= handleLanguageChange;
+        BookManager.OnPageChanged -= hideFactOnPageTurn;
+    }
+    private void hideFactOnPageTurn(int page, PageContents contents)
+    {
+        if (!isShowingFact) return;
+        canvasGroup.alpha = 0;
+        StartCoroutine(resetFacts(true));
     }
 
     private void hideFact()
@@ -64,10 +73,9 @@ public class FactManager : MonoBehaviour
         TriggerWords triggerWords = FactsAndImages.Keys.First(T => T.Words.Contains(word));
         if (curFact == FactsAndImages[triggerWords])
         {
-            Debug.Log("same");
             return;
         }
-        Debug.Log("show");
+
         OnFactsShown?.Invoke();
         StartCoroutine(DisplayFactContent(triggerWords));
     }
@@ -98,7 +106,7 @@ public class FactManager : MonoBehaviour
         {
             yield return curBundle.UnloadAsync(true);
         }
-
+        canvasGroup.alpha = 1;
     }
 
 

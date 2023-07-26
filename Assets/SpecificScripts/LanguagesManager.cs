@@ -16,7 +16,7 @@ public class LanguagesManager : MonoBehaviour
     [SerializeField] private Button irishButton;
     [SerializeField] private Button frenchButton;
     [SerializeField] private Button spanishButton;
-    private void OnEnable ()
+    private void OnEnable()
     {
         languageButton.onClick.AddListener(ToggleSymbols);
 
@@ -25,7 +25,8 @@ public class LanguagesManager : MonoBehaviour
         frenchButton.onClick.AddListener(SetFrench);
         spanishButton.onClick.AddListener(SetSpanish);
 
-        CheckAvailableLanguages(BookManager.Pages[BookManager.currentPageNumber]);
+        if (!BookManager.isTitlePage)
+            CheckAvailableLanguages(BookManager.Pages[BookManager.currentPageNumber]);
     }
 
     private void OnDisable()

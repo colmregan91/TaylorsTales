@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class CanvasManager : MonoBehaviour
 {
@@ -9,11 +10,15 @@ public class CanvasManager : MonoBehaviour
 
     private GameObject canvasHolder;
     private TouchBase[] interactions;
+
+    [SerializeField] private AudioMixerGroup mixerGroup;
     private void OnEnable()
     {
         BookManager.OnPageChanged += SetInteractionCanvas;
         FactManager.OnFactsShown += DisableInteractions;
         FactManager.OnFactsHidden += EnableInteractions;
+        OptionsManager.onOptionsShown += DisableInteractions;
+        OptionsManager.onOptionsHidden += EnableInteractions;
     }
 
     private void OnDisable()
@@ -21,6 +26,8 @@ public class CanvasManager : MonoBehaviour
         BookManager.OnPageChanged -= SetInteractionCanvas;
         FactManager.OnFactsShown -= DisableInteractions;
         FactManager.OnFactsHidden -= EnableInteractions;
+        OptionsManager.onOptionsShown -= DisableInteractions;
+        OptionsManager.onOptionsHidden -= EnableInteractions;
     }
     private void SetInteractionCanvas(int page, PageContents contents)
     {
@@ -32,9 +39,15 @@ public class CanvasManager : MonoBehaviour
 
         canvasHolder = Instantiate(contents.InteractionCanvas, transform);
         interactions = canvasHolder.GetComponentsInChildren<TouchBase>();
+
+        foreach (TouchBase tch in interactions)
+        {
+            tch.SetMixerGroup(mixerGroup);
+        }
     }
     private void DisableInteractions()
     {
+        if (interactions == null) return;
         foreach (TouchBase tch in interactions)
         {
 
@@ -45,7 +58,8 @@ public class CanvasManager : MonoBehaviour
 
     private void EnableInteractions()
     {
-        foreach(TouchBase tch in interactions)
+        if (interactions == null) return;
+        foreach (TouchBase tch in interactions)
         {
             tch.CanClick = true;
             tch.SetParticleEmission(true);

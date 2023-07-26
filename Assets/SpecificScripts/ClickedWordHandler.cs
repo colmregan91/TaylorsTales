@@ -12,7 +12,7 @@ public class ClickedWordHandler : MonoBehaviour
     [SerializeField] private Scrollbar scrollBar;
     [SerializeField] private RectTransform scrollViewTransform;
     [SerializeField] private WordHighlighting wordHighlight;
-
+    [SerializeField] private ScrollRect scrollRect;
     private int wordindex;
     private string clickedWordString;
     private float ScrollPos;
@@ -20,7 +20,7 @@ public class ClickedWordHandler : MonoBehaviour
     private bool isSpecialWordTemp;
     public static Action OnWordClicked;
     public static Action<string> OnSpecialWordClicked;
-
+    private bool interactable;
 
     private void Awake()
     {
@@ -32,9 +32,16 @@ public class ClickedWordHandler : MonoBehaviour
         scrollBar.value = 1;
     }
 
+    private void OnEnable()
+    {
+        OptionsManager.onOptionsShown += toggleInteractableOff;
+        OptionsManager.onOptionsHidden += toggleInteractableOn;
+    }
+
+
     void LateUpdate()
     {
-
+        if (!interactable) return;
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -61,6 +68,16 @@ public class ClickedWordHandler : MonoBehaviour
 
 
     }
+    private void toggleInteractableOn()
+    {
+        interactable = true;
+        scrollRect.enabled = true;
+    }
+    private void toggleInteractableOff()
+    {
+        interactable = false;
+        scrollRect.enabled = false;
+    }
 
     private void handleClickedWord(int wordIndex)
     {
@@ -82,5 +99,7 @@ public class ClickedWordHandler : MonoBehaviour
     private void OnDisable()
     {
         BookManager.OnPageChanged -= resetScrollBarValue;
+        OptionsManager.onOptionsShown -= toggleInteractableOff;
+        OptionsManager.onOptionsHidden -= toggleInteractableOn;
     }
 }

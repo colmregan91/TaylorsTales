@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class MainMenuCanvas : BUtCanvasBase
 {
     [SerializeField] private GameObject ContinueGameobject;
-    [SerializeField] private GameObject NewStoryGameobject;
 
     public static Action OnContinueClicked;
     public static Action OnNewStoryClicked;
@@ -17,8 +16,11 @@ public class MainMenuCanvas : BUtCanvasBase
 
     [SerializeField] private GameObject wordCanvasGameobject;
 
-    void OnEnable()
+    private WaitForSeconds timeDelay = new WaitForSeconds (3f);
+
+    public override void OnEnable()
     {
+        base.OnEnable();
 
         ContinueGameobject.SetActive(BookManager.LastSavedPage != 0);
 
@@ -30,6 +32,30 @@ public class MainMenuCanvas : BUtCanvasBase
 
         //}
     }
+
+    public override void ToggleHolderOn()
+    {
+        if (BookManager.isTitlePage)
+        {
+            base.ToggleHolderOn();
+        }
+
+    }
+    public override void ToggleHolderOff()
+    {
+        if (BookManager.isTitlePage)
+        {
+            base.ToggleHolderOff();
+        }
+    }
+
+    public override void OnDisable()
+    {
+        base.OnDisable();
+        BookManager.OnPageChanged -= setUpBook;
+        OnTransitionEnded -= checkPage;
+    }
+
 
     private void checkPage()
     {
@@ -47,11 +73,6 @@ public class MainMenuCanvas : BUtCanvasBase
         TitleGameobject.SetActive(true);
     }
 
-    private void OnDisable()
-    {
-        BookManager.OnPageChanged -= setUpBook;
-        OnTransitionEnded -= checkPage;
-    }
 
     private void setUpBook(int page, PageContents contents)
     {
@@ -82,6 +103,7 @@ public class MainMenuCanvas : BUtCanvasBase
     {
         isTransitioning = true;
         ButtonHolder.SetActive(false);
+        optionsButGameobject.SetActive(false);
         sliderImg.fillMethod = Image.FillMethod.Vertical;
         sliderImg.fillOrigin = isNextPage ? (int)Image.OriginVertical.Top : (int)Image.OriginVertical.Bottom;
         Color curimgcol = sliderImg.color;
@@ -106,6 +128,8 @@ public class MainMenuCanvas : BUtCanvasBase
 
         }
         LoadingGameobject.SetActive(false);
+        yield return timeDelay;
+  
         callback?.Invoke();
 
         curimgcol = sliderImg.color;
@@ -125,7 +149,7 @@ public class MainMenuCanvas : BUtCanvasBase
         }
 
         OnTransitionEnded?.Invoke();
-
+        optionsButGameobject.SetActive(true);
         isTransitioning = false;
 
     }

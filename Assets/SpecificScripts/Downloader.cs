@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.Networking;
 
 public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,create asset bundle utils class
@@ -15,7 +16,7 @@ public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,c
     private GameObject InteractionCavnasTemp;
     private PageContents CurrentPageTemp;
     [SerializeField] private Transform canvasHolder;
-
+    [SerializeField] private AudioMixerGroup MixerGroup;
     private const string BOOKNAME = "ChickenAndTheFox";
     private const string BOOKASSETFOLDER = "TaylorsTalesAssets";
 
@@ -93,8 +94,14 @@ public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,c
             dataAsJson = www.downloadHandler.text;
             PageTextList newPageList = JsonUtility.FromJson<PageTextList>(dataAsJson);
 
+            StartCoroutine(LoadIndividualPageTexts(newPageList, 0)); // load first page, make it load first 3
+
+            if (BookManager.LastSavedPage != 1)
+            {
+                StartCoroutine(LoadIndividualPageTexts(newPageList, BookManager.LastSavedPage - 1));// load last saved page
+                StartCoroutine(LoadPageTexts(newPageList, BookManager.LastSavedPage - 2, 0));
+            }
             StartCoroutine(LoadPageTexts(newPageList, BookManager.LastSavedPage, newPageList.pageTexts.Count));
-            StartCoroutine(LoadPageTexts(newPageList, BookManager.LastSavedPage - 2, -1));
         }
         else
         {
@@ -106,12 +113,19 @@ public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,c
 
 
     }
+    private IEnumerator LoadIndividualPageTexts(PageTextList jsonPages, int page)
+    {
+        PageContents newContents = new PageContents();
+        Page pageTemp = jsonPages.pageTexts[page];
+        newContents.Texts = pageTemp.Texts;
+        yield return loadPageCanvasses(pageTemp.pageNumber, newContents);
+    }
 
     private IEnumerator LoadPageTexts(PageTextList jsonPages, int fromPage, int toPage)
     {
         if (toPage > fromPage)
         {
-            for (int i = fromPage - 1; i < toPage; i++)
+            for (int i = fromPage; i < toPage; i++)
             {
                 PageContents newContents = new PageContents();
                 Page pageTemp = jsonPages.pageTexts[i];
@@ -159,7 +173,7 @@ public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,c
                 newPageContents.SkyboxMaterial = (Material)pageSkybox.asset;
                 newPageContents.InteractionCanvas = (GameObject)Intprefab.asset;
                 newPageContents.InteractionCanvas.GetComponent<Canvas>().worldCamera = cam;
-                newPageContents.interactions = newPageContents.InteractionCanvas.GetComponentsInChildren<TouchBase>();
+                //    newPageContents.interactions = newPageContents.InteractionCanvas.GetComponentsInChildren<TouchBase>();
                 setUpEnvironmentCanvasses(pageNumber, newPageContents);
 
             }
@@ -170,7 +184,7 @@ public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,c
                 newPageContents.SkyboxMaterial = null;
             }
 
-             Envbundle.UnloadAsync(false);
+            Envbundle.UnloadAsync(false);
         }
         else
         {
@@ -190,6 +204,15 @@ public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,c
 
         if (EnvironmentCanvasTemp != null)
         {
+            AudioSource audio = EnvironmentCanvasTemp.GetComponent<AudioSource>();
+            if (audio != null)
+            {
+                audio.outputAudioMixerGroup = MixerGroup;
+            }
+            else
+            {
+                Debug.LogError("No background Audio for page " + number);
+            }
             EnvironmentCanvasTemp.GetComponent<Canvas>().worldCamera = cam;
             Instantiate(EnvironmentCanvasTemp, newPage.transform);
         }

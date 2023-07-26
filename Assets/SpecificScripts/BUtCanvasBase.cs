@@ -5,8 +5,6 @@ using System;
 
 public class BUtCanvasBase : MonoBehaviour
 {
-
-
     [SerializeField] protected Image sliderImg;
     [SerializeField] protected GameObject LoadingGameobject;
 
@@ -18,6 +16,30 @@ public class BUtCanvasBase : MonoBehaviour
     [SerializeField] protected GameObject ButtonHolder;
 
     protected static Action OnTransitionEnded;
+
+    [SerializeField] protected GameObject optionsButGameobject;
+
+    public virtual void OnEnable()
+    {
+        OptionsManager.onOptionsShown += ToggleHolderOff;
+        OptionsManager.onOptionsHidden += ToggleHolderOn;
+    }
+    public virtual void OnDisable()
+    {
+        OptionsManager.onOptionsShown -= ToggleHolderOff;
+        OptionsManager.onOptionsShown -= ToggleHolderOn;
+    }
+
+    public virtual void ToggleHolderOn()
+    {
+        ButtonHolder.SetActive(true);
+        optionsButGameobject.SetActive(true);
+    }
+    public virtual void ToggleHolderOff()
+    {
+        ButtonHolder.SetActive(false);
+        optionsButGameobject.SetActive(false);
+    }
     protected virtual void checkButtonVisuals()
     {
 
@@ -31,6 +53,7 @@ public class BUtCanvasBase : MonoBehaviour
     {
         isTransitioning = true;
         ButtonHolder.SetActive(false);
+        optionsButGameobject.SetActive(false);
         sliderImg.fillMethod = Image.FillMethod.Horizontal;
         sliderImg.fillOrigin = isNextPage ? (int)Image.OriginHorizontal.Left : (int)Image.OriginHorizontal.Right;
         Color curimgcol = sliderImg.color;
@@ -78,7 +101,7 @@ public class BUtCanvasBase : MonoBehaviour
         }
 
         OnTransitionEnded?.Invoke();
-
+        optionsButGameobject.SetActive(true);
         isTransitioning = false;
 
     }

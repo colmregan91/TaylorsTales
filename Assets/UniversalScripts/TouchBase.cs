@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.Audio;
+
 public abstract class TouchBase : MonoBehaviour
 {
 
@@ -41,6 +43,11 @@ public abstract class TouchBase : MonoBehaviour
             setAudioClickLoop(false);
         }
 
+    }
+
+    public void SetMixerGroup(AudioMixerGroup group)
+    {
+        audioSource.outputAudioMixerGroup = group;
     }
 
     public void SetParticleEmission(bool value)

@@ -10,19 +10,38 @@ public class ButtonCanvas : BUtCanvasBase
 
     public static Action OnNextPageClicked;
     public static Action OnPrevPageClicked;
-  
 
 
-    private void OnEnable()
+
+    public override void OnEnable()
     {
+
+        base.OnEnable();
+
         OnTransitionEnded += checkPage;
         Downloader.OnPageDownloaded += CheckDownloadedPage;
     }
 
-    private void OnDisable()
+    public override void OnDisable()
     {
+        base.OnDisable();
         OnTransitionEnded -= checkPage;
         Downloader.OnPageDownloaded -= CheckDownloadedPage;
+    }
+    public override void ToggleHolderOn()
+    {
+        if (!BookManager.isTitlePage)
+        {
+            base.ToggleHolderOn();
+        }
+       
+    }
+    public override void ToggleHolderOff()
+    {
+        if (!BookManager.isTitlePage)
+        {
+            base.ToggleHolderOff();
+        }
     }
 
     private void checkPage()
