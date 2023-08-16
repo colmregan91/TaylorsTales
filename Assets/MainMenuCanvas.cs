@@ -83,19 +83,19 @@ public class MainMenuCanvas : BUtCanvasBase
         else
         {
             if (!wordCanvasGameobject.activeSelf)
-                wordCanvasGameobject.SetActive(true);
+                wordCanvasGameobject.SetActive(true); // todo : put canvas group on word canvas and toggle it via subs
 
-            if (TitleGameobject.activeSelf)
-                TitleGameobject.SetActive(false);
         }
     }
     public void newStory()
     {
         PlayerPrefs.SetInt("Page", 1);
+        AudioMAnager.instance.PlayUIpop();
         StartTransitionCoro(true, OnContinueClicked, false);
     }
     public void Continue()
     {
+        AudioMAnager.instance.PlayUIpop();
         StartTransitionCoro(true, OnContinueClicked, false);
     }
 
@@ -121,15 +121,18 @@ public class MainMenuCanvas : BUtCanvasBase
             //   LoadingText.color = loadingColor;
             yield return null;
         }
+
+        TitleGameobject.SetActive(false);
         while (!BookManager.CheckDownloadedPage(BookManager.LastSavedPage))
         {
             LoadingGameobject.SetActive(true);
             yield return null;
 
         }
-        LoadingGameobject.SetActive(false);
+     
         yield return timeDelay;
-  
+        LoadingGameobject.SetActive(false);
+
         callback?.Invoke();
 
         curimgcol = sliderImg.color;

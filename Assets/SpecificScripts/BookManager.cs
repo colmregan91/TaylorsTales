@@ -77,7 +77,10 @@ public class BookManager : MonoBehaviour
         changePage(LastSavedPage);
         MainMenuCanvas.OnContinueClicked -= LoadLastSavedPAge;
     }
-
+    public void SetTitlePage()
+    {
+        changePage(0);
+    }
     public void SetPrevPage()
     {
         changePage(PrevPage);

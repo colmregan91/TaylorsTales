@@ -11,7 +11,6 @@ public class CanvasManager : MonoBehaviour
     private GameObject canvasHolder;
     private TouchBase[] interactions;
 
-    [SerializeField] private AudioMixerGroup mixerGroup;
     private void OnEnable()
     {
         BookManager.OnPageChanged += SetInteractionCanvas;
@@ -39,20 +38,15 @@ public class CanvasManager : MonoBehaviour
 
         canvasHolder = Instantiate(contents.InteractionCanvas, transform);
         interactions = canvasHolder.GetComponentsInChildren<TouchBase>();
-
-        foreach (TouchBase tch in interactions)
-        {
-            tch.SetMixerGroup(mixerGroup);
-        }
     }
     private void DisableInteractions()
     {
         if (interactions == null) return;
         foreach (TouchBase tch in interactions)
         {
+            if (!tch.enabled) continue;
 
             tch.SetParticleEmission(false);
-            tch.CanClick = false;
         }
     }
 
@@ -61,9 +55,9 @@ public class CanvasManager : MonoBehaviour
         if (interactions == null) return;
         foreach (TouchBase tch in interactions)
         {
-            tch.CanClick = true;
-            tch.SetParticleEmission(true);
+            if (tch.enabled == false) continue;
 
+            tch.SetParticleEmission(true);
         }
     }
 

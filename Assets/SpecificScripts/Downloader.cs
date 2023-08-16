@@ -16,7 +16,7 @@ public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,c
     private GameObject InteractionCavnasTemp;
     private PageContents CurrentPageTemp;
     [SerializeField] private Transform canvasHolder;
-    [SerializeField] private AudioMixerGroup MixerGroup;
+
     private const string BOOKNAME = "ChickenAndTheFox";
     private const string BOOKASSETFOLDER = "TaylorsTalesAssets";
 
@@ -95,6 +95,12 @@ public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,c
             PageTextList newPageList = JsonUtility.FromJson<PageTextList>(dataAsJson);
 
             StartCoroutine(LoadIndividualPageTexts(newPageList, 0)); // load first page, make it load first 3
+
+            if (BookManager.LastSavedPage == 0)
+            {
+                StartCoroutine(LoadPageTexts(newPageList, 1, newPageList.pageTexts.Count));
+                yield break; 
+            }
 
             if (BookManager.LastSavedPage != 1)
             {
@@ -207,7 +213,7 @@ public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,c
             AudioSource audio = EnvironmentCanvasTemp.GetComponent<AudioSource>();
             if (audio != null)
             {
-                audio.outputAudioMixerGroup = MixerGroup;
+                AudioMAnager.instance.SetToBackgroundGroup(audio);
             }
             else
             {

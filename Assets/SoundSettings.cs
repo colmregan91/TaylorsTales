@@ -36,10 +36,10 @@ public class SoundSettings : MonoBehaviour
 
     private void Start()
     {
-        BackgroundSlider.value = Background;
-        UISlider.value = UI;
-        SentenceSlider.value = sentence;
-        TouchSlider.value = Touch;
+        BackgroundSlider.value = Background == 0 ? -20 : Background ;
+        UISlider.value = UI == 0 ? -20 : UI;
+        SentenceSlider.value = sentence == 0 ? -20 : sentence;
+        TouchSlider.value = Touch == 0 ? -20 : Touch;
     }
 
     private void OnDisable()

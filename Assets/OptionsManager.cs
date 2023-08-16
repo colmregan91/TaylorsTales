@@ -34,6 +34,7 @@ public class OptionsManager : MonoBehaviour
     {
         if (isActive) return;
 
+        AudioMAnager.instance.PlayUIpop();
         anim.SetTrigger(triggerHashClick);
         isActive = true;
         onOptionsShown?.Invoke();
@@ -54,10 +55,17 @@ public class OptionsManager : MonoBehaviour
         group.blocksRaycasts = true;
     }
 
+    public void Quit()
+    {
+        AudioMAnager.instance.PlayUIpop();
+
+    }
+
     public void Resume()
     {
         if (!isActive) return;
 
+        AudioMAnager.instance.PlayUIpop();
         anim.SetTrigger(triggerHashUnclick);
         isActive = false;
         onOptionsHidden?.Invoke();
@@ -72,19 +80,17 @@ public class OptionsManager : MonoBehaviour
     }
     public void AudioPanel()
     {
+        AudioMAnager.instance.PlayUIpop();
         SetCanvas(audioPanel);
     }
     public void OptionsPanel()
     {
+        AudioMAnager.instance.PlayUIpop();
         SetCanvas(optionsPanel);
     }
     public void MainPanel()
     {
+        AudioMAnager.instance.PlayUIpop();
         SetCanvas(mainPanel);
     }
-    public void Quit()
-    {
-
-    }
-
 }

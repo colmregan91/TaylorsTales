@@ -63,41 +63,38 @@ public class LanguagesManager : MonoBehaviour
         }
     }
 
+    private void SetLanguage(Languages language)
+    {
+        if (CurrentLanguage == language) return;
+
+        AudioMAnager.instance.PlayUIpop();
+        CurrentLanguage = language;
+        OnLanguageChanged?.Invoke(CurrentLanguage);
+    }
+
     public void SetEnglish()
     {
-        if (CurrentLanguage == Languages.English) return;
-
-        CurrentLanguage = Languages.English;
-        OnLanguageChanged?.Invoke(CurrentLanguage);
-
+        SetLanguage(Languages.English);
     }
 
     public void SetIrish()
     {
-        if (CurrentLanguage == Languages.Irish) return;
-
-        CurrentLanguage = Languages.Irish;
-        OnLanguageChanged?.Invoke(CurrentLanguage);
+        SetLanguage(Languages.Irish);
     }
 
     public void SetFrench()
     {
-        if (CurrentLanguage == Languages.French) return;
-
-        CurrentLanguage = Languages.French;
-        OnLanguageChanged?.Invoke(CurrentLanguage);
+        SetLanguage(Languages.French);
     }
 
     public void SetSpanish()
     {
-        if (CurrentLanguage == Languages.Spanish) return;
-
-        CurrentLanguage = Languages.Spanish;
-        OnLanguageChanged?.Invoke(CurrentLanguage);
+        SetLanguage(Languages.Spanish);
     }
 
     private void ToggleSymbols()
     {
+        AudioMAnager.instance.PlayUIpop();
         symbolsHolder.SetActive(!symbolsHolder.activeSelf);
     }
 }

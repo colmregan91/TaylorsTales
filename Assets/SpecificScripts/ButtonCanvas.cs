@@ -78,7 +78,10 @@ public class ButtonCanvas : BUtCanvasBase
         StartTransitionCoro(true, OnNextPageClicked);
     }
 
-
+    public void TitlePage()
+    {
+        StartTransitionCoro(true, OnNextPageClicked);
+    }
 
     private void CheckDownloadedPage(int page)
     {
