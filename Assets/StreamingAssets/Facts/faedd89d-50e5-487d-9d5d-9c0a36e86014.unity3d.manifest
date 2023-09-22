@@ -1,0 +1,20 @@
+ManifestFileVersion: 0
+CRC: 2139581928
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 93816d0e8e2eef4928922544e33b579a
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c21d61fe394c58399df3c6fb5c7c99b3
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/FactImages/rainforest/rainforest 1.jpg
+- Assets/FactImages/rainforest/_114399575_tv062230684 (2).jpg
+Dependencies: []
