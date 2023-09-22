@@ -19,14 +19,14 @@ public class ButtonCanvas : BUtCanvasBase
         base.OnEnable();
 
         OnTransitionEnded += checkPage;
-        Downloader.OnPageDownloaded += CheckDownloadedPage;
+        LocalDownload.OnPageDownloaded += CheckDownloadedPage;
     }
 
     public override void OnDisable()
     {
         base.OnDisable();
         OnTransitionEnded -= checkPage;
-        Downloader.OnPageDownloaded -= CheckDownloadedPage;
+        LocalDownload.OnPageDownloaded -= CheckDownloadedPage;
     }
     public override void ToggleHolderOn()
     {

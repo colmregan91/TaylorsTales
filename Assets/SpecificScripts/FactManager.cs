@@ -48,6 +48,11 @@ public class FactManager : MonoBehaviour
         ClickedWordHandler.OnWordClicked -= hideFact;
         LanguagesManager.OnLanguageChanged -= handleLanguageChange;
         BookManager.OnPageChanged -= hideFactOnPageTurn;
+
+        if (curBundle != null)
+        {
+           curBundle.Unload(true);
+        }
     }
     private void hideFactOnPageTurn(int page, PageContents contents)
     {
@@ -75,7 +80,7 @@ public class FactManager : MonoBehaviour
         {
             return;
         }
-
+  
         OnFactsShown?.Invoke();
         StartCoroutine(DisplayFactContent(triggerWords));
     }
@@ -112,7 +117,7 @@ public class FactManager : MonoBehaviour
 
     private IEnumerator DisplayFactContent(TriggerWords triggerWords)
     {
-   
+
         if (isShowingFact)
         {
             yield return resetFacts(false);
@@ -123,25 +128,35 @@ public class FactManager : MonoBehaviour
         curFact = FactsAndImages[triggerWords];
         setText(currentLangIndex);
 
-        UnityWebRequest request = UnityWebRequestAssetBundle.GetAssetBundle(curFact.bundlePath);
+        UnityWebRequest www = UnityWebRequest.Get(curFact.bundlePath);
 
-        yield return request.SendWebRequest();
-        if (request.result == UnityWebRequest.Result.Success)
+        yield return www.SendWebRequest();
+
+        if (www.result == UnityWebRequest.Result.Success)
         {
-            curBundle = DownloadHandlerAssetBundle.GetContent(request);
+           var curBundleReq = AssetBundle.LoadFromMemoryAsync(www.downloadHandler.data);
 
-            var assets = curBundle.GetAllAssetNames();
-            curFactImages = new Sprite[assets.Length];
-
-            for (int i = 0; i < curFactImages.Length; i++)
+            if (curBundleReq != null)
             {
-                curFactImages[i] = curBundle.LoadAsset<Sprite>(assets[i]);
+                yield return curBundleReq.isDone;
+                curBundle = curBundleReq.assetBundle;
+                var assets = curBundle.GetAllAssetNames();
+                curFactImages = new Sprite[assets.Length];
+
+                for (int i = 0; i < curFactImages.Length; i++)
+                {
+                    curFactImages[i] = curBundle.LoadAsset<Sprite>(assets[i]);
+                }
+                SetButtonVisuals();
+                imageObj.sprite = curFactImages[curImageIndex];
+                anim.SetTrigger(triggerHashClick);
+                isShowingFact = true;
+                // Use the loaded AssetBundle
             }
-            SetButtonVisuals();
-            imageObj.sprite = curFactImages[curImageIndex];
-            anim.SetTrigger(triggerHashClick);
-            isShowingFact = true;
-            // Use the loaded AssetBundle
+            else
+            {
+                Debug.LogError("Failed downllading bundle");
+            }
         }
         else
         {
@@ -150,48 +165,48 @@ public class FactManager : MonoBehaviour
     }
 
 
-    private void SetButtonVisuals()
-    {
-        factImageHolder.SetActive(curFactImages.Length > 1);
+        private void SetButtonVisuals()
+        {
+            factImageHolder.SetActive(curFactImages.Length > 1);
+        }
+
+        public void NextImage()
+        {
+            curImageIndex = (curImageIndex + 1) % curFactImages.Length;
+            imageObj.sprite = curFactImages[curImageIndex];
+        }
+        public void PrevImage()
+        {
+            curImageIndex = (curImageIndex - 1) % curFactImages.Length;
+            imageObj.sprite = curFactImages[curImageIndex];
+        }
+        private void setText(int langIndex)
+        {
+            if (curFact != null)
+                textObj.text = curFact.FactInfo[langIndex];
+        }
     }
 
-    public void NextImage()
+
+
+
+    public class TriggerWords
     {
-        curImageIndex = (curImageIndex + 1) % curFactImages.Length;
-        imageObj.sprite = curFactImages[curImageIndex];
+        public string[] Words;
+        public TriggerWords(string[] _words)
+        {
+            Words = _words;
+        }
     }
-    public void PrevImage()
+
+    public class FactContents
     {
-        curImageIndex = (curImageIndex - 1) % curFactImages.Length;
-        imageObj.sprite = curFactImages[curImageIndex];
+        public string[] FactInfo;
+        public string bundlePath;
+
+        public FactContents(string[] _factInfo, string _bundlePath)
+        {
+            FactInfo = _factInfo;
+            bundlePath = _bundlePath;
+        }
     }
-    private void setText(int langIndex)
-    {
-        if (curFact != null)
-            textObj.text = curFact.FactInfo[langIndex];
-    }
-}
-
-
-
-
-public class TriggerWords
-{
-    public string[] Words;
-    public TriggerWords(string[] _words)
-    {
-        Words = _words;
-    }
-}
-
-public class FactContents
-{
-    public string[] FactInfo;
-    public string bundlePath;
-
-    public FactContents(string[] _factInfo, string _bundlePath)
-    {
-        FactInfo = _factInfo;
-        bundlePath = _bundlePath;
-    }
-}

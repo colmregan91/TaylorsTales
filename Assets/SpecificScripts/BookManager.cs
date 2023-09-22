@@ -30,7 +30,7 @@ public class BookManager : MonoBehaviour
 
         if (isTitlePage)
         {
-            MainMenuCanvas.OnContinueClicked += LoadLastSavedPAge;
+            MainMenuCanvas.OnContinue += LoadLastSavedPAge;
         }
 
     }
@@ -68,6 +68,7 @@ public class BookManager : MonoBehaviour
         setPageText(currentPage);
         setupSkyBox(currentPage);
         currentPage.CanvasHolder.SetActive(true);
+
         OnPageChanged?.Invoke(currentPageNumber,currentPage);
 
     }
@@ -75,7 +76,7 @@ public class BookManager : MonoBehaviour
     public void LoadLastSavedPAge()
     {
         changePage(LastSavedPage);
-        MainMenuCanvas.OnContinueClicked -= LoadLastSavedPAge;
+        MainMenuCanvas.OnContinue -= LoadLastSavedPAge;
     }
     public void SetTitlePage()
     {
@@ -96,7 +97,7 @@ public class BookManager : MonoBehaviour
         LanguagesManager.OnLanguageChanged -= handleLanguageChange;
         ButtonCanvas.OnNextPageClicked -= SetNextPage;
         ButtonCanvas.OnPrevPageClicked -=  SetPrevPage;
-        MainMenuCanvas.OnContinueClicked += LoadLastSavedPAge;
+        MainMenuCanvas.OnContinue -= LoadLastSavedPAge;
         if (!isTitlePage)
         {
             PlayerPrefs.SetInt("Page", currentPageNumber);

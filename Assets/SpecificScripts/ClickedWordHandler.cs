@@ -16,7 +16,7 @@ public class ClickedWordHandler : MonoBehaviour
     private int wordindex;
     private string clickedWordString;
     private float ScrollPos;
-    private bool canClickonWord => wordHighlight.getIsLerping() == false;
+    private bool canClickonWord =true;
     private bool isSpecialWordTemp;
     public static Action OnWordClicked;
     public static Action<string> OnSpecialWordClicked;
@@ -91,13 +91,15 @@ public class ClickedWordHandler : MonoBehaviour
 
         if (isSpecialWordTemp)
         {
+            Debug.Log("spec");
             OnSpecialWordClicked?.Invoke(clickedWordString);
         }
         else
         {
             OnWordClicked?.Invoke();
         }
-        wordHighlight.StartColorLerp(wordindex, isSpecialWordTemp);
+        canClickonWord = false;
+        wordHighlight.StartColorLerpOnClick(wordindex, isSpecialWordTemp, () => canClickonWord = true);
 
     }
 

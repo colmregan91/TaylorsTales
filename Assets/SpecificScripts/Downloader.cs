@@ -20,23 +20,48 @@ public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,c
     private const string BOOKNAME = "ChickenAndTheFox";
     private const string BOOKASSETFOLDER = "TaylorsTalesAssets";
 
-    public bool DownloadFromServer;
+    private string localPageJSONRoot;
+    private string localPageRoot;
 
+    public bool DownloadFromServer;
+    public bool SERVERNEEDSUPDATE;
+    public bool NEWBUILDNEEDED;
+    public TextMeshProUGUI text;
     [SerializeField] private Camera cam;
     private string GetInitialPath()
     {
-        return DownloadFromServer ? "https://taylorstalesassets.blob.core.windows.net/bookdata/ChickenAndTheFox" :
-            $"{Application.persistentDataPath}/../TaylorsTalesAssets/ChickenAndTheFox";
+        return "https://taylorstalesassets.blob.core.windows.net/bookdata/ChickenAndTheFox";
+
     }
 
     private void Start()
     {
         AssetBundle.UnloadAllAssetBundles(true);
+        //localPageJSONRoot = $"{Application.persistentDataPath}/Pages/JSONPageData.json";
+        ////     StartCoroutine(loadFactsAndroid());
+        //localPageRoot = $"{Application.persistentDataPath}/Pages/";
+        //if (File.Exists(localPageJSONRoot))
+        //{
+        //    Debug.Log("loading locally");
+        //    StartCoroutine(loadPages());
+        //}
+        //else
+        //{
+        //    Debug.Log("from server");
+        //    StartCoroutine(loadPageBundles());
 
-        StartCoroutine(loadFactsAndroid());
+        //}
 
-        StartCoroutine(loadPages());
+        localPageJSONRoot = $"{Application.persistentDataPath}/Pages/JSONPageData.json";
+        if (File.Exists(localPageJSONRoot))
+        {
+            StartCoroutine(DownloadFromPath(localPageJSONRoot, false));
 
+        }
+        else
+        {
+            StartCoroutine(DownloadFromPath(Path.Combine($"{GetInitialPath()}", "Pages", "JSONPageData.json"), true));
+        }
     }
 
     private IEnumerator loadFactsAndroid()
@@ -45,12 +70,13 @@ public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,c
 
 
         UnityWebRequest www = UnityWebRequest.Get(factPath);
+        www.downloadHandler = new DownloadHandlerFile($"{Application.persistentDataPath}/Facts/Facts.json");
         yield return www.SendWebRequest();
 
         if (www.result == UnityWebRequest.Result.Success)
         {
-            string dataAsJson = www.downloadHandler.text;
-            InitFacts(dataAsJson);
+            //string dataAsJson = www.downloadHandler.text;
+            //InitFacts(dataAsJson);
 
         }
         else
@@ -77,16 +103,65 @@ public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,c
 
         }
     }
+    //private IEnumerator loadPagesFromServer()
+    //{
+    //    string pageRoot = Path.Combine($"{GetInitialPath()}", "Pages", "JSONPageData.json");
+    //    string dataAsJson;
 
+    //    UnityWebRequest www = UnityWebRequest.Get(pageRoot);
+    //    www.downloadHandler = new DownloadHandlerFile(localPageJSONRoot);
+    //    yield return www.SendWebRequest();
 
+    //    if (www.result == UnityWebRequest.Result.Success)
+    //    {
+    //        Debug.Log("succ");
+    //        StartCoroutine(loadPageBundles());
 
-    private IEnumerator loadPages()
+    //    }
+    //}
+
+    // private IEnumerator loadPageBundles()
+    // {
+    //     for (int i = 1; i < 25; i++)
+    //     {
+    //         string Environmentpath = $"{GetInitialPath()}/Page_{i}_EnvironmentCanvas.unity3d";
+
+    //         UnityWebRequest Envrequest = UnityWebRequestAssetBundle.GetAssetBundle(Environmentpath);
+    //      //   Envrequest.downloadHandler = new DownloadHandlerFile($"{localPageRoot}/Page_{i}_EnvironmentCanvas");
+    //         yield return Envrequest.SendWebRequest();
+
+    //         if (Envrequest.result == UnityWebRequest.Result.Success)
+    //         {
+    //             Debug.Log("suc " + i);
+    //         }
+    //         else
+    //         {
+    //             Debug.Log(Envrequest.result);
+    //         }
+    //     }
+
+    ////     StartCoroutine(loadPages());
+    // }
+
+    private IEnumerator DownloadFromPath(string path, bool fromServer)
     {
-
-        string pageRoot = Path.Combine($"{GetInitialPath()}", "Pages", "JSONPageData.json");
         string dataAsJson;
+        UnityWebRequest www = UnityWebRequest.Get(path);
 
-        UnityWebRequest www = UnityWebRequest.Get(pageRoot);
+        if (fromServer)
+        {
+            text.text += "json server \n";
+            Debug.Log("server");
+            string localPath = $"{Application.persistentDataPath}/Pages/JSONPageData.json";
+            www.downloadHandler = new DownloadHandlerFile(localPath);
+        }
+        else
+        {
+            text.text += "json local \n";
+            Debug.Log("local");
+        }
+
+
         yield return www.SendWebRequest();
 
         if (www.result == UnityWebRequest.Result.Success)
@@ -94,20 +169,20 @@ public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,c
             dataAsJson = www.downloadHandler.text;
             PageTextList newPageList = JsonUtility.FromJson<PageTextList>(dataAsJson);
 
-            StartCoroutine(LoadIndividualPageTexts(newPageList, 0)); // load first page, make it load first 3
+            // StartCoroutine(LoadIndividualPageTexts(newPageList, 0)); // load first page, make it load first 3
+            StartCoroutine(LoadPageTexts(newPageList, 0, newPageList.pageTexts.Count));
+            //if (BookManager.LastSavedPage == 0)
+            //{
+            //    StartCoroutine(LoadPageTexts(newPageList, 1, newPageList.pageTexts.Count));
+            //    yield break;
+            //}
 
-            if (BookManager.LastSavedPage == 0)
-            {
-                StartCoroutine(LoadPageTexts(newPageList, 1, newPageList.pageTexts.Count));
-                yield break; 
-            }
-
-            if (BookManager.LastSavedPage != 1)
-            {
-                StartCoroutine(LoadIndividualPageTexts(newPageList, BookManager.LastSavedPage - 1));// load last saved page
-                StartCoroutine(LoadPageTexts(newPageList, BookManager.LastSavedPage - 2, 0));
-            }
-            StartCoroutine(LoadPageTexts(newPageList, BookManager.LastSavedPage, newPageList.pageTexts.Count));
+            //if (BookManager.LastSavedPage != 1)
+            //{
+            //    StartCoroutine(LoadIndividualPageTexts(newPageList, BookManager.LastSavedPage - 1));// load last saved page
+            //    StartCoroutine(LoadPageTexts(newPageList, BookManager.LastSavedPage - 2, 0));
+            //}
+            //StartCoroutine(LoadPageTexts(newPageList, BookManager.LastSavedPage, newPageList.pageTexts.Count));
         }
         else
         {
@@ -116,15 +191,24 @@ public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,c
 
             yield break; // Exit the coroutine if file loading fails
         }
-
-
     }
+
+
     private IEnumerator LoadIndividualPageTexts(PageTextList jsonPages, int page)
     {
         PageContents newContents = new PageContents();
         Page pageTemp = jsonPages.pageTexts[page];
         newContents.Texts = pageTemp.Texts;
-        yield return loadPageCanvasses(pageTemp.pageNumber, newContents);
+        string Environmentpath = $"{Application.persistentDataPath}/Pages/Page_{pageTemp.pageNumber}_EnvironmentCanvas.unity3d";
+        if (File.Exists(Environmentpath))
+        {
+            yield return loadPageCanvasses(Environmentpath, false, pageTemp.pageNumber, newContents);
+        }
+        else
+        {
+            string serverPath = Path.Combine($"{GetInitialPath()}", "Pages", $"Page_{pageTemp.pageNumber}_EnvironmentCanvas.unity3d");
+            yield return loadPageCanvasses(serverPath, true, pageTemp.pageNumber, newContents);
+        }
     }
 
     private IEnumerator LoadPageTexts(PageTextList jsonPages, int fromPage, int toPage)
@@ -136,7 +220,19 @@ public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,c
                 PageContents newContents = new PageContents();
                 Page pageTemp = jsonPages.pageTexts[i];
                 newContents.Texts = pageTemp.Texts;
-                yield return loadPageCanvasses(pageTemp.pageNumber, newContents);
+
+                string Environmentpath = $"{Application.persistentDataPath}/Pages/Page_{pageTemp.pageNumber}_EnvironmentCanvas.unity3d";
+                FileInfo fileInfo = new FileInfo(Environmentpath);
+                if (File.Exists(Environmentpath) && fileInfo.Length > 0)
+                {
+                    yield return loadPageCanvasses(Environmentpath, false, pageTemp.pageNumber, newContents);
+                }
+                else
+                {
+                    string serverPath = Path.Combine($"{GetInitialPath()}", "Pages", $"Page_{pageTemp.pageNumber}_EnvironmentCanvas.unity3d");
+                    yield return loadPageCanvasses(serverPath, true, pageTemp.pageNumber, newContents);
+                }
+
             }
         }
         else
@@ -146,23 +242,40 @@ public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,c
                 PageContents newContents = new PageContents();
                 Page pageTemp = jsonPages.pageTexts[i];
                 newContents.Texts = pageTemp.Texts;
-                yield return loadPageCanvasses(pageTemp.pageNumber, newContents);
+                  string Environmentpath = $"{localPageRoot}/Page_{pageTemp.pageNumber}_EnvironmentCanvas.unity3d";
+                if (File.Exists(Environmentpath))
+                {
+                    yield return loadPageCanvasses(Environmentpath, false, pageTemp.pageNumber, newContents);
+                }
+                else
+                {
+                    string serverPath = Path.Combine($"{GetInitialPath()}", "Pages", $"Page_{pageTemp.pageNumber}_EnvironmentCanvas.unity3d");
+                    yield return loadPageCanvasses(serverPath, true, pageTemp.pageNumber, newContents);
+                }
             }
         }
 
 
     }
-    private IEnumerator loadPageCanvasses(int pageNumber, PageContents newPageContents)
+    private IEnumerator loadPageCanvasses(string path, bool fromServer, int pageNumber, PageContents newPageContents)
     {
-        string pageRoot = Path.Combine($"{GetInitialPath()}", "Pages");
-        string Environmentpath = $"{pageRoot}/Page_{pageNumber}_EnvironmentCanvas.unity3d";
 
-        UnityWebRequest Envrequest = UnityWebRequestAssetBundle.GetAssetBundle(Environmentpath);
 
+        UnityWebRequest Envrequest = UnityWebRequestAssetBundle.GetAssetBundle(path);
+        if (fromServer)
+        {
+            text.text += $"page {pageNumber} bundle from server \n";
+
+            Envrequest.downloadHandler = new DownloadHandlerFile($"{Application.persistentDataPath}/Pages/Page_{pageNumber}_EnvironmentCanvas.unity3d");
+        }
+        else
+        {
+            text.text += $"page {pageNumber} bundle from server \n";
+        }
         yield return Envrequest.SendWebRequest();
         if (Envrequest.result == UnityWebRequest.Result.Success)
         {
-            AssetBundle Envbundle = DownloadHandlerAssetBundle.GetContent(Envrequest);
+            AssetBundle Envbundle = AssetBundle.LoadFromFile($"{Application.persistentDataPath}/Pages/Page_{pageNumber}_EnvironmentCanvas.unity3d");
 
             if (Envbundle != null)
             {
@@ -185,6 +298,7 @@ public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,c
             }
             else
             {
+                
                 Debug.LogWarning("no environment canvas or skyBox for page " + (pageNumber));
                 newPageContents.EnvironmentCanvas = null;
                 newPageContents.SkyboxMaterial = null;
@@ -194,6 +308,8 @@ public class Downloader : MonoBehaviour // MAKE ASYNC AND UNLOAD ASSET BUNDLES,c
         }
         else
         {
+            text.text += $"{Envrequest.error} \n";
+                     text.text += $"error \n";
             Debug.LogError("error for env canvas " + pageNumber);
         }
 
