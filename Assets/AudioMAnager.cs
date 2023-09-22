@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,7 @@ public class AudioMAnager : MonoBehaviour
     public static AudioMAnager instance;
     public AudioMixerGroup BackgroundGroup;
     public AudioMixerGroup TouchNoiseGroup;
+    public AudioSource WordSentSource;
 
     [SerializeField] private AudioSource UIsource;
 
@@ -26,6 +28,18 @@ public class AudioMAnager : MonoBehaviour
     {
         UIsource.Play();
     }
+
+    public bool isSentencePlaying()
+    {
+        return WordSentSource.isPlaying;
+    }
+
+    public void PlaySentenceClip(AudioClip clip, Action callback)
+    {
+        WordSentSource.clip = clip;
+        WordSentSource.Play();
+    }
+
 
     public void SetToTouchGroup(AudioSource source)
     {
