@@ -9,7 +9,7 @@ public class MainMenuCanvas : BUtCanvasBase
 {
     [SerializeField] private GameObject ContinueGameobject;
 
-    public static Action OnContinueClicked;
+    public static Action OnContinue;
     public static Action OnNewStoryClicked;
 
     [SerializeField] private GameObject TitleGameobject;
@@ -89,14 +89,16 @@ public class MainMenuCanvas : BUtCanvasBase
     }
     public void newStory()
     {
+     
         PlayerPrefs.SetInt("Page", 1);
+        OnNewStoryClicked?.Invoke();
         AudioMAnager.instance.PlayUIpop();
-        StartTransitionCoro(true, OnContinueClicked, false);
+        StartTransitionCoro(true, OnContinue, false);
     }
     public void Continue()
     {
         AudioMAnager.instance.PlayUIpop();
-        StartTransitionCoro(true, OnContinueClicked, false);
+        StartTransitionCoro(true, OnContinue, false);
     }
 
     protected override IEnumerator TransitionCoro(bool isNextPage, Action callback, bool shouldReset)
