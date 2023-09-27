@@ -8,6 +8,7 @@ public class SentenceAudio : MonoBehaviour
     public List<AudioClip> clips = new List<AudioClip>();
     [SerializeField] private WordHighlighting wordHighlight;
     private AudioClip curClip => clips[curClipIndex];
+    private WaitForSeconds halfSecond = new WaitForSeconds(0.5f);
     private void OnSentenceFinished()
     {
         Debug.Log("next sent goin");
@@ -22,30 +23,31 @@ public class SentenceAudio : MonoBehaviour
         PlaySentence(curClip);
     }
 
-    private void Update()
+    public void PlayCurSentence()
     {
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-     
-            PlaySentence(curClip);
-        }
+        wordHighlight.BeginReading(wordHighlight.GetStartIndex());
+        PlaySentence(curClip);
     }
 
     void PlaySentence(AudioClip clip)
     {
-        wordHighlight.StartSentenceReadingLerp(wordHighlight.GetStartIndex());
-        AudioMAnager.instance.PlaySentenceClip(clip, OnSentenceFinished);
+      
+        AudioMAnager.instance.PlaySentenceClip(clip);
         StartCoroutine(WaitForSentenceFinished());
     }
-
 
     private IEnumerator WaitForSentenceFinished()
     {
         while (!wordHighlight.HasSentenceFinished() || AudioMAnager.instance.isSentencePlaying())
         {
+            if (wordHighlight.isCancelled)
+            {
+                AudioMAnager.instance.StopReading();
+                yield break;
+            }
             yield return null;
         }
-        yield return new WaitForSeconds(0.5f);
+        yield return halfSecond;
 
         OnSentenceFinished();
     }

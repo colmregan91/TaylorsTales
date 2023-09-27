@@ -12,7 +12,8 @@ public class OptionsManager : MonoBehaviour
     [SerializeField] private CanvasGroup optionsPanel;
     [SerializeField] private CanvasGroup mainPanel;
     [SerializeField] private CanvasGroup audioPanel;
-
+    [SerializeField] private CanvasGroup coloursPanel;
+    [SerializeField] private GameObject quitButton;
     private CanvasGroup currentPanel;
 
     private bool isActive;
@@ -29,6 +30,23 @@ public class OptionsManager : MonoBehaviour
         ResetPanel(audioPanel);
         currentPanel = mainPanel;
         SetCanvas(currentPanel);
+
+        quitButton.SetActive(false);
+    }
+
+    private void Start()
+    {
+        BookManager.OnPageChanged += checkTitlePage;
+    }
+
+    private void OnDisable()
+    {
+        BookManager.OnPageChanged -= checkTitlePage;
+    }
+
+    private void checkTitlePage(int number, PageContents contents)
+    {
+        quitButton.SetActive(!BookManager.isTitlePage);
     }
     public void HandleOptionsClicked()
     {
@@ -77,6 +95,11 @@ public class OptionsManager : MonoBehaviour
         currentPanel = group;
         ActivatePanel(currentPanel);
 
+    }
+    public void ColoursPanel()
+    {
+        AudioMAnager.instance.PlayUIpop();
+        SetCanvas(coloursPanel);
     }
     public void AudioPanel()
     {

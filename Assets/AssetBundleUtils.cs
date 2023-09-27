@@ -5,59 +5,74 @@ using UnityEngine;
 
 public class AssetBundleUtils : MonoBehaviour
 {
+    public static AssetBundleUtils instance;
     private Queue<AssetBundle> assetBundleQueue = new Queue<AssetBundle>();
-    private CancellationTokenSource cancellationTokenSource;
 
-    // Add loaded asset bundles to the queue
+    private bool isUnloading;
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     public void AddToUnloadQueue(AssetBundle bundle)
     {
         assetBundleQueue.Enqueue(bundle);
     }
 
     // Start unloading asset bundles from the queue
-    public void StartUnloading()
+    public void StartUnloading(bool loadedObjects)
     {
-        cancellationTokenSource = new CancellationTokenSource();
-        StartCoroutine(UnloadAssetBundles(cancellationTokenSource.Token));
+        if (!isUnloading)
+        {
+            Debug.Log("unliad");
+            StartCoroutine(UnloadAssetBundles(loadedObjects));
+        }
+   
     }
 
-    // Cancel the unloading process
-    public void CancelUnloading()
+    private void OnApplicationQuit()
     {
-        cancellationTokenSource.Cancel();
+        FindObjectOfType<LocalDownload>().CancelLoading();
+        Debug.Log(assetBundleQueue.Count);
+        foreach (var bundle in assetBundleQueue)
+        {
+            Debug.Log($"Asset bundle  unloaded successfully.");
+            bundle.Unload(true);
+        }
     }
 
-    private IEnumerator UnloadAssetBundles(CancellationToken cancellationToken)
+
+    private IEnumerator UnloadAssetBundles( bool loadedObjects)
     {
         while (assetBundleQueue.Count > 0)
         {
+            isUnloading = true;
             AssetBundle bundleToUnload = assetBundleQueue.Dequeue();
 
             if (bundleToUnload != null)
             {
                 // Unload the asset bundle asynchronously
-                var unloadOperation = bundleToUnload.UnloadAsync(false);
+
+                var unloadOperation = bundleToUnload.UnloadAsync(loadedObjects);
 
                 // Wait until the unloading operation is complete or cancellation is requested
                 while (!unloadOperation.isDone)
                 {
-                    if (cancellationToken.IsCancellationRequested)
-                    {
-                        // Handle cancellation here, if needed.
-                        Debug.Log("Asset bundle unloading canceled.");
-                        yield break;
-                    }
+              
                     yield return null;
                 }
 
                 // Optionally, handle the result of unloading here.
-                Debug.Log("Asset bundle unloaded successfully.");
+                Debug.Log($"Asset bundle  unloaded successfully.");
             }
         }
-    }
-
-    private void OnDisable()
-    {
-        CancelUnloading();
+        isUnloading = false;
     }
 }

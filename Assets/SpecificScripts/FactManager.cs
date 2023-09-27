@@ -6,6 +6,7 @@ using TMPro;
 using System.Linq;
 using UnityEngine.UI;
 using UnityEngine.Networking;
+using System.Threading;
 
 public class FactManager : MonoBehaviour
 {
@@ -33,26 +34,33 @@ public class FactManager : MonoBehaviour
 
     public static Action OnFactsShown;
     public static Action OnFactsHidden;
+    private CancellationTokenSource cancellationTokenSource;
 
-    private void Awake()
+
+
+    private void Start()
     {
         ClickedWordHandler.OnSpecialWordClicked += HandleFactClicked;
         ClickedWordHandler.OnWordClicked += hideFact;
         LanguagesManager.OnLanguageChanged += handleLanguageChange;
         BookManager.OnPageChanged += hideFactOnPageTurn;
+        WordHighlighting.OnReadingStarted += hideFact;
+        cancellationTokenSource = new CancellationTokenSource();
     }
 
     private void OnDisable()
     {
+        CancelLoading();
         ClickedWordHandler.OnSpecialWordClicked -= HandleFactClicked;
         ClickedWordHandler.OnWordClicked -= hideFact;
         LanguagesManager.OnLanguageChanged -= handleLanguageChange;
         BookManager.OnPageChanged -= hideFactOnPageTurn;
+        WordHighlighting.OnReadingStarted -= hideFact;
+    }
 
-        if (curBundle != null)
-        {
-           curBundle.Unload(true);
-        }
+    public void CancelLoading()
+    {
+        cancellationTokenSource.Cancel();
     }
     private void hideFactOnPageTurn(int page, PageContents contents)
     {
@@ -80,7 +88,7 @@ public class FactManager : MonoBehaviour
         {
             return;
         }
-  
+
         OnFactsShown?.Invoke();
         StartCoroutine(DisplayFactContent(triggerWords));
     }
@@ -109,7 +117,7 @@ public class FactManager : MonoBehaviour
         curFactImages = null;
         if (curBundle != null)
         {
-            yield return curBundle.UnloadAsync(true);
+            AssetBundleUtils.instance.StartUnloading(true);
         }
         canvasGroup.alpha = 1;
     }
@@ -134,11 +142,21 @@ public class FactManager : MonoBehaviour
 
         if (www.result == UnityWebRequest.Result.Success)
         {
-           var curBundleReq = AssetBundle.LoadFromMemoryAsync(www.downloadHandler.data);
+            var curBundleReq = AssetBundle.LoadFromMemoryAsync(www.downloadHandler.data);
 
             if (curBundleReq != null)
             {
-                yield return curBundleReq.isDone;
+
+                while (!curBundleReq.isDone)
+                {
+                    if (cancellationTokenSource.IsCancellationRequested)
+                    {
+                        // Handle cancellation here, if needed.
+                        Debug.Log("Asset bundle FACT loading canceled.");
+                        yield break;
+                    }
+                    yield return null;
+                }
                 curBundle = curBundleReq.assetBundle;
                 var assets = curBundle.GetAllAssetNames();
                 curFactImages = new Sprite[assets.Length];
@@ -151,7 +169,7 @@ public class FactManager : MonoBehaviour
                 imageObj.sprite = curFactImages[curImageIndex];
                 anim.SetTrigger(triggerHashClick);
                 isShowingFact = true;
-                // Use the loaded AssetBundle
+                AssetBundleUtils.instance.AddToUnloadQueue(curBundle);
             }
             else
             {
@@ -165,48 +183,48 @@ public class FactManager : MonoBehaviour
     }
 
 
-        private void SetButtonVisuals()
-        {
-            factImageHolder.SetActive(curFactImages.Length > 1);
-        }
-
-        public void NextImage()
-        {
-            curImageIndex = (curImageIndex + 1) % curFactImages.Length;
-            imageObj.sprite = curFactImages[curImageIndex];
-        }
-        public void PrevImage()
-        {
-            curImageIndex = (curImageIndex - 1) % curFactImages.Length;
-            imageObj.sprite = curFactImages[curImageIndex];
-        }
-        private void setText(int langIndex)
-        {
-            if (curFact != null)
-                textObj.text = curFact.FactInfo[langIndex];
-        }
-    }
-
-
-
-
-    public class TriggerWords
+    private void SetButtonVisuals()
     {
-        public string[] Words;
-        public TriggerWords(string[] _words)
-        {
-            Words = _words;
-        }
+        factImageHolder.SetActive(curFactImages.Length > 1);
     }
 
-    public class FactContents
+    public void NextImage()
     {
-        public string[] FactInfo;
-        public string bundlePath;
-
-        public FactContents(string[] _factInfo, string _bundlePath)
-        {
-            FactInfo = _factInfo;
-            bundlePath = _bundlePath;
-        }
+        curImageIndex = (curImageIndex + 1) % curFactImages.Length;
+        imageObj.sprite = curFactImages[curImageIndex];
     }
+    public void PrevImage()
+    {
+        curImageIndex = (curImageIndex - 1) % curFactImages.Length;
+        imageObj.sprite = curFactImages[curImageIndex];
+    }
+    private void setText(int langIndex)
+    {
+        if (curFact != null)
+            textObj.text = curFact.FactInfo[langIndex];
+    }
+}
+
+
+
+
+public class TriggerWords
+{
+    public string[] Words;
+    public TriggerWords(string[] _words)
+    {
+        Words = _words;
+    }
+}
+
+public class FactContents
+{
+    public string[] FactInfo;
+    public string bundlePath;
+
+    public FactContents(string[] _factInfo, string _bundlePath)
+    {
+        FactInfo = _factInfo;
+        bundlePath = _bundlePath;
+    }
+}

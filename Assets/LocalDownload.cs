@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -18,11 +19,12 @@ public class LocalDownload : MonoBehaviour
     public TextMeshProUGUI text;
 
     private PageTextList newPageList;
-
+    private CancellationTokenSource cancellationTokenSource;
 
 
     private void Start()
     {
+        cancellationTokenSource = new CancellationTokenSource();
         AssetBundle.UnloadAllAssetBundles(true);
         //localPageJSONRoot = $"{Application.persistentDataPath}/Pages/JSONPageData.json";
         ////     StartCoroutine(loadFactsAndroid());
@@ -42,7 +44,8 @@ public class LocalDownload : MonoBehaviour
         StartCoroutine(DownloadPagesFromPath(Pagepath));
         StartCoroutine(DownloadFactsFromPath(FactPath));
 
-        BookManager.OnPageChanged += CheckBundleLoaded;
+        ButtonCanvas.OnNextPageClicked += CheckNextBundleLoaded;
+        ButtonCanvas.OnPrevPageClicked += CheckPrevBundleLoaded;
         MainMenuCanvas.OnNewStoryClicked += CheckFirstThreePages;
         //    loadFactsAndroid();
         //localJSoNPageRoot = $"{PagePath}/JSONPageData.json";
@@ -149,56 +152,9 @@ public class LocalDownload : MonoBehaviour
 
             }
 
-            //UnityWebRequest www = UnityWebRequest.Get(path);
-
-            //yield return www.SendWebRequest();
-
-            //if (www.result == UnityWebRequest.Result.Success)
-            //{
-            //    dataAsJson = www.downloadHandler.text;
-            //    PageTextList newPageList = JsonUtility.FromJson<PageTextList>(dataAsJson);
-
-            //    // StartCoroutine(LoadIndividualPageTexts(newPageList, 0)); // load first page, make it load first 3
-            //    StartCoroutine(LoadPageTexts(newPageList, 0, newPageList.pageTexts.Count));
-            //    //if (BookManager.LastSavedPage == 0)
-            //    //{
-            //    //    StartCoroutine(LoadPageTexts(newPageList, 1, newPageList.pageTexts.Count));
-            //    //    yield break;
-            //    //}
-
-            //    //if (BookManager.LastSavedPage != 1)
-            //    //{
-            //    //    StartCoroutine(LoadIndividualPageTexts(newPageList, BookManager.LastSavedPage - 1));// load last saved page
-            //    //    StartCoroutine(LoadPageTexts(newPageList, BookManager.LastSavedPage - 2, 0));
-            //    //}
-            //    //StartCoroutine(LoadPageTexts(newPageList, BookManager.LastSavedPage, newPageList.pageTexts.Count));
-            //}
-            //else
-            //{
-            //    // set retry system
-            //    FindObjectOfType<WordHighlighting>().gameObject.GetComponent<TextMeshProUGUI>().text = www.error;
-
-            //    yield break; // Exit the coroutine if file loading fails
-            //}
         }
     }
 
-
-    //private IEnumerator LoadIndividualPageTexts(PageTextList jsonPages, int page)
-    //{
-    //    PageContents newContents = new PageContents();
-    //    Page pageTemp = jsonPages.pageTexts[page];
-    //    newContents.Texts = pageTemp.Texts;
-    //    string Environmentpath = $"{Application.streamingAssetsPath}/Pages/Page_{pageTemp.pageNumber}_EnvironmentCanvas.unity3d";
-    //    if (File.Exists(Environmentpath))
-    //    {
-    //        yield return loadPageCanvasses(Environmentpath, pageTemp.pageNumber, newContents);
-    //    }
-    //    else
-    //    {
-    //        Debug.LogError("no bundle for page " + pageTemp.pageNumber);
-    //    }
-    //}
 
     private IEnumerator LoadPageTextsBack(PageTextList jsonPages, int fromPage)
     {
@@ -214,35 +170,39 @@ public class LocalDownload : MonoBehaviour
             string Environmentpath = Path.Combine(Application.streamingAssetsPath, "Pages", $"Page_{ pageTemp.pageNumber}_EnvironmentCanvas.unity3d");
             text.text += "attempting page " + pageTemp.pageNumber + "\n";
             yield return loadPageCanvasses(Environmentpath, pageTemp.pageNumber, newContents);
-
         }
+
+        AssetBundleUtils.instance.StartUnloading(false);
     }
 
     private void CheckFirstThreePages()
     {
-        Debug.Log("ce");
         MainMenuCanvas.OnNewStoryClicked -= CheckFirstThreePages;
         StartCoroutine(LoadPageTextsForward(newPageList.pageTexts, BookManager.LastSavedPage == 0 ? 0 : BookManager.LastSavedPage - 1, newPageList.pageTexts.Count));
     }
 
-    private void CheckBundleLoaded(int number, PageContents contents)
+    private void CheckPrevBundleLoaded()
     {
+        int number = BookManager.currentPageNumber;
 
-
-        if (!BookManager.Pages.ContainsKey(number + 2) && (number + 2) <= newPageList.pageTexts.Count)
-        {
-            LoadNextBundleIE(newPageList.pageTexts[number + 2]);
-        }
-        Debug.Log("cur " + number + " checking " + (number - 2));
         if (!BookManager.Pages.ContainsKey(number - 2) && (number - 2) >= 1)
         {
-            LoadNextBundleIE(newPageList.pageTexts[number - 2]);
+            LoadBundleIE(newPageList.pageTexts[number - 2]);
         }
     }
 
-    private void LoadNextBundleIE(Page page)
+    private void CheckNextBundleLoaded()
     {
-        Debug.Log(page.pageNumber + " got it");
+        int number = BookManager.currentPageNumber;
+
+        if (!BookManager.Pages.ContainsKey(number + 2) && (number + 2) <= newPageList.pageTexts.Count)
+        {
+            LoadBundleIE(newPageList.pageTexts[number + 2]);
+        }
+    }
+
+    private void LoadBundleIE(Page page)
+    {
         StartCoroutine(LoadNextBundle(page));
     }
     private IEnumerator LoadNextBundle(Page page)
@@ -254,6 +214,7 @@ public class LocalDownload : MonoBehaviour
         string Environmentpath = Path.Combine(Application.streamingAssetsPath, "Pages", $"Page_{ page.pageNumber - 1}_EnvironmentCanvas.unity3d");
         text.text += "attempting page " + (page.pageNumber - 1) + "\n";
         yield return loadPageCanvasses(Environmentpath, page.pageNumber - 1, newContents);
+        AssetBundleUtils.instance.StartUnloading(false);
     }
 
     private IEnumerator LoadPageTextsForward(List<Page> Pages, int fromPage, int bookLength)
@@ -276,9 +237,9 @@ public class LocalDownload : MonoBehaviour
             string Environmentpath = Path.Combine(Application.streamingAssetsPath, "Pages", $"Page_{ pageTemp.pageNumber}_EnvironmentCanvas.unity3d");
             text.text += "attempting page " + pageTemp.pageNumber + "\n";
             yield return loadPageCanvasses(Environmentpath, pageTemp.pageNumber, newContents);
-
-
+       
         }
+        AssetBundleUtils.instance.StartUnloading(false);
     }
     private IEnumerator loadPageCanvasses(string path, int pageNumber, PageContents newPageContents)
     {
@@ -291,27 +252,64 @@ public class LocalDownload : MonoBehaviour
             // Asset Bundle is loaded successfully
             var EnvbundleReq = AssetBundle.LoadFromMemoryAsync(www.downloadHandler.data);
 
-            yield return EnvbundleReq.isDone;
+            while (!EnvbundleReq.isDone)
+            {
+                if (cancellationTokenSource.IsCancellationRequested)
+                {
+                    Debug.Log("cancelled");
+                    yield break;
+                }
+
+                yield return null;
+            }
+
             text.text += pageNumber + " success \n";
             if (EnvbundleReq != null)
             {
                 text.text += pageNumber + " got bundle \n";
                 var Envbundle = EnvbundleReq.assetBundle;
                 var Envassets = Envbundle.GetAllAssetNames();
-
+                AssetBundleUtils.instance.AddToUnloadQueue(Envbundle);
                 var Envprefab = Envbundle.LoadAssetAsync<GameObject>(Envassets[1]);
-                yield return Envprefab;
+                while (!Envprefab.isDone)
+                {
+                    if (cancellationTokenSource.IsCancellationRequested)
+                    {
+                        Debug.Log("cancelled");
+                        yield break;
+                    }
+
+                    yield return null;
+                }
                 var Intprefab = Envbundle.LoadAssetAsync<GameObject>(Envassets[2]);
-                yield return Intprefab;
+                while (!Intprefab.isDone)
+                {
+                    if (cancellationTokenSource.IsCancellationRequested)
+                    {
+                        Debug.Log("cancelled");
+                        yield break;
+                    }
+
+                    yield return null;
+                }
                 var pageSkybox = Envbundle.LoadAssetAsync<Material>(Envbundle.GetAllAssetNames()[0]);
-                yield return pageSkybox;
+                while (!pageSkybox.isDone)
+                {
+                    if (cancellationTokenSource.IsCancellationRequested)
+                    {
+                        Debug.Log("cancelled");
+                        yield break;
+                    }
+
+                    yield return null;
+                }
                 newPageContents.EnvironmentCanvas = (GameObject)Envprefab.asset;
                 newPageContents.SkyboxMaterial = (Material)pageSkybox.asset;
                 newPageContents.InteractionCanvas = (GameObject)Intprefab.asset;
                 newPageContents.InteractionCanvas.GetComponent<Canvas>().worldCamera = cam;
                 //    newPageContents.interactions = newPageContents.InteractionCanvas.GetComponentsInChildren<TouchBase>();
                 setUpEnvironmentCanvasses(pageNumber, newPageContents);
-                Envbundle.UnloadAsync(false);
+    
             }
             else
             {
@@ -362,9 +360,15 @@ public class LocalDownload : MonoBehaviour
 
     }
 
+    public void CancelLoading()
+    {
+        cancellationTokenSource.Cancel();
+    }
+
     private void OnDisable()
     {
-        BookManager.OnPageChanged -= CheckBundleLoaded;
+        ButtonCanvas.OnNextPageClicked -= CheckNextBundleLoaded;
+        ButtonCanvas.OnPrevPageClicked -= CheckPrevBundleLoaded;
         MainMenuCanvas.OnNewStoryClicked -= CheckFirstThreePages;
         StopAllCoroutines();
 

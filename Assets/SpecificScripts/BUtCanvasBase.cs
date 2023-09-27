@@ -15,10 +15,11 @@ public class BUtCanvasBase : MonoBehaviour
     protected bool isTransitioning;
     [SerializeField] protected GameObject ButtonHolder;
 
-    protected static Action OnTransitionEnded;
+    public static Action OnTransitionEnded;
 
     [SerializeField] protected GameObject optionsButGameobject;
 
+    private WaitForSeconds HalfSecond = new WaitForSeconds(0.5f);
     public virtual void OnEnable()
     {
         OptionsManager.onOptionsShown += ToggleHolderOff;
@@ -79,7 +80,7 @@ public class BUtCanvasBase : MonoBehaviour
         }
         LoadingGameobject.SetActive(false);
         callback?.Invoke();
-
+        yield return HalfSecond;
         curimgcol = sliderImg.color;
 
         elapsedTime = 0;

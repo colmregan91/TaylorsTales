@@ -29,6 +29,13 @@ public class WordHighlighting : MonoBehaviour
     private int startOfNextSentenceIndex = 0;
     public bool multicoloredHiglighting;
     private bool hasSentencenFinished;
+
+    public static Action OnReadingStarted;
+    public static Action OnReadingStopped;
+    public bool isCancelled;
+    private bool isReading;
+    private WaitForSeconds halfSecond = new WaitForSeconds(0.5f);
+
     public bool HasSentenceFinished()
     {
         return hasSentencenFinished;
@@ -42,11 +49,26 @@ public class WordHighlighting : MonoBehaviour
         StartCoroutine(LerpWordColorOnClick(index, isRed, callback));
     }
 
+    public void CancelReading()
+    {
+        if (isReading == true)
+        {
+            isCancelled = true;
+            isReading = false;
+            OnReadingStopped?.Invoke();
+        }
 
+    }
+    public void BeginReading(int wordIndex)
+    {
+        isCancelled = false;
+        isReading = true;
+        OnReadingStarted?.Invoke();
+        StartSentenceReadingLerp(wordIndex);
+    }
 
     public void StartSentenceReadingLerp(int wordIndex)
     {
- 
         startColor = IsWordRed(wordIndex) ? Color.red : Color.black;
         hasSentencenFinished = false;
         Debug.Log(wordIndex);
@@ -54,7 +76,7 @@ public class WordHighlighting : MonoBehaviour
         {
             DesiredColorIndex = (DesiredColorIndex + 1) % availableColors.Count;
             DesiredColor = availableColors[DesiredColorIndex];
-        
+
             StartCoroutine(lerpSentence(wordIndex, startColor, DesiredColor));
         }
         else
@@ -74,7 +96,7 @@ public class WordHighlighting : MonoBehaviour
         float pingPongValue = elapsedTime;
         bool last = getIsLastWord(wordIndex);
 
-        if (last) Debug.Log(",ast " + WordInfoTemp.GetWord());
+
         while (true)
         {
             pingPongValue = Mathf.PingPong(elapsedTime, 1);
@@ -96,6 +118,26 @@ public class WordHighlighting : MonoBehaviour
                 textObj.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
             }
 
+            if (isCancelled)
+            {
+                for (int i = 0; i < WordInfoTemp.characterCount; ++i)
+                {
+
+                    var charIndexLerp = WordInfoTemp.firstCharacterIndex + i;
+                    var meshIndexLerp = textObj.textInfo.characterInfo[charIndexLerp].materialReferenceIndex;
+                    var vertexIndexLerp = textObj.textInfo.characterInfo[charIndexLerp].vertexIndex;
+
+                    var vertexColors = textObj.textInfo.meshInfo[meshIndexLerp].colors32;
+
+                    vertexColors[vertexIndexLerp + 0] = start;
+                    vertexColors[vertexIndexLerp + 1] = start;
+                    vertexColors[vertexIndexLerp + 2] = start;
+                    vertexColors[vertexIndexLerp + 3] = start;
+                    textObj.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
+                }
+                yield break;
+            }
+
             float timeChange = Time.deltaTime * SentLerpSpeed;
             elapsedTime += timeChange;
 
@@ -109,8 +151,8 @@ public class WordHighlighting : MonoBehaviour
                 if (last)
                 {
                     Debug.Log("fin lerp");
-                    startOfNextSentenceIndex = wordIndex+1;
-                    Debug.Log("*** start next " + startOfNextSentenceIndex);    
+                    startOfNextSentenceIndex = wordIndex + 1;
+                    Debug.Log("*** start next " + startOfNextSentenceIndex);
                     hasSentencenFinished = true;
                 }
 
@@ -164,7 +206,9 @@ public class WordHighlighting : MonoBehaviour
             time += Time.deltaTime / clickedLerpSpeed;
             yield return null;
         }
+
         time = 0;
+
         while (time < 1)
         {
             for (int i = 0; i < WordInfoTemp.characterCount; ++i)
@@ -185,6 +229,10 @@ public class WordHighlighting : MonoBehaviour
             yield return null;
         }
 
+        vertexColors[vertexIndexLerp + 0] = startColor;
+        vertexColors[vertexIndexLerp + 1] = startColor;
+        vertexColors[vertexIndexLerp + 2] = startColor;
+        vertexColors[vertexIndexLerp + 3] = startColor;
         callback?.Invoke();
     }
 

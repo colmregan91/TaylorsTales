@@ -8,10 +8,17 @@ public class AudioMAnager : MonoBehaviour
 {
     public static AudioMAnager instance;
     public AudioMixerGroup BackgroundGroup;
-    public AudioMixerGroup TouchNoiseGroup;
-    public AudioSource WordSentSource;
 
+    [Space]
+    [SerializeField] private AudioSource sentenceSource;
+    [SerializeField] private AudioSource wordSource;
     [SerializeField] private AudioSource UIsource;
+
+
+    public static Dictionary<string, AudioClip> wordClips = new Dictionary<string, AudioClip>();
+    private AudioClip curClip;
+
+
 
     void Awake()
     {
@@ -24,27 +31,72 @@ public class AudioMAnager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    private void Start()
+    {
+        BookManager.OnPageChanged += HandlePageChange;
+    }
+    private void OnDisable()
+    {
+        BookManager.OnPageChanged -= HandlePageChange;
+    }
+    private void HandlePageChange(int arg1, PageContents arg2)
+    {
+        if (wordClips.Count == 0) return;
+
+        foreach (AudioClip clip in wordClips.Values)
+        {
+            clip.UnloadAudioData();
+        }
+
+        wordClips.Clear();
+    }
+
     public void PlayUIpop()
     {
         UIsource.Play();
     }
 
+    public void PlayWordClip(string word)
+    {
+        if (wordClips.ContainsKey(word))
+        {
+            wordSource.clip = wordClips[word];
+            wordSource.Play();
+            return;
+        }
+        curClip = Resources.Load<AudioClip>("Words/English/" + word);
+        if (curClip != null)
+        {
+            wordSource.clip = curClip;
+            wordSource.Play();
+            wordClips.Add(word, curClip);
+        }
+        else
+        {
+            Debug.Log("no clip for " + word);
+        }
+
+    }
+
     public bool isSentencePlaying()
     {
-        return WordSentSource.isPlaying;
+        return sentenceSource.isPlaying;
     }
 
-    public void PlaySentenceClip(AudioClip clip, Action callback)
+    public void PlaySentenceClip(AudioClip clip)
     {
-        WordSentSource.clip = clip;
-        WordSentSource.Play();
+        sentenceSource.clip = clip;
+        sentenceSource.Play();
     }
 
-
-    public void SetToTouchGroup(AudioSource source)
+    public void StopReading()
     {
-        source.outputAudioMixerGroup = TouchNoiseGroup;
+        sentenceSource.Stop();
+
     }
+
+
     public void SetToBackgroundGroup(AudioSource source)
     {
         source.outputAudioMixerGroup = BackgroundGroup;

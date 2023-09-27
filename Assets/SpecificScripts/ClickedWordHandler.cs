@@ -86,7 +86,8 @@ public class ClickedWordHandler : MonoBehaviour
 
     private void handleClickedWord(int wordIndex)
     {
-        clickedWordString = textObj.textInfo.wordInfo[wordIndex].GetWord().ToLower();
+        wordHighlight.CancelReading();
+           clickedWordString = textObj.textInfo.wordInfo[wordIndex].GetWord().ToLower();
         isSpecialWordTemp = wordHighlight.IsWordRed(wordIndex);
 
         if (isSpecialWordTemp)
@@ -100,7 +101,7 @@ public class ClickedWordHandler : MonoBehaviour
         }
         canClickonWord = false;
         wordHighlight.StartColorLerpOnClick(wordindex, isSpecialWordTemp, () => canClickonWord = true);
-
+        AudioMAnager.instance.PlayWordClip(clickedWordString);
     }
 
     private void OnDisable()
