@@ -88,12 +88,17 @@ public class AudioMAnager : MonoBehaviour
     {
         sentenceSource.clip = clip;
         sentenceSource.Play();
+        Invoke("OnClipFinished", clip.length);
+    }
+    private void OnClipFinished()
+    { 
+        SentenceAudio.CurReadingAction.Increment();
     }
 
     public void StopReading()
     {
         sentenceSource.Stop();
-
+        CancelInvoke("OnClipFinished");
     }
 
 

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.7715231, g: 0.9101741, b: 0.99388736, a: 1}
+  m_IndirectSpecularColor: {r: 0.7716516, g: 0.91017544, b: 0.9939248, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2153,14 +2153,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '
+  m_text: 'make it so that all special words appear as <color>word</word> with no
+    spaces - VERY IMPORTANT
+
 
     back buttons on options menu
 
 
 
-    check connection and that kinda
-    stuff
+    check connection
+    and that kinda stuff
 
 
     quit button
@@ -8343,6 +8345,8 @@ MonoBehaviour:
   - {r: 0.55542713, g: 0.031372547, b: 1, a: 1}
   - {r: 1, g: 0.5222889, b: 0.031372547, a: 1}
   - {r: 1, g: 0.031372547, b: 0.8860091, a: 1}
+  startOfNextSentenceWordIndex: 0
+  curSentenceIndex: 0
   multicoloredHiglighting: 0
   isCancelled: 0
 --- !u!114 &1075209602

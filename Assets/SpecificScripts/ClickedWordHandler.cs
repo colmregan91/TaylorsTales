@@ -16,7 +16,7 @@ public class ClickedWordHandler : MonoBehaviour
     private int wordindex;
     private string clickedWordString;
     private float ScrollPos;
-    private bool canClickonWord =true;
+    private bool canClickonWord = true;
     private bool isSpecialWordTemp;
     public static Action OnWordClicked;
     public static Action<string> OnSpecialWordClicked;
@@ -87,12 +87,11 @@ public class ClickedWordHandler : MonoBehaviour
     private void handleClickedWord(int wordIndex)
     {
         wordHighlight.CancelReading();
-           clickedWordString = textObj.textInfo.wordInfo[wordIndex].GetWord().ToLower();
-        isSpecialWordTemp = wordHighlight.IsWordRed(wordIndex);
+        clickedWordString = textObj.textInfo.wordInfo[wordIndex].GetWord().ToLower();
 
+        isSpecialWordTemp = wordHighlight.isWordRed(wordIndex);
         if (isSpecialWordTemp)
         {
-            Debug.Log("spec");
             OnSpecialWordClicked?.Invoke(clickedWordString);
         }
         else

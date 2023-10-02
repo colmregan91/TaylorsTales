@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 public class WordHighlighting : MonoBehaviour
@@ -26,7 +27,8 @@ public class WordHighlighting : MonoBehaviour
 
     public List<Color> availableColors = new List<Color>();
 
-    private int startOfNextSentenceIndex = 0;
+    public int startOfNextSentenceWordIndex = 0;
+    public int curSentenceIndex = 0;
     public bool multicoloredHiglighting;
     private bool hasSentencenFinished;
 
@@ -35,6 +37,48 @@ public class WordHighlighting : MonoBehaviour
     public bool isCancelled;
     private bool isReading;
     private WaitForSeconds halfSecond = new WaitForSeconds(0.5f);
+    private List<string> wordsThisPage = new List<string>();
+    private char[] separators = { ' ', '\n' };
+    private void OnEnable()
+    {
+        LanguagesManager.OnLanguageChanged += CancelReadingOnLang;
+        BookManager.OnPageChanged += setRedWords;
+        ButtonCanvas.OnNextPageClicked += CancelReading;
+        ButtonCanvas.OnPrevPageClicked += CancelReading;
+        setRedWords(0, null);
+    }
+
+
+    private void setRedWords(int arg1, PageContents arg2)
+    {
+       wordsThisPage = textObj.text.Split(separators, StringSplitOptions.RemoveEmptyEntries).ToList();
+    }
+
+    private void OnDisable()
+    {
+        LanguagesManager.OnLanguageChanged -= CancelReadingOnLang;
+        BookManager.OnPageChanged -= setRedWords;
+        ButtonCanvas.OnNextPageClicked -= CancelReading;
+        ButtonCanvas.OnPrevPageClicked += CancelReading;
+    }
+
+    public bool GetIsReading()
+    {
+        return isReading;
+    }
+
+    //private void setRedWords(int PageContents)
+    //{
+    //    for (int i = 0; i < textObj.text.Length; i++)
+    //    {
+    //        if (IsWordRed(i))
+    //        {
+
+    //        }
+    //    }
+    //}
+
+
 
     public bool HasSentenceFinished()
     {
@@ -42,11 +86,16 @@ public class WordHighlighting : MonoBehaviour
     }
     public int GetStartIndex()
     {
-        return startOfNextSentenceIndex;
+        return startOfNextSentenceWordIndex;
     }
     public void StartColorLerpOnClick(int index, bool isRed, Action callback = null)
     {
         StartCoroutine(LerpWordColorOnClick(index, isRed, callback));
+    }
+
+    public void CancelReadingOnLang(Languages lang)
+    {
+        CancelReading();
     }
 
     public void CancelReading()
@@ -57,21 +106,54 @@ public class WordHighlighting : MonoBehaviour
             isReading = false;
             OnReadingStopped?.Invoke();
         }
+    }
+    private int RecalulcateStartIndex()
+    {
+        int sentCOunter = 0;
+
+        if (sentCOunter == curSentenceIndex)
+        {
+            return 0;
+        }
+
+        for (int i = 0; i < textObj.text.Length; i++)
+        {
+            if (getIsLastWord(i))
+            {
+                sentCOunter++;
+                if (sentCOunter == curSentenceIndex)
+                {
+                    return i + 1;
+                }
+         
+            }
+
+        }
+        return 0;
 
     }
-    public void BeginReading(int wordIndex)
+    public void BeginReading()
     {
+
         isCancelled = false;
         isReading = true;
         OnReadingStarted?.Invoke();
-        StartSentenceReadingLerp(wordIndex);
+        startOfNextSentenceWordIndex = RecalulcateStartIndex();
+        StartSentenceReadingLerp(startOfNextSentenceWordIndex);
+    }
+
+    public void ResetReading()
+    {
+        curSentenceIndex = 0;
+        startOfNextSentenceWordIndex = 0;
+        isCancelled = false;
+        isReading = false;
     }
 
     public void StartSentenceReadingLerp(int wordIndex)
     {
-        startColor = IsWordRed(wordIndex) ? Color.red : Color.black;
+        startColor = isWordRed(wordIndex) ? Color.red : Color.black;
         hasSentencenFinished = false;
-        Debug.Log(wordIndex);
         if (multicoloredHiglighting)
         {
             DesiredColorIndex = (DesiredColorIndex + 1) % availableColors.Count;
@@ -144,16 +226,15 @@ public class WordHighlighting : MonoBehaviour
             if (elapsedTime >= 0.3f && !next && !last)
             {
                 next = true;
+                startOfNextSentenceWordIndex = wordIndex + 1;
                 StartSentenceReadingLerp(wordIndex + 1);
             }
             if (elapsedTime >= 2)
             {
                 if (last)
                 {
-                    Debug.Log("fin lerp");
-                    startOfNextSentenceIndex = wordIndex + 1;
-                    Debug.Log("*** start next " + startOfNextSentenceIndex);
-                    hasSentencenFinished = true;
+                   
+                    SentenceAudio.CurReadingAction.Increment();
                 }
 
                 yield break;
@@ -175,16 +256,19 @@ public class WordHighlighting : MonoBehaviour
 
 
 
-
+    public bool isWordRed(int index)
+    {
+        return wordsThisPage[index].Contains('<');
+    }
 
 
 
     private IEnumerator LerpWordColorOnClick(int wordIndex, bool isRed, Action callback)
     {
         WordInfoTemp = textObj.textInfo.wordInfo[wordIndex];
-        startColor = isRed ? Color.red : Color.black;
-        DesiredColorIndex = (DesiredColorIndex + 1) % availableColors.Count;
-        DesiredColor = availableColors[DesiredColorIndex];
+       var startColor = isRed ? Color.red : Color.black;
+       var thisDesiredColorIndex = (DesiredColorIndex + 1) % availableColors.Count;
+        var DesiredColor = availableColors[thisDesiredColorIndex];
 
         float time = 0;
         while (time < 1)
@@ -235,16 +319,4 @@ public class WordHighlighting : MonoBehaviour
         vertexColors[vertexIndexLerp + 3] = startColor;
         callback?.Invoke();
     }
-
-
-    public bool IsWordRed(int wordIndex)
-    {
-
-        charIndexLerp = textObj.textInfo.wordInfo[wordIndex].firstCharacterIndex;
-        meshIndexLerp = textObj.textInfo.characterInfo[charIndexLerp].materialReferenceIndex;
-        vertexIndexLerp = textObj.textInfo.characterInfo[charIndexLerp].vertexIndex;
-        vertexColors = textObj.textInfo.meshInfo[meshIndexLerp].colors32;
-        return vertexColors[vertexIndexLerp + 1] == Color.red;
-    }
-
 }

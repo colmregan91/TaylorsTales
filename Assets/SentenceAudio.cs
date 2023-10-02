@@ -9,6 +9,22 @@ public class SentenceAudio : MonoBehaviour
     [SerializeField] private WordHighlighting wordHighlight;
     private AudioClip curClip => clips[curClipIndex];
     private WaitForSeconds halfSecond = new WaitForSeconds(0.5f);
+
+    public static TaskAction CurReadingAction;
+
+    private void Start()
+    {
+        CurReadingAction = new TaskAction(2, OnSentenceFinished);
+    }
+    private void OnEnable()
+    {
+        WordHighlighting.OnReadingStopped += HandleReadingStopped;
+    }
+    private void OnDisable()
+    {
+        WordHighlighting.OnReadingStopped -= HandleReadingStopped;
+    }
+
     private void OnSentenceFinished()
     {
         Debug.Log("next sent goin");
@@ -16,39 +32,42 @@ public class SentenceAudio : MonoBehaviour
         if (curClipIndex >= clips.Count)
         {
             Debug.Log("FIN");
+            wordHighlight.CancelReading();
             return;
         }
 
-
+        wordHighlight.curSentenceIndex++;
         PlaySentence(curClip);
     }
 
     public void PlayCurSentence()
     {
-        wordHighlight.BeginReading(wordHighlight.GetStartIndex());
-        PlaySentence(curClip);
+        if (wordHighlight.GetIsReading()) return;
+
+        if (curClipIndex >= clips.Count)
+        {
+            curClipIndex = 0;
+            wordHighlight.ResetReading();
+            PlaySentence(clips[0]);
+        }
+        else
+        {
+            PlaySentence(curClip);
+        }
     }
 
     void PlaySentence(AudioClip clip)
     {
-      
+        CurReadingAction.ResetAction();
+        wordHighlight.BeginReading();
         AudioMAnager.instance.PlaySentenceClip(clip);
-        StartCoroutine(WaitForSentenceFinished());
+
     }
 
-    private IEnumerator WaitForSentenceFinished()
+    private void HandleReadingStopped()
     {
-        while (!wordHighlight.HasSentenceFinished() || AudioMAnager.instance.isSentencePlaying())
-        {
-            if (wordHighlight.isCancelled)
-            {
-                AudioMAnager.instance.StopReading();
-                yield break;
-            }
-            yield return null;
-        }
-        yield return halfSecond;
-
-        OnSentenceFinished();
+        Debug.Log("stopped");
+        AudioMAnager.instance.StopReading();
+        CurReadingAction.ResetAction();
     }
 }
