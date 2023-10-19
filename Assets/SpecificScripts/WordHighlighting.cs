@@ -28,7 +28,9 @@ public class WordHighlighting : MonoBehaviour
 
     public int startOfNextSentenceWordIndex = 0;
     public int curSentenceIndex = 0;
-    public bool MulticoloredHiglighting => ColorSettings.isRandomColors;
+    public bool MulticoloredHiglighting => ColorSettings.isRandomColorsReading;
+    public bool MulticoloredHiglightingOnClick => ColorSettings.isRandomColorsClicking;
+
     private bool hasSentencenFinished;
 
     public static Action OnReadingStarted;
@@ -81,7 +83,10 @@ public class WordHighlighting : MonoBehaviour
     {
         return availableColors[ColorSettings.chosenReadingColor];
     }
-
+    private Color GetChosenClickColor()
+    {
+        return availableColors[ColorSettings.chosenClickingColor];
+    }
     public bool HasSentenceFinished()
     {
         return hasSentencenFinished;
@@ -269,8 +274,16 @@ public class WordHighlighting : MonoBehaviour
     {
         WordInfoTemp = textObj.textInfo.wordInfo[wordIndex];
        var startColor = isRed ? Color.red : Color.black;
-       var thisDesiredColorIndex = (DesiredColorIndex + 1) % availableColors.Count;
-        var DesiredColor = availableColors[thisDesiredColorIndex];
+       
+       if (MulticoloredHiglightingOnClick)
+       {
+           DesiredColorIndex = (DesiredColorIndex + 1) % availableColors.Count;
+           DesiredColor = availableColors[DesiredColorIndex];
+       }
+       else
+       {
+           DesiredColor = GetChosenClickColor();
+       }
 
         float time = 0;
         while (time < 1)
