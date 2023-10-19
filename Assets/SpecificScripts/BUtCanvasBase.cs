@@ -11,10 +11,10 @@ public class BUtCanvasBase : MonoBehaviour
     [SerializeField] protected float TransitionSpeed;
 
     [SerializeField] protected AudioSource TurnAudio;
-
+    protected WaitForSeconds timeDelay = new WaitForSeconds (1.5f);
     protected bool isTransitioning;
     [SerializeField] protected GameObject ButtonHolder;
-
+    protected WaitForSeconds copyrightDelay = new WaitForSeconds (2f);
     public static Action OnTransitionEnded;
 
     [SerializeField] protected GameObject optionsButGameobject;
@@ -45,10 +45,35 @@ public class BUtCanvasBase : MonoBehaviour
     {
 
     }
+    
+    protected void StartCopyrightTransitionCoro(Image image)
+    {
+       StartCoroutine(CopyrightTransition(image));
+    }
 
     protected void StartTransitionCoro(bool isNextPage, Action callback, bool shouldReset = true)
     {
         StartCoroutine(TransitionCoro(isNextPage, callback, shouldReset));
+    }
+
+    protected IEnumerator CopyrightTransition(Image image)
+    {
+        yield return copyrightDelay;
+        Color startColor = image.color;
+        Color endColor = new Color(startColor.r, startColor.g, startColor.b, 0f); // Transparent color
+
+        float startTime = Time.time;
+        float endTime = startTime + 1;
+
+        while (Time.time < endTime)
+        {
+            float t = (Time.time - startTime) / 1;
+            image.color = Color.Lerp(startColor, endColor, t);
+            yield return null; // Wait for the next frame
+        }
+
+        // Ensure the final color is set to transparent
+        image.color = endColor;
     }
     protected virtual IEnumerator TransitionCoro(bool isNextPage, Action callback, bool shouldReset)
     {

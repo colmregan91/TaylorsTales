@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class OptionsManager : MonoBehaviour
 {
@@ -23,6 +24,8 @@ public class OptionsManager : MonoBehaviour
     public static Action onOptionsShown;
     public static Action onOptionsHidden;
 
+
+
     private void Awake()
     {
         ResetPanel(optionsPanel);
@@ -34,7 +37,7 @@ public class OptionsManager : MonoBehaviour
         quitButton.SetActive(false);
     }
 
-    private void Start()
+    private void OnEnable()
     {
         BookManager.OnPageChanged += checkTitlePage;
     }
@@ -57,7 +60,6 @@ public class OptionsManager : MonoBehaviour
         isActive = true;
         onOptionsShown?.Invoke();
     }
-
 
 
     private void ResetPanel(CanvasGroup group)

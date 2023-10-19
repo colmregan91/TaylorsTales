@@ -16,7 +16,6 @@ public class WordHighlighting : MonoBehaviour
 
     private Color startColor;
     private Color DesiredColor;
-    public Color ChosenReadingColor;
 
     private int DesiredColorIndex;
     int charIndexLerp;
@@ -29,7 +28,7 @@ public class WordHighlighting : MonoBehaviour
 
     public int startOfNextSentenceWordIndex = 0;
     public int curSentenceIndex = 0;
-    public bool multicoloredHiglighting;
+    public bool MulticoloredHiglighting => ColorSettings.isRandomColors;
     private bool hasSentencenFinished;
 
     public static Action OnReadingStarted;
@@ -78,7 +77,10 @@ public class WordHighlighting : MonoBehaviour
     //    }
     //}
 
-
+    private Color GetChosenColor()
+    {
+        return availableColors[ColorSettings.chosenReadingColor];
+    }
 
     public bool HasSentenceFinished()
     {
@@ -154,7 +156,7 @@ public class WordHighlighting : MonoBehaviour
     {
         startColor = isWordRed(wordIndex) ? Color.red : Color.black;
         hasSentencenFinished = false;
-        if (multicoloredHiglighting)
+        if (MulticoloredHiglighting)
         {
             DesiredColorIndex = (DesiredColorIndex + 1) % availableColors.Count;
             DesiredColor = availableColors[DesiredColorIndex];
@@ -163,7 +165,7 @@ public class WordHighlighting : MonoBehaviour
         }
         else
         {
-            StartCoroutine(lerpSentence(wordIndex, startColor, ChosenReadingColor));
+            StartCoroutine(lerpSentence(wordIndex, startColor, GetChosenColor()));
         }
 
     }

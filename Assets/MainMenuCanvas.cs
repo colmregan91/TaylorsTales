@@ -16,7 +16,17 @@ public class MainMenuCanvas : BUtCanvasBase
 
     [SerializeField] private GameObject wordCanvasGameobject;
 
-    private WaitForSeconds timeDelay = new WaitForSeconds (3f);
+
+    [SerializeField] private Image copyrightImage;
+
+    private void Awake()
+    {
+        if (Application.isEditor)
+        {
+            copyrightImage.gameObject.SetActive(true);
+            StartCopyrightTransitionCoro(copyrightImage);
+        }
+    }
 
     public override void OnEnable()
     {
@@ -39,8 +49,8 @@ public class MainMenuCanvas : BUtCanvasBase
         {
             base.ToggleHolderOn();
         }
-
     }
+
     public override void ToggleHolderOff()
     {
         if (BookManager.isTitlePage)
@@ -63,7 +73,6 @@ public class MainMenuCanvas : BUtCanvasBase
         {
             ButtonHolder.SetActive(true);
         }
-
     }
 
 
@@ -84,17 +93,17 @@ public class MainMenuCanvas : BUtCanvasBase
         {
             if (!wordCanvasGameobject.activeSelf)
                 wordCanvasGameobject.SetActive(true); // todo : put canvas group on word canvas and toggle it via subs
-
         }
     }
+
     public void newStory()
     {
-     
         PlayerPrefs.SetInt("Page", 1);
         OnNewStoryClicked?.Invoke();
         AudioMAnager.instance.PlayUIpop();
         StartTransitionCoro(true, OnContinue, false);
     }
+
     public void Continue()
     {
         AudioMAnager.instance.PlayUIpop();
@@ -129,9 +138,8 @@ public class MainMenuCanvas : BUtCanvasBase
         {
             LoadingGameobject.SetActive(true);
             yield return null;
-
         }
-     
+
         yield return timeDelay;
         LoadingGameobject.SetActive(false);
 
@@ -156,6 +164,5 @@ public class MainMenuCanvas : BUtCanvasBase
         OnTransitionEnded?.Invoke();
         optionsButGameobject.SetActive(true);
         isTransitioning = false;
-
     }
 }

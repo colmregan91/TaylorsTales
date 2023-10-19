@@ -82,6 +82,8 @@ public class ClickedWordHandler : MonoBehaviour
     {
         interactable = false;
         scrollRect.enabled = false;
+        wordHighlight.CancelReading();
+
     }
 
     private void handleClickedWord(int wordIndex)
