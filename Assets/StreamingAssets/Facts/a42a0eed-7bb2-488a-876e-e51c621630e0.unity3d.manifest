@@ -1,0 +1,23 @@
+ManifestFileVersion: 0
+CRC: 4118429567
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: a820cd62463f4c27ad541118858f318b
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c21d61fe394c58399df3c6fb5c7c99b3
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/FactImages/navy/william-rudolph-on unsplash.jpg
+- Assets/FactImages/navy/peter-pryharski-on unsplash.jpg
+- Assets/FactImages/navy/nate-cheney-on unsplash.jpg
+- Assets/FactImages/navy/David Mark-on Pixabay.jpg
+- Assets/FactImages/navy/asael-pena-on unsplash.jpg
+Dependencies: []

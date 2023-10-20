@@ -1,0 +1,23 @@
+ManifestFileVersion: 0
+CRC: 3311404773
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 59f3a1e5c6e8225cda04489f3a932f00
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c21d61fe394c58399df3c6fb5c7c99b3
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/FactImages/tea/tea plantations india-Simon on Pixabay.jpg
+- Assets/FactImages/tea/tea bags -Rudy and Peter Skitterians on Pixabay.jpg
+- Assets/FactImages/tea/sri-lanka-tea pickers jurgen Scheffler on Pixabay.jpg
+- Assets/FactImages/tea/timothy-newman-_on unsplash.jpg
+- Assets/FactImages/tea/korea-tea plantation kei kwon on Pixabay.jpg
+Dependencies: []

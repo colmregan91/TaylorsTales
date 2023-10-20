@@ -16,7 +16,6 @@ public class LocalDownload : MonoBehaviour
 
     [SerializeField] private Transform canvasHolder;
 
-    public TextMeshProUGUI text;
 
     private PageTextList newPageList;
     private CancellationTokenSource cancellationTokenSource;
@@ -68,9 +67,9 @@ public class LocalDownload : MonoBehaviour
         {
             Fact curfact = factsList.Facts[i];
             TriggerWords triggers = new TriggerWords(curfact.TriggerWords);
-            FactContents contents = new FactContents(curfact.FactInfo, Path.Combine($"{Application.streamingAssetsPath}", "Facts", curfact.imagesBundle + ".unity3d"));
+            FactContents contents = new FactContents(curfact.FactInfo,
+                Path.Combine($"{Application.streamingAssetsPath}", "Facts", curfact.imagesBundle + ".unity3d"));
             FactManager.AddToFactList(triggers, contents);
-
         }
     }
     //private IEnumerator loadPagesFromServer()
@@ -121,13 +120,8 @@ public class LocalDownload : MonoBehaviour
 
         if (www.result == UnityWebRequest.Result.Success)
         {
-            text.text += "found Fact json file \n";
             string dataAsJson = www.downloadHandler.text;
             InitFacts(dataAsJson);
-        }
-        else
-        {
-            text.text += "cannot find fact json file \n";
         }
     }
 
@@ -139,36 +133,69 @@ public class LocalDownload : MonoBehaviour
 
         if (www.result == UnityWebRequest.Result.Success)
         {
-            text.text += "found json file \n";
             string dataAsJson = www.downloadHandler.text;
 
             newPageList = JsonUtility.FromJson<PageTextList>(dataAsJson);
+            BookManager.bookLength = newPageList.pageTexts.Count;
 
-            StartCoroutine(LoadPageTextsForward(newPageList.pageTexts, BookManager.LastSavedPage == 0 ? 0 : BookManager.LastSavedPage - 1, newPageList.pageTexts.Count));
+            StartCoroutine(LoadPageTextsForward(newPageList.pageTexts,
+                BookManager.LastSavedPage == 0 ? 0 : BookManager.LastSavedPage - 1));
 
             if (BookManager.LastSavedPage >= 1)
             {
-                StartCoroutine(LoadPageTextsBack(newPageList, BookManager.LastSavedPage == 0 ? 0 : BookManager.LastSavedPage - 1));
-
+                StartCoroutine(LoadPageTextsBack(newPageList.pageTexts,
+                    BookManager.LastSavedPage == 0 ? 0 : BookManager.LastSavedPage - 1));
             }
-
         }
     }
 
-
-    private IEnumerator LoadPageTextsBack(PageTextList jsonPages, int fromPage)
+    private IEnumerator LoadPageTextsForward(List<Page> Pages, int fromPage)
     {
-        int lastTwo = fromPage - 2;
-        for (int i = fromPage - 1; i >= lastTwo; i--)
+        int nextTwo = fromPage + 3;
+        for (int i = fromPage; i < nextTwo; i++)
         {
-            if (i == -1) break;
-            PageContents newContents = new PageContents();
-            Page pageTemp = jsonPages.pageTexts[i];
-            BookManager.AddNewPage(pageTemp.pageNumber, newContents);
-            newContents.Texts = pageTemp.Texts;
+            if (i >= BookManager.bookLength) break;
+            if (i < 0) break;
+            if (BookManager.Pages.ContainsKey(Pages[i].pageNumber))
+            {
+                continue;
+            }
 
-            string Environmentpath = Path.Combine(Application.streamingAssetsPath, "Pages", $"Page_{ pageTemp.pageNumber}_EnvironmentCanvas.unity3d");
-            text.text += "attempting page " + pageTemp.pageNumber + "\n";
+            PageContents newContents = new PageContents();
+            Page pageTemp = Pages[i];
+            newContents.Texts = pageTemp.Texts;
+            BookManager.AddNewPage(pageTemp.pageNumber, newContents);
+
+            string Environmentpath = Path.Combine(Application.streamingAssetsPath, "Pages",
+                $"Page_{pageTemp.pageNumber}_EnvironmentCanvas.unity3d");
+
+            yield return loadPageCanvasses(Environmentpath, pageTemp.pageNumber, newContents);
+        }
+
+        AssetBundleUtils.instance.StartUnloading(false);
+    }
+
+    private IEnumerator LoadPageTextsBack(List<Page> Pages, int fromPage)
+    {
+        int prevTwo = fromPage - 3;
+        int prevPage = fromPage - 1;
+        for (int i = prevPage; i > prevTwo; i--)
+        {
+            if (i >= BookManager.bookLength) break;
+            if (i < 0) break;
+            if (BookManager.Pages.ContainsKey(Pages[i].pageNumber))
+            {
+                continue;
+            }
+
+            PageContents newContents = new PageContents();
+            Page pageTemp = Pages[i];
+            newContents.Texts = pageTemp.Texts;
+            BookManager.AddNewPage(pageTemp.pageNumber, newContents);
+
+            string Environmentpath = Path.Combine(Application.streamingAssetsPath, "Pages",
+                $"Page_{pageTemp.pageNumber}_EnvironmentCanvas.unity3d");
+
             yield return loadPageCanvasses(Environmentpath, pageTemp.pageNumber, newContents);
         }
 
@@ -178,69 +205,51 @@ public class LocalDownload : MonoBehaviour
     private void CheckFirstThreePages()
     {
         MainMenuCanvas.OnNewStoryClicked -= CheckFirstThreePages;
-        StartCoroutine(LoadPageTextsForward(newPageList.pageTexts, BookManager.LastSavedPage == 0 ? 0 : BookManager.LastSavedPage - 1, newPageList.pageTexts.Count));
+        StartCoroutine(LoadPageTextsForward(newPageList.pageTexts, 0));
     }
 
     private void CheckPrevBundleLoaded()
     {
-        int number = BookManager.currentPageNumber;
+        int pageBeforePrevPage = BookManager.currentPageNumber - 3;
 
-        if (!BookManager.Pages.ContainsKey(number - 2) && (number - 2) >= 1)
+        if (!BookManager.Pages.ContainsKey(pageBeforePrevPage) && pageBeforePrevPage >= 1)
         {
-            LoadBundleIE(newPageList.pageTexts[number - 2]);
+            LoadBundleIE(newPageList.pageTexts[pageBeforePrevPage]);
         }
     }
 
     private void CheckNextBundleLoaded()
     {
-        int number = BookManager.currentPageNumber;
+        int pageAfterNext = BookManager.currentPageNumber + 2;
 
-        if (!BookManager.Pages.ContainsKey(number + 2) && (number + 2) <= newPageList.pageTexts.Count)
+        if (!BookManager.Pages.ContainsKey(pageAfterNext) && (pageAfterNext) <= BookManager.bookLength)
         {
-            LoadBundleIE(newPageList.pageTexts[number + 2]);
+            LoadBundleIE(newPageList.pageTexts[pageAfterNext - 1]);
         }
     }
 
     private void LoadBundleIE(Page page)
     {
-        StartCoroutine(LoadNextBundle(page));
+        if (!BookManager.Pages.ContainsKey(page.pageNumber))
+        {
+            StartCoroutine(LoadNextBundle(page));
+        }
     }
+
     private IEnumerator LoadNextBundle(Page page)
     {
-
         PageContents newContents = new PageContents();
         newContents.Texts = page.Texts;
-        BookManager.AddNewPage(page.pageNumber - 1, newContents);
-        string Environmentpath = Path.Combine(Application.streamingAssetsPath, "Pages", $"Page_{ page.pageNumber - 1}_EnvironmentCanvas.unity3d");
-        text.text += "attempting page " + (page.pageNumber - 1) + "\n";
-        yield return loadPageCanvasses(Environmentpath, page.pageNumber - 1, newContents);
+        BookManager.AddNewPage(page.pageNumber, newContents);
+
+        string Environmentpath = Path.Combine(Application.streamingAssetsPath, "Pages",
+            $"Page_{page.pageNumber}_EnvironmentCanvas.unity3d");
+
+        yield return loadPageCanvasses(Environmentpath, page.pageNumber, newContents);
         AssetBundleUtils.instance.StartUnloading(false);
     }
 
-    private IEnumerator LoadPageTextsForward(List<Page> Pages, int fromPage, int bookLength)
-    {
-        int nextTwo = fromPage + 3;
-        for (int i = fromPage; i < nextTwo; i++)
-        {
-            if (BookManager.Pages.ContainsKey(Pages[i].pageNumber))
-            {
-                continue;
-            }
 
-            if (i >= bookLength) break;
-
-            PageContents newContents = new PageContents();
-            Page pageTemp = Pages[i];
-            BookManager.AddNewPage(pageTemp.pageNumber, newContents);
-            newContents.Texts = pageTemp.Texts;
-            Debug.Log(pageTemp.pageNumber);
-            string Environmentpath = Path.Combine(Application.streamingAssetsPath, "Pages", $"Page_{ pageTemp.pageNumber}_EnvironmentCanvas.unity3d");
-            text.text += "attempting page " + pageTemp.pageNumber + "\n";
-            yield return loadPageCanvasses(Environmentpath, pageTemp.pageNumber, newContents);
-       
-        }
-        AssetBundleUtils.instance.StartUnloading(false);
-    }
     private IEnumerator loadPageCanvasses(string path, int pageNumber, PageContents newPageContents)
     {
         UnityWebRequest www = UnityWebRequest.Get(path);
@@ -263,10 +272,9 @@ public class LocalDownload : MonoBehaviour
                 yield return null;
             }
 
-            text.text += pageNumber + " success \n";
+
             if (EnvbundleReq != null)
             {
-                text.text += pageNumber + " got bundle \n";
                 var Envbundle = EnvbundleReq.assetBundle;
                 var Envassets = Envbundle.GetAllAssetNames();
                 AssetBundleUtils.instance.AddToUnloadQueue(Envbundle);
@@ -281,6 +289,7 @@ public class LocalDownload : MonoBehaviour
 
                     yield return null;
                 }
+
                 var Intprefab = Envbundle.LoadAssetAsync<GameObject>(Envassets[2]);
                 while (!Intprefab.isDone)
                 {
@@ -292,6 +301,7 @@ public class LocalDownload : MonoBehaviour
 
                     yield return null;
                 }
+
                 var pageSkybox = Envbundle.LoadAssetAsync<Material>(Envbundle.GetAllAssetNames()[0]);
                 while (!pageSkybox.isDone)
                 {
@@ -303,35 +313,26 @@ public class LocalDownload : MonoBehaviour
 
                     yield return null;
                 }
+
                 newPageContents.EnvironmentCanvas = (GameObject)Envprefab.asset;
                 newPageContents.SkyboxMaterial = (Material)pageSkybox.asset;
                 newPageContents.InteractionCanvas = (GameObject)Intprefab.asset;
                 newPageContents.InteractionCanvas.GetComponent<Canvas>().worldCamera = cam;
                 //    newPageContents.interactions = newPageContents.InteractionCanvas.GetComponentsInChildren<TouchBase>();
                 setUpEnvironmentCanvasses(pageNumber, newPageContents);
-    
-            }
-            else
-            {
-                text.text += "null bundle" + pageNumber + "\n";
             }
         }
         else
         {
-            text.text += "unsuccess request" + pageNumber + "\n";
             Debug.LogWarning("no environment canvas or skyBox for page " + (pageNumber));
             newPageContents.EnvironmentCanvas = null;
             newPageContents.SkyboxMaterial = null;
-
         }
-
     }
-
 
 
     private void setUpEnvironmentCanvasses(int number, PageContents contents)
     {
-
         GameObject newPage = new GameObject($"Page_{number}");
         newPage.transform.SetParent(canvasHolder);
 
@@ -348,6 +349,7 @@ public class LocalDownload : MonoBehaviour
             {
                 Debug.LogError("No background Audio for page " + number);
             }
+
             EnvironmentCanvasTemp.GetComponent<Canvas>().worldCamera = cam;
             Instantiate(EnvironmentCanvasTemp, newPage.transform);
         }
@@ -357,7 +359,6 @@ public class LocalDownload : MonoBehaviour
         BookManager.Pages[number].CanvasHolder = newPage;
 
         OnPageDownloaded?.Invoke(number);
-
     }
 
     public void CancelLoading()
@@ -371,7 +372,5 @@ public class LocalDownload : MonoBehaviour
         ButtonCanvas.OnPrevPageClicked -= CheckPrevBundleLoaded;
         MainMenuCanvas.OnNewStoryClicked -= CheckFirstThreePages;
         StopAllCoroutines();
-
     }
-
 }

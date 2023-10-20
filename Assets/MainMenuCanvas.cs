@@ -21,7 +21,7 @@ public class MainMenuCanvas : BUtCanvasBase
 
     private void Awake()
     {
-        if (Application.isEditor)
+        if (!Application.isEditor)
         {
             copyrightImage.gameObject.SetActive(true);
             StartCopyrightTransitionCoro(copyrightImage);

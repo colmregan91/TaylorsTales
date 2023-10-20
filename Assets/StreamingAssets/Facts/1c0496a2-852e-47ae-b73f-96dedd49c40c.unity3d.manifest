@@ -1,0 +1,21 @@
+ManifestFileVersion: 0
+CRC: 1890945494
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 55f3eec8729bdc46c710493a6a44d7e2
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c21d61fe394c58399df3c6fb5c7c99b3
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/FactImages/blackbirds/Blackbird singing-Zenaga on Pixabay.jpg
+- Assets/FactImages/blackbirds/lukasz-rawa-on unsplash.jpg
+- Assets/FactImages/blackbirds/chris-on unsplash.jpg
+Dependencies: []

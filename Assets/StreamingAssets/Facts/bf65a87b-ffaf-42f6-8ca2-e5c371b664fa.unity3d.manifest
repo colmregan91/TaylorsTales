@@ -1,0 +1,21 @@
+ManifestFileVersion: 0
+CRC: 1716221993
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: a7dc23405d61ea75c9457fe2df1367c8
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c21d61fe394c58399df3c6fb5c7c99b3
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/FactImages/den/fox-tommileew on Pixabay.jpg
+- Assets/FactImages/den/jden eremy-hynes-on-unsplash.jpg
+- Assets/FactImages/den/Decster 1on Pixabay.jpg
+Dependencies: []

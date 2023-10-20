@@ -1,0 +1,23 @@
+ManifestFileVersion: 0
+CRC: 3422803803
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 71dffd5a07935340bce1793f871936ad
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c21d61fe394c58399df3c6fb5c7c99b3
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/FactImages/dairy-cows/dairy cow-public domain pictures on Pixaby.jpg
+- Assets/FactImages/dairy-cows/carolien-van-oijen-on unsplash.jpg
+- Assets/FactImages/dairy-cows/max-saeling-on unsplash.jpg
+- Assets/FactImages/dairy-cows/marino-bobetic-on unsplash.jpg
+- Assets/FactImages/dairy-cows/getty-images-on unsplash.jpg
+Dependencies: []

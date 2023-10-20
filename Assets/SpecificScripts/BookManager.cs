@@ -7,7 +7,7 @@ using UnityEngine;
 public class BookManager : MonoBehaviour
 {
     public static Dictionary<int, PageContents> Pages = new Dictionary<int, PageContents>();
-    public static int bookLength => Pages.Count;
+    public static int bookLength;
 
     public static Action<int,PageContents> OnPageChanged;
 
@@ -65,6 +65,7 @@ public class BookManager : MonoBehaviour
         currentPage?.CanvasHolder.SetActive(false);
         currentPage = Pages[pageNumber];
         currentPageNumber = pageNumber;
+        Debug.Log(("texts to " + pageNumber));
         setPageText(currentPage);
         setupSkyBox(currentPage);
         currentPage.CanvasHolder.SetActive(true);

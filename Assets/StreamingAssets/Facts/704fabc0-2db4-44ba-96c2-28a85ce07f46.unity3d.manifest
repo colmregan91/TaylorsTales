@@ -1,0 +1,20 @@
+ManifestFileVersion: 0
+CRC: 957070743
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 85f95f5c7bf5dd2b67eeb0e9277defbe
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c21d61fe394c58399df3c6fb5c7c99b3
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/FactImages/birds/chickens hans-isaacson-on-unsplash.jpg
+- Assets/FactImages/birds/large group of chickens zoe-schaeffer on unsplash.jpg
+Dependencies: []

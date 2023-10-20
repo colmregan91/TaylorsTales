@@ -1,0 +1,20 @@
+ManifestFileVersion: 0
+CRC: 1133063554
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: b52c99258d150d8dcbc39da7aff80268
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c21d61fe394c58399df3c6fb5c7c99b3
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/FactImages/clever/istockphoto-177408673-612x612.jpg
+- Assets/FactImages/clever/fox jumping like cat-birger-strahl-on-unsplash.jpg
+Dependencies: []

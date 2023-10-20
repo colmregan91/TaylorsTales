@@ -1,0 +1,23 @@
+ManifestFileVersion: 0
+CRC: 2081706899
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: b6da4fe1ef3cc3576b5c575baf6ef393
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c21d61fe394c58399df3c6fb5c7c99b3
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/FactImages/jungle/isaac-quesada-on unsplash.jpg
+- Assets/FactImages/jungle/boudhayan-on unsplash (1).jpg
+- Assets/FactImages/jungle/mukil-menon-on unsplash.jpg
+- Assets/FactImages/jungle/tiger-Andreas Breitling on Pixabay.jpg
+- Assets/FactImages/jungle/monkeys-lekrat Tangsri on Pixabay.jpg
+Dependencies: []

@@ -1,0 +1,22 @@
+ManifestFileVersion: 0
+CRC: 26586647
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: ed7ff77e712ae238b70221c4c13feb92
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c21d61fe394c58399df3c6fb5c7c99b3
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/FactImages/swallows/barn-swallow-sharkolot-on Pixabay.jpg
+- Assets/FactImages/swallows/barn-swallow Susanne Edele-on Pixabay.jpg
+- Assets/FactImages/swallows/patrice-bouchard-on unsplash.jpg
+- Assets/FactImages/swallows/swallow-flying- Kev -on Pixabay.jpg
+Dependencies: []

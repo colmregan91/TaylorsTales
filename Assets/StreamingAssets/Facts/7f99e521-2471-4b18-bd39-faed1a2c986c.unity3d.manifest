@@ -1,0 +1,24 @@
+ManifestFileVersion: 0
+CRC: 3192329725
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: cc015a72d598b265e9262fc1f9b30249
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c21d61fe394c58399df3c6fb5c7c99b3
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/FactImages/sailing-ship/nik-a-on unsplash.jpg
+- Assets/FactImages/sailing-ship/christian-on unsplash.jpg
+- Assets/FactImages/sailing-ship/raimond-klavins-on unsplash.jpg
+- Assets/FactImages/sailing-ship/david-dibert-z-on unsplash.jpg
+- Assets/FactImages/sailing-ship/alberto-gasco-on unsplash.jpg
+- Assets/FactImages/sailing-ship/janos-szudi-on unsplash.jpg
+Dependencies: []

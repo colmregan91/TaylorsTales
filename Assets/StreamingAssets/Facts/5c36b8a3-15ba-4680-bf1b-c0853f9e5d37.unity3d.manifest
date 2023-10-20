@@ -1,0 +1,25 @@
+ManifestFileVersion: 0
+CRC: 2837064275
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 04e8f6d75f22fd7fa85ac5bb56fc641d
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c21d61fe394c58399df3c6fb5c7c99b3
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/FactImages/india/naveed-ahmed-on unsplash.jpg
+- Assets/FactImages/india/srinivasan-on unsplash.jpg
+- Assets/FactImages/india/aditya-siva-on unsplash.jpg
+- Assets/FactImages/india/julian-yu-on unsplash.jpg
+- Assets/FactImages/india/pulak-bhagawati-on unsplash.jpg
+- Assets/FactImages/india/klara-avsenik-on unsplash.jpg
+- Assets/FactImages/india/srivatsan-balaji-on unsplash.jpg
+Dependencies: []

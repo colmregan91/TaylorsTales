@@ -1,0 +1,21 @@
+ManifestFileVersion: 0
+CRC: 2968209506
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 0523373732b868759cb07512e87bef26
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c21d61fe394c58399df3c6fb5c7c99b3
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/FactImages/two-birds/daniel-bernard-on unsplash.jpg
+- Assets/FactImages/two-birds/muhammad-on unsplash.jpg
+- Assets/FactImages/two-birds/ram-kumar-on unsplash.jpg
+Dependencies: []

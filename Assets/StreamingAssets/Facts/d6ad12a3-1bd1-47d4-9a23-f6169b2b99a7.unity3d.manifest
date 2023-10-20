@@ -1,0 +1,21 @@
+ManifestFileVersion: 0
+CRC: 1081450298
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: d8c0cbd41cb82cb3f5a8c837554b7433
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c21d61fe394c58399df3c6fb5c7c99b3
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/FactImages/grain/kovacs__mate-on unsplash.jpg
+- Assets/FactImages/grain/lutz-wernitz-on unsplash.jpg
+- Assets/FactImages/grain/johannes-plenio-on unsplash.jpg
+Dependencies: []
