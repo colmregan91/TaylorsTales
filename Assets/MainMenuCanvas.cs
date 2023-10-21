@@ -24,8 +24,14 @@ public class MainMenuCanvas : BUtCanvasBase
         if (!Application.isEditor)
         {
             copyrightImage.gameObject.SetActive(true);
-            StartCopyrightTransitionCoro(copyrightImage);
+            StartCopyrightTransitionCoro(copyrightImage,DestroyCopyrightImage);
         }
+    }
+
+    private void DestroyCopyrightImage()
+    {
+        Destroy(copyrightImage.gameObject);
+        copyrightImage = null;
     }
 
     public override void OnEnable()

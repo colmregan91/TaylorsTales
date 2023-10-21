@@ -46,17 +46,17 @@ public class BUtCanvasBase : MonoBehaviour
 
     }
     
-    protected void StartCopyrightTransitionCoro(Image image)
+    protected void StartCopyrightTransitionCoro(Image image, Action callback)
     {
-       StartCoroutine(CopyrightTransition(image));
+       StartCoroutine(CopyrightTransition(image,callback));
     }
 
-    protected void StartTransitionCoro(bool isNextPage, Action callback, bool shouldReset = true)
+    protected void StartTransitionCoro(bool isNextPage, Action callback, bool shouldReset = false)
     {
         StartCoroutine(TransitionCoro(isNextPage, callback, shouldReset));
     }
 
-    protected IEnumerator CopyrightTransition(Image image)
+    protected IEnumerator CopyrightTransition(Image image, Action callback)
     {
         yield return copyrightDelay;
         Color startColor = image.color;
@@ -74,6 +74,7 @@ public class BUtCanvasBase : MonoBehaviour
 
         // Ensure the final color is set to transparent
         image.color = endColor;
+        callback?.Invoke();
     }
     protected virtual IEnumerator TransitionCoro(bool isNextPage, Action callback, bool shouldReset)
     {
