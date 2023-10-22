@@ -11,6 +11,7 @@ public class MainMenuCanvas : BUtCanvasBase
 
     public static Action OnContinue;
     public static Action OnNewStoryClicked;
+    public static Action OnQuit;
 
     [SerializeField] private GameObject TitleGameobject;
 
@@ -24,7 +25,12 @@ public class MainMenuCanvas : BUtCanvasBase
         if (!Application.isEditor)
         {
             copyrightImage.gameObject.SetActive(true);
-            StartCopyrightTransitionCoro(copyrightImage,DestroyCopyrightImage);
+            StartCopyrightTransitionCoro(copyrightImage, DestroyCopyrightImage);
+        }
+
+        if (!BookManager.Pages.ContainsKey(0))
+        {
+            BookManager.AddNewPage(0,null);
         }
     }
 
@@ -40,13 +46,8 @@ public class MainMenuCanvas : BUtCanvasBase
 
         ContinueGameobject.SetActive(BookManager.LastSavedPage != 0);
 
-        BookManager.OnPageChanged += setUpBook;
         OnTransitionEnded += checkPage;
-
-        //if (!BookManager.CheckDownloadedPage(BookManager.LastSavedPage))
-        //{
-
-        //}
+        SetUpMainMenu();
     }
 
     public override void ToggleHolderOn()
@@ -68,7 +69,6 @@ public class MainMenuCanvas : BUtCanvasBase
     public override void OnDisable()
     {
         base.OnDisable();
-        BookManager.OnPageChanged -= setUpBook;
         OnTransitionEnded -= checkPage;
     }
 
@@ -89,17 +89,10 @@ public class MainMenuCanvas : BUtCanvasBase
     }
 
 
-    private void setUpBook(int page, PageContents contents)
+    private void setUpBook()
     {
-        if (BookManager.isTitlePage)
-        {
-            SetUpMainMenu();
-        }
-        else
-        {
-            if (!wordCanvasGameobject.activeSelf)
-                wordCanvasGameobject.SetActive(true); // todo : put canvas group on word canvas and toggle it via subs
-        }
+        wordCanvasGameobject.SetActive(true);
+        TitleGameobject.SetActive(false);
     }
 
     public void newStory()
@@ -114,6 +107,53 @@ public class MainMenuCanvas : BUtCanvasBase
     {
         AudioMAnager.instance.PlayUIpop();
         StartTransitionCoro(true, OnContinue, false);
+    }
+
+    public void Quit()
+    {
+        AudioMAnager.instance.PlayUIpop();
+        StartCoroutine(QuitCoro(OnQuit));
+    }
+
+    protected IEnumerator QuitCoro(Action callback)
+    {
+        isTransitioning = true;
+        ButtonHolder.SetActive(false);
+        optionsButGameobject.SetActive(false);
+        sliderImg.fillMethod = Image.FillMethod.Vertical;
+        sliderImg.fillOrigin = (int)Image.OriginVertical.Top;
+        Color curimgcol = sliderImg.color;
+        float elapsedTime = 0;
+
+        while (sliderImg.fillAmount < 1)
+        {
+            elapsedTime += (Time.deltaTime * TransitionSpeed * 1.5f);
+            sliderImg.fillAmount = Mathf.Lerp(0, 1, elapsedTime);
+            curimgcol.a = Mathf.Lerp(0, 1, elapsedTime);
+            sliderImg.color = curimgcol;
+            yield return null;
+        }
+
+        SetUpMainMenu();
+
+        yield return timeDelay;
+        LoadingGameobject.SetActive(false);
+        callback?.Invoke();
+        curimgcol = sliderImg.color;
+        elapsedTime = 0;
+
+        while (elapsedTime <= 1)
+        {
+            elapsedTime += (Time.deltaTime * TransitionSpeed);
+            sliderImg.fillAmount = Mathf.Lerp(1, 0, elapsedTime);
+            curimgcol.a = Mathf.Lerp(1, 0, elapsedTime);
+            sliderImg.color = curimgcol;
+            yield return null;
+        }
+
+        OnTransitionEnded?.Invoke();
+        optionsButGameobject.SetActive(true);
+        isTransitioning = false;
     }
 
     protected override IEnumerator TransitionCoro(bool isNextPage, Action callback, bool shouldReset)
@@ -139,7 +179,7 @@ public class MainMenuCanvas : BUtCanvasBase
             yield return null;
         }
 
-        TitleGameobject.SetActive(false);
+        setUpBook();
         while (!BookManager.CheckDownloadedPage(BookManager.LastSavedPage))
         {
             LoadingGameobject.SetActive(true);

@@ -40,11 +40,13 @@ public class OptionsManager : MonoBehaviour
     private void OnEnable()
     {
         BookManager.OnPageChanged += checkTitlePage;
+        MainMenuCanvas.OnQuit += HandleMainMenuTransition;
     }
 
     private void OnDisable()
     {
         BookManager.OnPageChanged -= checkTitlePage;
+        MainMenuCanvas.OnQuit -= HandleMainMenuTransition;
     }
 
     private void checkTitlePage(int number, PageContents contents)
@@ -75,12 +77,14 @@ public class OptionsManager : MonoBehaviour
         group.blocksRaycasts = true;
     }
 
-    public void Quit()
+    public void HandleMainMenuTransition()
     {
-        AudioMAnager.instance.PlayUIpop();
-
+        if (!isActive) return;
+        
+        anim.SetTrigger(triggerHashUnclick);
+        isActive = false;
+//        onOptionsHidden?.Invoke();
     }
-
     public void Resume()
     {
         if (!isActive) return;

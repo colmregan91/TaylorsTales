@@ -27,11 +27,6 @@ public class ClickedWordHandler : MonoBehaviour
         BookManager.OnPageChanged += resetScrollBarValue;
     }
 
-    private void Start()
-    {
-        toggleInteractableOn();
-    }
-
     private void resetScrollBarValue(int arg1, PageContents arg2)
     {
         scrollBar.value = 1;
@@ -41,6 +36,8 @@ public class ClickedWordHandler : MonoBehaviour
     {
         OptionsManager.onOptionsShown += toggleInteractableOff;
         OptionsManager.onOptionsHidden += toggleInteractableOn;
+        
+        toggleInteractableOn();
     }
 
 

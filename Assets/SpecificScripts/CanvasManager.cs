@@ -28,19 +28,28 @@ public class CanvasManager : MonoBehaviour
         OptionsManager.onOptionsShown -= DisableInteractions;
         OptionsManager.onOptionsHidden -= EnableInteractions;
     }
+
     private void SetInteractionCanvas(int page, PageContents contents)
     {
-
         if (canvasHolder != null)
             Destroy(canvasHolder);
 
-        if (contents.InteractionCanvas == null) return;
+        if (contents == null)
+        {
+            return;
+        }
 
         canvasHolder = Instantiate(contents.InteractionCanvas, transform);
         interactions = canvasHolder.GetComponentsInChildren<TouchBase>();
     }
+
     private void DisableInteractions()
     {
+        if (BookManager.isTitlePage)
+        {
+            return;
+        }
+
         if (interactions == null) return;
         foreach (TouchBase tch in interactions)
         {
@@ -52,6 +61,11 @@ public class CanvasManager : MonoBehaviour
 
     private void EnableInteractions()
     {
+        if (BookManager.isTitlePage)
+        {
+            return;
+        }
+
         if (interactions == null) return;
         foreach (TouchBase tch in interactions)
         {
@@ -60,6 +74,4 @@ public class CanvasManager : MonoBehaviour
             tch.SetParticleEmission(true);
         }
     }
-
 }
-

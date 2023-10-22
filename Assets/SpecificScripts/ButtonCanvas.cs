@@ -61,10 +61,10 @@ public class ButtonCanvas : BUtCanvasBase
 
     protected override void checkButtonVisuals()
     {
-        bool hasNextPage = BookManager.Pages.ContainsKey(BookManager.currentPageNumber + 1);
+        bool hasNextPage = BookManager.Pages.ContainsKey(BookManager.currentPageNumber + 1)&& BookManager.currentPageNumber != BookManager.bookLength;
         nextPageGameobject.SetActive(hasNextPage);
 
-        bool hasPrevPage = BookManager.Pages.ContainsKey(BookManager.currentPageNumber - 1);
+        bool hasPrevPage = BookManager.Pages.ContainsKey(BookManager.currentPageNumber - 1) && BookManager.currentPageNumber != 1;
         prevPageGameobject.SetActive(hasPrevPage);
     }
     public void PrevPage()

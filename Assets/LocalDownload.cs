@@ -277,7 +277,7 @@ public class LocalDownload : MonoBehaviour
             {
                 var Envbundle = EnvbundleReq.assetBundle;
                 var Envassets = Envbundle.GetAllAssetNames();
-                AssetBundleUtils.instance.AddToUnloadQueue(Envbundle);
+
                 var Envprefab = Envbundle.LoadAssetAsync<GameObject>(Envassets[1]);
                 while (!Envprefab.isDone)
                 {
@@ -313,6 +313,7 @@ public class LocalDownload : MonoBehaviour
 
                     yield return null;
                 }
+                AssetBundleUtils.instance.AddToUnloadQueue(Envbundle);
 
                 newPageContents.EnvironmentCanvas = (GameObject)Envprefab.asset;
                 newPageContents.SkyboxMaterial = (Material)pageSkybox.asset;

@@ -19,7 +19,7 @@ public class BUtCanvasBase : MonoBehaviour
 
     [SerializeField] protected GameObject optionsButGameobject;
 
-    private WaitForSeconds HalfSecond = new WaitForSeconds(0.5f);
+    private WaitForSeconds HalfSecond = new WaitForSeconds(0.1f);
     public virtual void OnEnable()
     {
         OptionsManager.onOptionsShown += ToggleHolderOff;
