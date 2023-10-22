@@ -7,7 +7,7 @@ public class ButtonCanvas : BUtCanvasBase
 {
     [SerializeField] private GameObject nextPageGameobject;
     [SerializeField] private GameObject prevPageGameobject;
-
+    [SerializeField] private GameObject LastPageButHolderGameobject;
     public static Action OnNextPageClicked;
     public static Action OnPrevPageClicked;
 
@@ -61,7 +61,15 @@ public class ButtonCanvas : BUtCanvasBase
 
     protected override void checkButtonVisuals()
     {
-        bool hasNextPage = BookManager.Pages.ContainsKey(BookManager.currentPageNumber + 1)&& BookManager.currentPageNumber != BookManager.bookLength;
+        if (BookManager.currentPageNumber == BookManager.bookLength)
+        {
+            nextPageGameobject.SetActive(false);
+            prevPageGameobject.SetActive(true);
+            LastPageButHolderGameobject.SetActive((true));
+            return;
+        }
+        LastPageButHolderGameobject.SetActive((false));
+        bool hasNextPage = BookManager.Pages.ContainsKey(BookManager.currentPageNumber + 1);
         nextPageGameobject.SetActive(hasNextPage);
 
         bool hasPrevPage = BookManager.Pages.ContainsKey(BookManager.currentPageNumber - 1) && BookManager.currentPageNumber != 1;

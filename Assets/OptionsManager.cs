@@ -40,13 +40,11 @@ public class OptionsManager : MonoBehaviour
     private void OnEnable()
     {
         BookManager.OnPageChanged += checkTitlePage;
-        MainMenuCanvas.OnQuit += HandleMainMenuTransition;
     }
 
     private void OnDisable()
     {
         BookManager.OnPageChanged -= checkTitlePage;
-        MainMenuCanvas.OnQuit -= HandleMainMenuTransition;
     }
 
     private void checkTitlePage(int number, PageContents contents)
@@ -83,7 +81,7 @@ public class OptionsManager : MonoBehaviour
         
         anim.SetTrigger(triggerHashUnclick);
         isActive = false;
-//        onOptionsHidden?.Invoke();
+
     }
     public void Resume()
     {
