@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+
 public class WordHighlighting : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI textObj;
@@ -40,6 +41,7 @@ public class WordHighlighting : MonoBehaviour
     private WaitForSeconds halfSecond = new WaitForSeconds(0.5f);
     private List<string> wordsThisPage = new List<string>();
     private char[] separators = { ' ', '\n' };
+
     private void OnEnable()
     {
         LanguagesManager.OnLanguageChanged += CancelReadingOnLang;
@@ -52,7 +54,7 @@ public class WordHighlighting : MonoBehaviour
 
     private void setRedWords(int arg1, PageContents arg2)
     {
-       wordsThisPage = textObj.text.Split(separators, StringSplitOptions.RemoveEmptyEntries).ToList();
+        wordsThisPage = textObj.text.Split(separators, StringSplitOptions.RemoveEmptyEntries).ToList();
     }
 
     private void OnDisable()
@@ -83,18 +85,22 @@ public class WordHighlighting : MonoBehaviour
     {
         return availableColors[ColorSettings.chosenReadingColor];
     }
+
     private Color GetChosenClickColor()
     {
         return availableColors[ColorSettings.chosenClickingColor];
     }
+
     public bool HasSentenceFinished()
     {
         return hasSentencenFinished;
     }
+
     public int GetStartIndex()
     {
         return startOfNextSentenceWordIndex;
     }
+
     public void StartColorLerpOnClick(int index, bool isRed, Action callback = null)
     {
         StartCoroutine(LerpWordColorOnClick(index, isRed, callback));
@@ -107,13 +113,14 @@ public class WordHighlighting : MonoBehaviour
 
     public void CancelReading()
     {
+        isCancelled = true;
         if (isReading == true)
         {
-            isCancelled = true;
             isReading = false;
             OnReadingStopped?.Invoke();
         }
     }
+
     private int RecalulcateStartIndex()
     {
         int sentCOunter = 0;
@@ -132,16 +139,14 @@ public class WordHighlighting : MonoBehaviour
                 {
                     return i + 1;
                 }
-         
             }
-
         }
-        return 0;
 
+        return 0;
     }
+
     public void BeginReading()
     {
-
         isCancelled = false;
         isReading = true;
         OnReadingStarted?.Invoke();
@@ -172,7 +177,6 @@ public class WordHighlighting : MonoBehaviour
         {
             StartCoroutine(lerpSentence(wordIndex, startColor, GetChosenColor()));
         }
-
     }
 
 
@@ -193,7 +197,6 @@ public class WordHighlighting : MonoBehaviour
 
             for (int i = 0; i < WordInfoTemp.characterCount; ++i)
             {
-
                 var charIndexLerp = WordInfoTemp.firstCharacterIndex + i;
                 var meshIndexLerp = textObj.textInfo.characterInfo[charIndexLerp].materialReferenceIndex;
                 var vertexIndexLerp = textObj.textInfo.characterInfo[charIndexLerp].vertexIndex;
@@ -211,7 +214,6 @@ public class WordHighlighting : MonoBehaviour
             {
                 for (int i = 0; i < WordInfoTemp.characterCount; ++i)
                 {
-
                     var charIndexLerp = WordInfoTemp.firstCharacterIndex + i;
                     var meshIndexLerp = textObj.textInfo.characterInfo[charIndexLerp].materialReferenceIndex;
                     var vertexIndexLerp = textObj.textInfo.characterInfo[charIndexLerp].vertexIndex;
@@ -224,6 +226,7 @@ public class WordHighlighting : MonoBehaviour
                     vertexColors[vertexIndexLerp + 3] = start;
                     textObj.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
                 }
+
                 yield break;
             }
 
@@ -236,21 +239,19 @@ public class WordHighlighting : MonoBehaviour
                 startOfNextSentenceWordIndex = wordIndex + 1;
                 StartSentenceReadingLerp(wordIndex + 1);
             }
+
             if (elapsedTime >= 2)
             {
                 if (last)
                 {
-                   
                     SentenceAudio.CurReadingAction.Increment();
                 }
 
                 yield break;
             }
+
             yield return null;
         }
-
-
-
     }
 
     private bool getIsLastWord(int wordIndex)
@@ -261,29 +262,26 @@ public class WordHighlighting : MonoBehaviour
     }
 
 
-
-
     public bool isWordRed(int index)
     {
         return wordsThisPage[index].Contains('<');
     }
 
 
-
     private IEnumerator LerpWordColorOnClick(int wordIndex, bool isRed, Action callback)
     {
         WordInfoTemp = textObj.textInfo.wordInfo[wordIndex];
-       var startColor = isRed ? Color.red : Color.black;
-       
-       if (MulticoloredHiglightingOnClick)
-       {
-           DesiredColorIndex = (DesiredColorIndex + 1) % availableColors.Count;
-           DesiredColor = availableColors[DesiredColorIndex];
-       }
-       else
-       {
-           DesiredColor = GetChosenClickColor();
-       }
+        var startColor = isRed ? Color.red : Color.black;
+
+        if (MulticoloredHiglightingOnClick)
+        {
+            DesiredColorIndex = (DesiredColorIndex + 1) % availableColors.Count;
+            DesiredColor = availableColors[DesiredColorIndex];
+        }
+        else
+        {
+            DesiredColor = GetChosenClickColor();
+        }
 
         float time = 0;
         while (time < 1)
@@ -301,6 +299,7 @@ public class WordHighlighting : MonoBehaviour
                 vertexColors[vertexIndexLerp + 2] = Color.Lerp(vertexColors[vertexIndexLerp + 2], DesiredColor, time);
                 vertexColors[vertexIndexLerp + 3] = Color.Lerp(vertexColors[vertexIndexLerp + 3], DesiredColor, time);
             }
+
             textObj.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
             time += Time.deltaTime / clickedLerpSpeed;
             yield return null;
@@ -323,7 +322,29 @@ public class WordHighlighting : MonoBehaviour
                 vertexColors[vertexIndexLerp + 2] = Color.Lerp(vertexColors[vertexIndexLerp + 2], startColor, time);
                 vertexColors[vertexIndexLerp + 3] = Color.Lerp(vertexColors[vertexIndexLerp + 3], startColor, time);
             }
+
             textObj.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
+
+            if (isCancelled)
+            {
+                for (int i = 0; i < WordInfoTemp.characterCount; ++i)
+                {
+                    charIndexLerp = WordInfoTemp.firstCharacterIndex + i;
+                    meshIndexLerp = textObj.textInfo.characterInfo[charIndexLerp].materialReferenceIndex;
+                    vertexIndexLerp = textObj.textInfo.characterInfo[charIndexLerp].vertexIndex;
+
+                    vertexColors = textObj.textInfo.meshInfo[meshIndexLerp].colors32;
+
+                    vertexColors[vertexIndexLerp + 0] = startColor;
+                    vertexColors[vertexIndexLerp + 1] = startColor;
+                    vertexColors[vertexIndexLerp + 2] = startColor;
+                    vertexColors[vertexIndexLerp + 3] = startColor;
+                    textObj.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
+                }
+                callback?.Invoke();
+                yield break;
+            }
+
             time += Time.deltaTime / clickedLerpSpeed;
             yield return null;
         }
