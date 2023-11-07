@@ -31,7 +31,6 @@ public class AssetBundleUtils : MonoBehaviour
     {
         if (!isUnloading)
         {
-            Debug.Log("unliad");
             StartCoroutine(UnloadAssetBundles(loadedObjects));
         }
    
