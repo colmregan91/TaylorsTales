@@ -70,12 +70,12 @@ public class ClickedWordHandler : MonoBehaviour
 
 
     }
-    private void toggleInteractableOn()
+    public void toggleInteractableOn()
     {
         interactable = true;
         scrollRect.enabled = true;
     }
-    private void toggleInteractableOff()
+    public void toggleInteractableOff()
     {
         interactable = false;
         scrollRect.enabled = false;

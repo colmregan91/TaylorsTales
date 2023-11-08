@@ -42,7 +42,6 @@ public class AssetBundleUtils : MonoBehaviour
         Debug.Log(assetBundleQueue.Count);
         foreach (var bundle in assetBundleQueue)
         {
-            Debug.Log($"Asset bundle  unloaded successfully.");
             bundle.Unload(true);
         }
     }
@@ -67,9 +66,7 @@ public class AssetBundleUtils : MonoBehaviour
               
                     yield return null;
                 }
-
-                // Optionally, handle the result of unloading here.
-                Debug.Log($"Asset bundle  unloaded successfully.");
+                
             }
         }
         isUnloading = false;

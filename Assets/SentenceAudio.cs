@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,12 +17,30 @@ public class SentenceAudio : MonoBehaviour
     private void Start()
     {
         CurReadingAction = new TaskAction(2, OnSentenceFinished);
+        string path = $"Sentences/{LanguagesManager.CurrentLanguage}/Page{BookManager.currentPageNumber}";
+        clips = Resources.LoadAll<AudioClip>(path).OrderBy(go => float.Parse(go.name))
+            .ToList(); 
     }
+
     private void OnEnable()
     {
         WordHighlighting.OnReadingStopped += HandleReadingStopped;
         BookManager.OnPageChanged += LoadClipsForPage;
+        LanguagesManager.OnLanguageChanged += HandleLanguageChange;
+        
+
     }
+
+    private void HandleLanguageChange(Languages obj)
+    {
+        clips.Clear();
+
+
+        string path = $"Sentences/{obj}/Page{BookManager.currentPageNumber}";
+        clips = Resources.LoadAll<AudioClip>(path).OrderBy(go => float.Parse(go.name))
+            .ToList(); 
+    }
+
     private void OnDisable()
     {
         WordHighlighting.OnReadingStopped -= HandleReadingStopped;
@@ -35,20 +54,20 @@ public class SentenceAudio : MonoBehaviour
         if (page == 1)
         {
             string path = $"Sentences/{LanguagesManager.CurrentLanguage}/Page{page}";
-            clips = Resources.LoadAll<AudioClip>(path).OrderBy (go => float.Parse(go.name)).ToList();// Replace "AudioFolder" with the actual folder name containing your audio clips 
-        }
 
+        
+                clips = Resources.LoadAll<AudioClip>(path).OrderBy(go => float.Parse(go.name))
+                    .ToList(); // Replace "AudioFolder" with the actual folder name containing your audio clips 
+        }
+        
         curClipIndex = 0;
     }
 
-    
     private void OnSentenceFinished()
     {
-        Debug.Log("next sent goin");
         curClipIndex++;
         if (curClipIndex >= clips.Count)
         {
-            Debug.Log("FIN");
             wordHighlight.CancelReading();
             return;
         }
@@ -61,7 +80,7 @@ public class SentenceAudio : MonoBehaviour
     {
         if (wordHighlight.GetIsReading()) return;
         if (BookManager.currentPageNumber != 1) return;
-        if (clips == null) return;
+        if (clips.Count == 0) return;
 
         if (curClipIndex >= clips.Count)
         {
@@ -80,12 +99,10 @@ public class SentenceAudio : MonoBehaviour
         CurReadingAction.ResetAction();
         wordHighlight.BeginReading();
         AudioMAnager.instance.PlaySentenceClip(clip);
-
     }
 
     private void HandleReadingStopped()
     {
-        Debug.Log("stopped");
         AudioMAnager.instance.StopReading();
         CurReadingAction.ResetAction();
     }
