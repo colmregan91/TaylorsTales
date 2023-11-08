@@ -43,6 +43,8 @@ public class SentenceAudio : MonoBehaviour
     public void PlayCurSentence()
     {
         if (wordHighlight.GetIsReading()) return;
+        if (BookManager.currentPageNumber != 1) return;
+
 
         if (curClipIndex >= clips.Count)
         {

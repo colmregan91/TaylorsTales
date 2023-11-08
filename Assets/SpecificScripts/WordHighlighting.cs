@@ -46,9 +46,15 @@ public class WordHighlighting : MonoBehaviour
     {
         LanguagesManager.OnLanguageChanged += CancelReadingOnLang;
         BookManager.OnPageChanged += setRedWords;
-        ButtonCanvas.OnNextPageClicked += CancelReading;
-        ButtonCanvas.OnPrevPageClicked += CancelReading;
+        ButtonCanvas.OnNextPageClicked += resetAndCancel;
+        ButtonCanvas.OnPrevPageClicked += resetAndCancel;
         setRedWords(0, null);
+    }
+
+    private void resetAndCancel()
+    {
+        CancelReading();
+        ResetReading();
     }
 
 
