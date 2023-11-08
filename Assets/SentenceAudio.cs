@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class SentenceAudio : MonoBehaviour
@@ -19,12 +20,28 @@ public class SentenceAudio : MonoBehaviour
     private void OnEnable()
     {
         WordHighlighting.OnReadingStopped += HandleReadingStopped;
+        BookManager.OnPageChanged += LoadClipsForPage;
     }
     private void OnDisable()
     {
         WordHighlighting.OnReadingStopped -= HandleReadingStopped;
+        BookManager.OnPageChanged -= LoadClipsForPage;
     }
 
+    private void LoadClipsForPage(int page, PageContents contents)
+    {
+        clips.Clear();
+
+        if (page == 1)
+        {
+            string path = $"Sentences/{LanguagesManager.CurrentLanguage}/Page{page}";
+            clips = Resources.LoadAll<AudioClip>(path).OrderBy (go => float.Parse(go.name)).ToList();// Replace "AudioFolder" with the actual folder name containing your audio clips 
+        }
+
+        curClipIndex = 0;
+    }
+
+    
     private void OnSentenceFinished()
     {
         Debug.Log("next sent goin");
@@ -44,7 +61,7 @@ public class SentenceAudio : MonoBehaviour
     {
         if (wordHighlight.GetIsReading()) return;
         if (BookManager.currentPageNumber != 1) return;
-
+        if (clips == null) return;
 
         if (curClipIndex >= clips.Count)
         {

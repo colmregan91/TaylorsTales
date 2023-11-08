@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.77141774, g: 0.91083497, b: 0.99592584, a: 1}
+  m_IndirectSpecularColor: {r: 0.77146506, g: 0.910861, b: 0.9959231, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -15100,8 +15100,8 @@ MonoBehaviour:
     with Facts\r\n\r\n\n\n<color=green>Author</color=green>\nRandolph Taylor\n\n<color=green>Programmer
     and Digital Developer </color=green>\nColm Regan\r\n\n<color=green>Graphic Designer
     and Artwork </color=green>\nChristian Day\r\n\n\n\n<color=green>English Narration
-    </color=green>\n Mathew Keenan\r\n\n<color=green>Gaelic Narration </color=green>\n
-    Meaghan Keenan\r\n\r\n\r\n<color=green>Contributors and Credits</color=green>\n\r\nThe
+    </color=green>\n Mathew Keenan\r\n\n<color=green>Gaelic Narration </color=green>\nMeaghan
+    Keenan\r\n\r\n\r\n<color=green>Contributors and Credits</color=green>\n\r\nThe
     Animal Files Red Fox: The animal files. Available at: http://www.theanimalfiles.com/mammals/carnivores/fox_red.html
     (Accessed: October 18th 2020).\r\nAnd grant of permission 18 th October 2014\r\nIdeas
     for Pets Available at https://web.archive.org/web/20150625195044/http://www.ideas-4-pets.co.uk/info.-on-chicken-care

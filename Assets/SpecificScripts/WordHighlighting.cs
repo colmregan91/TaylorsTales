@@ -164,7 +164,6 @@ public class WordHighlighting : MonoBehaviour
     {
         curSentenceIndex = 0;
         startOfNextSentenceWordIndex = 0;
-        isCancelled = false;
         isReading = false;
     }
 
