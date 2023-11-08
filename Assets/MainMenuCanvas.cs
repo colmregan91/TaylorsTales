@@ -210,5 +210,6 @@ public class MainMenuCanvas : BUtCanvasBase
         OnTransitionEnded?.Invoke();
         optionsButGameobject.SetActive(true);
         isTransitioning = false;
+        ContinueGameobject.SetActive(BookManager.LastSavedPage != 0);
     }
 }
