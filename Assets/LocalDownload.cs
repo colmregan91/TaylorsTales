@@ -37,7 +37,7 @@ public class LocalDownload : MonoBehaviour
         //{
         //    Debug.Log("from server");
         //    StartCoroutine(loadPageBundles());
-
+        
         string Pagepath = Path.Combine($"{Application.streamingAssetsPath}", "Pages", "JSONPageData.json");
         string FactPath = Path.Combine($"{Application.streamingAssetsPath}", "Facts", "Facts.json");
         StartCoroutine(DownloadPagesFromPath(Pagepath));
@@ -58,6 +58,8 @@ public class LocalDownload : MonoBehaviour
         //    Debug.LogError("no local json file");
         //}
     }
+    
+
 
     private void InitFacts(string dataAsJson)
     {
@@ -258,6 +260,7 @@ public class LocalDownload : MonoBehaviour
 
         if (www.result == UnityWebRequest.Result.Success)
         {
+            Debug.Log(("FOUND : " + path));
             // Asset Bundle is loaded successfully
             var EnvbundleReq = AssetBundle.LoadFromMemoryAsync(www.downloadHandler.data);
 
@@ -325,7 +328,7 @@ public class LocalDownload : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("no environment canvas or skyBox for page " + (pageNumber));
+            Debug.Log(("CANT FIND : " + path));
             newPageContents.EnvironmentCanvas = null;
             newPageContents.SkyboxMaterial = null;
         }
