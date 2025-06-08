@@ -86,6 +86,7 @@ public class FactManager : MonoBehaviour
         TriggerWords triggerWords = FactsAndImages.Keys.First(T => T.Words.Contains(word));
         if (curFact == FactsAndImages[triggerWords])
         {
+            Debug.Log("return");
             return;
         }
 
@@ -100,11 +101,6 @@ public class FactManager : MonoBehaviour
 
     private IEnumerator resetFacts(bool HidingFacts)
     {
-
-        if (HidingFacts)
-        {
-            OnFactsHidden?.Invoke();
-        }
         anim.SetTrigger(triggerHashUnclick);
 
 
@@ -120,6 +116,11 @@ public class FactManager : MonoBehaviour
             AssetBundleUtils.instance.StartUnloading(true);
         }
         canvasGroup.alpha = 1;
+        
+        if (HidingFacts)
+        {
+            OnFactsHidden?.Invoke();
+        }
     }
 
 
