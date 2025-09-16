@@ -91,10 +91,12 @@ public class ClickedWordHandler : MonoBehaviour
         isSpecialWordTemp = wordHighlight.isWordRed(wordIndex);
         if (isSpecialWordTemp)
         {
+            Debug.Log("spec");
             OnSpecialWordClicked?.Invoke(clickedWordString);
         }
         else
         {
+            Debug.Log("not spec");
             OnWordClicked?.Invoke();
         }
         canClickonWord = false;

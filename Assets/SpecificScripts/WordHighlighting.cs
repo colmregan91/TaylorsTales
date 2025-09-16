@@ -44,7 +44,7 @@ public class WordHighlighting : MonoBehaviour
 
     private void OnEnable()
     {
-        LanguagesManager.OnLanguageChanged += CancelReadingOnLang;
+        LanguagesManager.OnLanguageChanged += HandleLanguageChange;
         BookManager.OnPageChanged += setRedWords;
         ButtonCanvas.OnNextPageClicked += resetAndCancel;
         ButtonCanvas.OnPrevPageClicked += resetAndCancel;
@@ -66,7 +66,7 @@ public class WordHighlighting : MonoBehaviour
 
     private void OnDisable()
     {
-        LanguagesManager.OnLanguageChanged -= CancelReadingOnLang;
+        LanguagesManager.OnLanguageChanged -= HandleLanguageChange;
         BookManager.OnPageChanged -= setRedWords;
         ButtonCanvas.OnNextPageClicked -= resetAndCancel;
         ButtonCanvas.OnPrevPageClicked -= resetAndCancel;
@@ -114,9 +114,11 @@ public class WordHighlighting : MonoBehaviour
         StartCoroutine(LerpWordColorOnClick(index, isRed, callback));
     }
 
-    public void CancelReadingOnLang(Languages lang)
+    private void HandleLanguageChange(Languages lang)
     {
         CancelReading();
+        setRedWords(0, null);
+
     }
 
     public void CancelReading()
@@ -172,6 +174,7 @@ public class WordHighlighting : MonoBehaviour
     public void StartSentenceReadingLerp(int wordIndex)
     {
         startColor = isWordRed(wordIndex) ? Color.red : Color.black;
+      
         hasSentencenFinished = false;
         if (MulticoloredHiglighting)
         {
